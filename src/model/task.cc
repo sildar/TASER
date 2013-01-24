@@ -3,7 +3,25 @@
 Task::Task(std::string name, Task* parent, bool ordered)
 {
   
+  this->checked = false;
   this->name = name;
+
+  this->orderedSubtasks = ordered;
+  subtasks = std::list<Task*>();
+
+  if (parent != NULL)
+    {
+      this->parent = parent;
+      this->parent->addSubtask(this);
+    }
+}
+
+Task::Task(std::string name, Task* parent, bool ordered, time_t date)
+{
+  
+  this->checked = false;
+  this->name = name;
+  this->date = date;
 
   this->orderedSubtasks = ordered;
   subtasks = std::list<Task*>();
@@ -32,10 +50,17 @@ void Task::addSubtask(Task* t)
   subtasks.push_back(t);
 }
 
+bool Task::isChecked()
+{
+  return this->checked;
+}
+
 std::string Task::toString()
 {
   std::string res = "";
-  res += this->name + "\n";
+  res += this->name + " ";
+  res += this->isChecked() ? "o" : "x";
+  res+= "\n";
 
   for (std::list<Task*>::iterator it = this->subtasks.begin();
        it != this->subtasks.end();
@@ -45,4 +70,21 @@ std::string Task::toString()
     }
 
   return res;
+}
+
+void Task::deleteSubtask(Task* t)
+{
+  for(std::list<Task*>::iterator it = this->subtasks.begin();
+      it != this->subtasks.end(); ++it)
+    {
+      if (*it == t)
+	{
+	  this->subtasks.erase(it);
+	  return;
+	}
+    }
+}
+
+void Task::checkTask(){
+  this->checked = !this->checked;
 }

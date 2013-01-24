@@ -13,6 +13,8 @@ public:
   
   Task(std::string name, Task* parent, bool ordered);
 
+  Task(std::string name, Task* parent, bool ordered, time_t date);
+
   /*!
     \brief Tells if the task has a parent (then, it is a subtask of
     some bigger task) or not (then it's a major task)
@@ -25,10 +27,22 @@ public:
   */
   bool hasOrderedSubtasks();
 
+  /*!
+    \brief Adds a subtask to the subtasks list of this task.
+  */
   void addSubtask(Task* t);
 
+  /*!
+    \brief classic toString method, using an indentation for every
+    level of subtask
+  */
   std::string toString();
 
+  void deleteSubtask(Task* t);
+
+  void checkTask();
+
+  bool isChecked();
 
 private:
 
@@ -37,6 +51,7 @@ private:
   Task* parent;
   std::list<Task*> subtasks;
   bool orderedSubtasks;
+  bool checked;
   
   
 
