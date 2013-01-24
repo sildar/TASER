@@ -86,5 +86,29 @@ void Task::deleteSubtask(Task* t)
 }
 
 void Task::checkTask(){
-  this->checked = !this->checked;
+  
+  if (this->isCheckable())
+    {
+      this->checked = !this->checked;
+    }
+}
+
+
+bool Task::isCheckable()
+{
+  if (this->parent != NULL && this->parent->hasOrderedSubtasks())
+    {
+      for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it)
+	{
+	  if ((*it) == (this))
+	    {
+	      return true;
+	    }
+	  else if (! (*it)->isChecked())
+	    {
+	      return false;
+	    }
+	}
+    }
+  return true;
 }

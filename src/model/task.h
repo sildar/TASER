@@ -4,6 +4,7 @@
 #include <list>
 #include <string>
 #include <ctime>
+#include <iostream>
 
 
 class Task
@@ -40,9 +41,16 @@ public:
 
   void deleteSubtask(Task* t);
 
+  /*!
+    \brief checks a task when it's been completed. If it's part of an
+    ordered task list, it is impossible to check it before the
+    previous ones.
+  */
   void checkTask();
 
   bool isChecked();
+
+  bool isCheckable();
 
 private:
 
