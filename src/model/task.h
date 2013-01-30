@@ -1,3 +1,4 @@
+// -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 #ifndef TASK_H
 #define TASH_H
 
