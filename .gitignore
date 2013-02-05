@@ -2,3 +2,4 @@ Makefile
 taser
 *~
 *.o
+moc_*
