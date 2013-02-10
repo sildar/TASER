@@ -1,7 +1,7 @@
 TASER
 =====
 
-TASk manaGER, a GUI problem
+TASk managER, a GUI problem
 
 To compile
 
