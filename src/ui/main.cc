@@ -1,8 +1,11 @@
 // -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 #include <iostream>
+#include <QApplication>
 #include "../model/task.h"
+#include "../ui/HoverWidget.h"
+#include "../../ui_example.h"
 
-int main(int arc, char** argv)
+int main(int argc, char** argv)
 {
   //creates a parent and its child and print them.
   Task* parent = new Task("parent", NULL, true);
@@ -42,7 +45,28 @@ int main(int arc, char** argv)
 
   std::cout << t1->toString() << std::endl;
   
-  
 
-  return 0;
+  //my tests
+
+
+  
+  std::cout << "avant" << std::endl;
+  QApplication app(argc, argv);
+
+  QMainWindow *widget = new QMainWindow;
+  Ui::MainWindow ui;
+  ui.setupUi(widget);
+  widget->show();
+
+  /*
+  QWidget window;
+  window.resize(320, 240);
+  window.show();
+
+  HoverWidget *hw = new HoverWidget("task name", &window);
+  hw->show();
+  std::cout << "après" << std::endl;
+  */
+
+  return app.exec();
 }

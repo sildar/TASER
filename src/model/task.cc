@@ -1,5 +1,6 @@
 // -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 #include "task.h"
+#include <iostream>
 
 Task::Task(std::string name, Task* parent, bool ordered)
 {
@@ -10,9 +11,10 @@ Task::Task(std::string name, Task* parent, bool ordered)
   this->orderedSubtasks = ordered;
   subtasks = std::list<Task*>();
 
+
+  this->parent = parent;
   if (parent != NULL)
     {
-      this->parent = parent;
       this->parent->addSubtask(this);
     }
 }
@@ -90,7 +92,7 @@ void Task::checkTask(){
   
   if (this->isCheckable())
     {
-      this->checked = !this->checked;
+      this->checked = !(this->checked);
     }
 }
 

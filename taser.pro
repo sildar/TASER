@@ -3,4 +3,7 @@ QMAKE_CLEAN += taser
 TARGET = taser
 SOURCES += ./src/ui/main.cc
 SOURCES += ./src/model/task.cc
+SOURCES += ./src/ui/HoverWidget.cc
 HEADERS += ./src/model/task.h
+HEADERS += ./src/ui/HoverWidget.h
+FORMS += ./src/ui/example.ui
