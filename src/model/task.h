@@ -6,6 +6,7 @@
 #include <string>
 #include <ctime>
 #include <iostream>
+#include "tinyxml/tinyxml.h"
 
 
 class Task
@@ -16,6 +17,8 @@ public:
   Task(std::string name, Task* parent, bool ordered);
 
   Task(std::string name, Task* parent, bool ordered, time_t date);
+
+  Task(std::string xmlFileName, Task *parent = NULL);
 
   /*!
     \brief Tells if the task has a parent (then, it is a subtask of
@@ -53,6 +56,12 @@ public:
 
   bool isCheckable();
 
+  /*!
+    \brief Stores the current task and all of its subtasks recursively
+    in an XML file.
+  */
+  void storeAsXML(std::string filename);
+
 private:
 
   std::string name;
@@ -61,9 +70,19 @@ private:
   std::list<Task*> subtasks;
   bool orderedSubtasks;
   bool checked;
-  
-  
 
+  /*!
+    \brief Creates a task from an XML element. This constructor is used for
+    creating a task list from an XML tree, loaded from a file.
+  */
+  Task(TiXmlElement* root, Task* parent = NULL);
+
+  /*!
+    \brief Retrieves the XML subtree of this current task (the root is the
+    current task, and its children represent the subtasks). This method is
+    used for generating an XML tree recursively for storing in a file.
+  */
+  TiXmlElement* xmlSubtree();
 
 };
 
