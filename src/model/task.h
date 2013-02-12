@@ -52,8 +52,16 @@ public:
   */
   void checkTask();
 
+  /*!
+    \brief returns true if a task is checked (completed) and false
+    otherwise 
+  */
   bool isChecked();
 
+  /*!
+    \brief returns true if a task can be checked (no subtask
+    unchecked)) and false otherwise
+  */
   bool isCheckable();
 
   /*!
