@@ -81,6 +81,8 @@ public:
   */
   void storeAsXML(std::string filename);
 
+  ~Task();
+
 private:
 
   std::string name;

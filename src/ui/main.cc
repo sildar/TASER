@@ -25,7 +25,6 @@ int main(int argc, char** argv)
   std::cout << parent->toString() << std::endl;
 
   delete(parent);
-  delete(son);
 
   //prints the tree, then the tree after trying to check something
   //impossible, then after checked both.
@@ -44,11 +43,12 @@ int main(int argc, char** argv)
   t12->checkTask();
 
   std::cout << t1->toString() << std::endl;
-  
+
+  delete t1;
 
   //my tests
 
-
+  /*
   
   std::cout << "avant" << std::endl;
   QApplication app(argc, argv);
@@ -67,6 +67,9 @@ int main(int argc, char** argv)
   hw->show();
   std::cout << "après" << std::endl;
   */
-
+/*
   return app.exec();
+
+  */
+    return 0;
 }
