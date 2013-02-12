@@ -18,13 +18,7 @@ public:
     \brief creates a Task and adds it to the subtask list of its
     parent (if it has a parent).
   */
-  Task(std::string name, Task* parent, bool ordered);
-
-  /*!
-    \brief creates a Task and adds it to the subtask list of its
-    parent (if it has a parent).
-  */
-  Task(std::string name, Task* parent, bool ordered, time_t date);
+  Task(std::string name, Task* parent, bool ordered, time_t date = NULL);
 
   Task(std::string xmlFileName, Task *parent = NULL);
 
@@ -40,15 +34,11 @@ public:
   */
   bool hasOrderedSubtasks();
 
-  /*!
-    \brief Adds a subtask to the subtasks list of this task.
-    returns the new task created
-  */
   void addSubtask(Task* t);
-
 
   /*!
     \brief adds a subtask to the current task
+    returns the new task created
   */
   Task* addSubtask(std::string name, time_t date);
 

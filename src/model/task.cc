@@ -3,38 +3,24 @@
 #include <iostream>
 #include <sstream>
 
-Task::Task(std::string name, Task* parent, bool ordered)
-{
-  
-  this->checked = false;
-  this->name = name;
-  this->index = 0;
-
-  this->orderedSubtasks = ordered;
-  subtasks = std::list<Task*>();
-
-
-  this->parent = parent;
-  if (parent != NULL)
-    {
-      this->parent->addSubtask(this);
-    }
-}
 
 Task::Task(std::string name, Task* parent, bool ordered, time_t date)
 {
   
   this->checked = false;
   this->name = name;
-  this->date = date;
   this->index = 0;
+  this->parent = parent;
+
+  if (date != NULL){
+    this->date = date;
+  }
 
   this->orderedSubtasks = ordered;
   subtasks = std::list<Task*>();
 
   if (parent != NULL)
     {
-      this->parent = parent;
       this->parent->addSubtask(this);
     }
 }

@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 
 
   //deletes a subtask
-  //parent->deleteSubtask(son);
+  parent->deleteSubtask(son);
   std::cout << parent->toString() << std::endl;
 
   //checks a task
