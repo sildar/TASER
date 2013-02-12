@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 {
   //creates a parent and its child and print them.
   Task* parent = new Task("parent", NULL, true);
-  parent->addSubtask("son", time(NULL));
+  Task* son = parent->addSubtask("son", time(NULL));
   std::cout << "Hello, QtWorld !" << std::endl;
 
   std::cout << parent->toString() << std::endl;

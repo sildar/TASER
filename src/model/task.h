@@ -42,13 +42,15 @@ public:
 
   /*!
     \brief Adds a subtask to the subtasks list of this task.
+    returns the new task created
   */
   void addSubtask(Task* t);
+
 
   /*!
     \brief adds a subtask to the current task
   */
-  void addSubtask(std::string name, time_t date);
+  Task* addSubtask(std::string name, time_t date);
 
   /*!
     \brief classic toString method, using an indentation for every
