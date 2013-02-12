@@ -1,9 +1,9 @@
 // -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 #include <iostream>
 #include <QApplication>
-#include "../model/task.h"
 #include "../ui/HoverWidget.h"
 #include "../../ui_example.h"
+#include "../ui/QTask.h"
 
 int main(int argc, char** argv)
 {
@@ -49,21 +49,35 @@ int main(int argc, char** argv)
 
   delete t1;
 
-
+  */
 
   //my tests
 
-  /*
+  
   std::cout << "avant" << std::endl;
   QApplication app(argc, argv);
+  QWidget window;
+  QVBoxLayout* lay = new QVBoxLayout();
+  
 
-  QMainWindow *widget = new QMainWindow;
-  Ui::MainWindow ui;
-  ui.setupUi(widget);
-  widget->show();
+  Task* t = new Task("Titre 1", NULL, true, time(NULL));
+  QTask* qtask = new QTask(t);
+
+  Task* t2 = new Task("Titre 2", NULL, true, time(NULL));
+  QTask* qtask2 = new QTask(t2);
+
+  Task* t3 = new Task("Titre 3", NULL, true, time(NULL));
+  QTask* qtask3 = new QTask(t3);
+  
+  lay->addWidget(qtask);
+  lay->addWidget(qtask2);
+  lay->addWidget(qtask3);
+  window.setLayout(lay);
+
+  window.show();
 
   return app.exec();
 
-  */
+  
     return 0;
 }

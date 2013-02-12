@@ -252,3 +252,18 @@ Task* Task::addSubtask(std::string name, time_t date){
   return newTask;
 
 }
+
+
+std::string Task::getName(){
+  return name;
+}
+
+std::time_t Task::getDate(){
+  return date;
+}
+
+int Task::getIndex(){
+  return index;
+}
+
+

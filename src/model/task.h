@@ -83,6 +83,13 @@ public:
 
   ~Task();
 
+  std::string getName();
+
+  std::time_t getDate();
+
+  int getIndex();
+
+
 private:
 
   std::string name;
