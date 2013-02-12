@@ -74,6 +74,7 @@ private:
 
   std::string name;
   std::time_t date;
+  int index;
   Task* parent;
   std::list<Task*> subtasks;
   bool orderedSubtasks;

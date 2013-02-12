@@ -1,12 +1,14 @@
 // -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 #include "task.h"
 #include <iostream>
+#include <sstream>
 
 Task::Task(std::string name, Task* parent, bool ordered)
 {
   
   this->checked = false;
   this->name = name;
+  this->index = 0;
 
   this->orderedSubtasks = ordered;
   subtasks = std::list<Task*>();
@@ -25,6 +27,7 @@ Task::Task(std::string name, Task* parent, bool ordered, time_t date)
   this->checked = false;
   this->name = name;
   this->date = date;
+  this->index = 0;
 
   this->orderedSubtasks = ordered;
   subtasks = std::list<Task*>();
@@ -124,6 +127,7 @@ bool Task::hasOrderedSubtasks()
 void Task::addSubtask(Task* t)
 {
   subtasks.push_back(t);
+  t->index = subtasks.size();
 }
 
 bool Task::isChecked()
@@ -134,6 +138,11 @@ bool Task::isChecked()
 std::string Task::toString()
 {
   std::string res = "";
+
+  std::stringstream indexstr;
+  indexstr << this->index;
+  
+  res += indexstr.str() + " : ";
   res += this->name + " ";
   res += this->isChecked() ? "o" : "x";
   res+= "\n";
