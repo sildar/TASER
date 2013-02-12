@@ -34,6 +34,9 @@ public:
   */
   bool hasOrderedSubtasks();
 
+  /*!
+    \brief adds a subtask to its parent subtask list
+  */
   void addSubtask(Task* t);
 
   /*!
