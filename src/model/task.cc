@@ -165,6 +165,7 @@ void Task::deleteSubtask(Task* t)
       if (*it == t)
 	{
 	  this->subtasks.erase(it);
+	  delete t;
 	  return;
 	}
     }

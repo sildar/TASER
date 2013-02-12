@@ -14,8 +14,16 @@ class Task
 
 public:
   
+  /*!
+    \brief creates a Task and adds it to the subtask list of its
+    parent (if it has a parent).
+  */
   Task(std::string name, Task* parent, bool ordered);
 
+  /*!
+    \brief creates a Task and adds it to the subtask list of its
+    parent (if it has a parent).
+  */
   Task(std::string name, Task* parent, bool ordered, time_t date);
 
   Task(std::string xmlFileName, Task *parent = NULL);
@@ -43,6 +51,9 @@ public:
   */
   std::string toString();
 
+  /*
+    \brief deletes a subtask from its parent.
+  */
   void deleteSubtask(Task* t);
 
   /*!
