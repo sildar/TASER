@@ -9,14 +9,14 @@ int main(int argc, char** argv)
 {
   //creates a parent and its child and print them.
   Task* parent = new Task("parent", NULL, true);
-  Task* son = new Task("son", parent, false);
+  parent->addSubtask("son", time(NULL));
   std::cout << "Hello, QtWorld !" << std::endl;
 
   std::cout << parent->toString() << std::endl;
 
 
   //deletes a subtask
-  parent->deleteSubtask(son);
+  //parent->deleteSubtask(son);
   std::cout << parent->toString() << std::endl;
 
   //checks a task
@@ -25,6 +25,9 @@ int main(int argc, char** argv)
   std::cout << parent->toString() << std::endl;
 
   delete(parent);
+
+
+  /*
 
   //prints the tree, then the tree after trying to check something
   //impossible, then after checked both.
@@ -46,10 +49,11 @@ int main(int argc, char** argv)
 
   delete t1;
 
+
+
   //my tests
 
   /*
-  
   std::cout << "avant" << std::endl;
   QApplication app(argc, argv);
 
@@ -58,16 +62,6 @@ int main(int argc, char** argv)
   ui.setupUi(widget);
   widget->show();
 
-  /*
-  QWidget window;
-  window.resize(320, 240);
-  window.show();
-
-  HoverWidget *hw = new HoverWidget("task name", &window);
-  hw->show();
-  std::cout << "après" << std::endl;
-  */
-/*
   return app.exec();
 
   */

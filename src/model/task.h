@@ -46,6 +46,11 @@ public:
   void addSubtask(Task* t);
 
   /*!
+    \brief adds a subtask to the current task
+  */
+  void addSubtask(std::string name, time_t date);
+
+  /*!
     \brief classic toString method, using an indentation for every
     level of subtask
   */

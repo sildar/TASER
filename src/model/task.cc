@@ -259,3 +259,8 @@ Task::~Task(){
 
   }
 }
+
+void Task::addSubtask(std::string name, time_t date){
+
+  Task* newTask = new Task(name,this, this->hasOrderedSubtasks(),date);
+}
