@@ -1,3 +1,4 @@
+// -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 #include "QTask.h"
 
 QTask::QTask(Task* t){
