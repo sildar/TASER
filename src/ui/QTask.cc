@@ -19,11 +19,15 @@ QTask::QTask(Task* t){
   close->setStyleSheet("color: red");
   this->order = new QToolButton();
   order->setText("-");
+  this->param = new QToolButton();
+  param->setIcon(QIcon("./resources/param_icon_black_32.png"));
+  //param->setIconSize(QSize(20,20));
 
 
   
   lay->addWidget(check);
   lay->addWidget(extend);
+  lay->addWidget(param);
 
   //separator
   QFrame *f = new QFrame();

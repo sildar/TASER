@@ -22,7 +22,7 @@ class QTask : public QWidget
 
  private :
   QToolButton* extend;
-  QToolButton* add;
+  QToolButton* param;
   QToolButton* order;
   QToolButton* close;
   QLabel* text;
