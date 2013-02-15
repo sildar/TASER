@@ -71,7 +71,7 @@ public:
 
   /*!
     \brief returns true if a task can be checked (no subtask
-    unchecked)) and false otherwise
+    unchecked) and false otherwise
   */
   bool isCheckable();
 
@@ -81,12 +81,24 @@ public:
   */
   void storeAsXML(std::string filename);
 
+  /*!
+    \brief deletes a task and all its subtasks
+  */
   ~Task();
 
+  /*!
+    \brief getter for the name
+  */
   std::string getName();
 
+  /*!
+    \brief getter for the date
+  */
   std::time_t getDate();
 
+  /*!
+    \brief getter for the index
+  */
   int getIndex();
 
 
