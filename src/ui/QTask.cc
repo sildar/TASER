@@ -9,9 +9,23 @@ QTask::QTask(Task* t){
   time_t datet = t->getDate();
   QString datestr = ctime(&datet);
 
+
+
   this->text = new QLabel(textstr);
-  this->date = new QLabel(datestr);
+  this->date = new QLineEdit(datestr);
+  date->installEventFilter(this);
+  
+  //prepares the popup
+  this->calmenu = new QWidget();
+  this->cal = new QCalendara(calmenu);
+  calmenu->installEventFilter(this);
+
+  calmenu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+  calmenu->resize(cal->sizeHint());
+
+
   this->check = new QCheckBox();
+  //0x2193 is a arrow down
   this->extend = new QToolButton();
   extend->setText(QChar(0x2193));
   this->close = new QToolButton();
@@ -38,6 +52,7 @@ QTask::QTask(Task* t){
   lay->addWidget(text);
   lay->addWidget(date);
 
+
   //separator
   QFrame *f2 = new QFrame();
   f2->setFrameStyle( QFrame::VLine | QFrame::Sunken );
@@ -47,4 +62,31 @@ QTask::QTask(Task* t){
 
   this->setLayout(lay);
 
+  this->installEventFilter(this);
+
+  connect(cal, SIGNAL(clicked(QDate)), this, SLOT(setDateText(QDate)));
+
+}
+
+bool QTask::eventFilter(QObject* object, QEvent* event)
+{
+  if(object == date)
+    {
+      if(event->type() == QEvent::MouseButtonPress) {
+	calmenu->show();
+	return false; // lets the event continue to the edit
+      }
+    }
+  else if (object == this)
+    {
+      if(event->type() == QEvent::WindowActivate) {
+	calmenu->hide();
+	return false; // lets the event continue to the edit
+      }
+    }
+  return false;
+}
+
+void QTask::setDateText(QDate aDate){
+  date->setText(aDate.toString());
 }

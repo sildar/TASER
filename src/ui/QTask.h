@@ -10,7 +10,12 @@
 #include <QCheckBox>
 #include <QHBoxLayout>
 #include <QFrame>
+#include <QLineEdit>
 #include "./../model/task.h"
+#include "QCalendara.h"
+#include <QEvent>
+#include <QMenu>
+#include <QWidgetAction>
 
 class QTask : public QWidget
 {
@@ -19,6 +24,7 @@ class QTask : public QWidget
  public :
   QTask(Task* t);
 
+  bool eventFilter(QObject* object, QEvent* event);
 
  private :
   QToolButton* extend;
@@ -26,8 +32,14 @@ class QTask : public QWidget
   QToolButton* order;
   QToolButton* close;
   QLabel* text;
-  QLabel* date;
+  QLineEdit* date;
   QCheckBox* check;
+  QCalendara* cal;
+  QWidget* calmenu;
+
+  public slots:
+    void setDateText(QDate date);
+  
 };
 
 
