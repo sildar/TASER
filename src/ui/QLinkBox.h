@@ -27,6 +27,8 @@ class QLinkBox : public QWidget
   */
   bool isLinked();
   
+  ~QLinkBox();
+
  private:
   QHBoxLayout* lay;
   QCheckBox *linkbox;

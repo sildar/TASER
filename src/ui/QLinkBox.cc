@@ -18,3 +18,10 @@ bool QLinkBox::isLinked()
 {
   return this->linkbox->isChecked();
 }
+
+
+QLinkBox::~QLinkBox(){
+  delete linkbox;
+  delete linkboxlab;
+  delete lay;
+}

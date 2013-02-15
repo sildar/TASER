@@ -26,6 +26,8 @@ class QCalendara : public QCalendarWidget
   */
   bool isLinked();
 
+  ~QCalendara();
+
  private:
   QLinkBox* linkbox;
 
