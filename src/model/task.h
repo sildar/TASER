@@ -8,7 +8,10 @@
 #include <iostream>
 #include "tinyxml/tinyxml.h"
 
-
+/*!
+  A task class representing a task that can have subtasks, be checked
+  or not and which is described by its name and an optional date.
+ */
 class Task
 {
 
