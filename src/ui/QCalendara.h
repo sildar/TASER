@@ -7,12 +7,23 @@
 #include <QWidget>
 #include "QLinkBox.h"
 
+
+/*!
+  \brief class containing a calendar and a qlinkbox wich says if a
+  task is linked to its master 
+*/
 class QCalendara : public QCalendarWidget
 {
   Q_OBJECT
 
  public:
+  /*!
+    \brief Constructor of the calendara
+  */
   QCalendara(QWidget *parent=0);
+  /*!
+    \brief says if the task is linked to a master task
+  */
   bool isLinked();
 
  private:
