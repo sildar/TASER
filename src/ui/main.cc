@@ -4,6 +4,7 @@
 #include "../ui/HoverWidget.h"
 #include "../../ui_example.h"
 #include "../ui/QTask.h"
+#include "../ui/QCalendara.h"
 
 int main(int argc, char** argv)
 {
@@ -56,6 +57,12 @@ int main(int argc, char** argv)
   
   std::cout << "avant" << std::endl;
   QApplication app(argc, argv);
+
+
+  QCalendara* cal = new QCalendara();
+
+  cal->show();
+  /*
   QWidget window;
   QVBoxLayout* lay = new QVBoxLayout();
   
@@ -75,7 +82,7 @@ int main(int argc, char** argv)
   window.setLayout(lay);
 
   window.show();
-
+  */
   return app.exec();
 
   
