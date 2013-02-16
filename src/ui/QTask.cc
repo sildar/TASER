@@ -2,10 +2,11 @@
 
 #include "QTask.h"
 
-QTask::QTask(Task* t){
+QTask::QTask(Task* t)
+{
 
   QHBoxLayout* lay = new QHBoxLayout();
-  
+
   QString textstr = QString::fromStdString(t->getName());
   time_t datet = t->getDate();
   QString datestr = ctime(&datet);
@@ -15,7 +16,7 @@ QTask::QTask(Task* t){
   this->text = new QLabel(textstr);
   this->date = new QLineEdit(datestr);
   date->installEventFilter(this);
-  
+
   //prepares the popup
   this->calmenu = new QWidget();
   this->cal = new QCalendara(calmenu);
@@ -39,7 +40,7 @@ QTask::QTask(Task* t){
   //param->setIconSize(QSize(20,20));
 
 
-  
+
   lay->addWidget(check);
   lay->addWidget(expand);
   lay->addWidget(param);
@@ -48,7 +49,7 @@ QTask::QTask(Task* t){
   QFrame *f = new QFrame();
   f->setFrameStyle( QFrame::VLine | QFrame::Sunken );
   lay->addWidget(f);
-  
+
   lay->addWidget(order);
   lay->addWidget(text);
   lay->addWidget(date);
@@ -69,25 +70,28 @@ QTask::QTask(Task* t){
 
 }
 
-bool QTask::eventFilter(QObject* object, QEvent* event)
+bool
+QTask::eventFilter(QObject* object, QEvent* event)
 {
   if(object == date)
-    {
-      if(event->type() == QEvent::MouseButtonPress) {
-	calmenu->show();
-	return false; // lets the event continue to the edit
-      }
+  {
+    if(event->type() == QEvent::MouseButtonPress) {
+      calmenu->show();
+      return false; // lets the event continue to the edit
     }
+  }
   else if (object == this)
-    {
-      if(event->type() == QEvent::WindowActivate) {
-	calmenu->hide();
-	return false; // lets the event continue to the edit
-      }
+  {
+    if(event->type() == QEvent::WindowActivate) {
+      calmenu->hide();
+      return false; // lets the event continue to the edit
     }
+  }
   return false;
 }
 
-void QTask::setDateText(QDate aDate){
+void
+QTask::setDateText(QDate aDate)
+{
   date->setText(aDate.toString());
 }

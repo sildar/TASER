@@ -3,19 +3,20 @@
 #include "QCalendara.h"
 #include <QGridLayout>
 
-QCalendara::QCalendara(QWidget *parent):QCalendarWidget(parent){
-
+QCalendara::QCalendara(QWidget *parent):QCalendarWidget(parent)
+{
   this->linkbox = new QLinkBox("Lier la tache a la tache principale");
 
-
-  this->layout()->addWidget(linkbox);  
-  
+  this->layout()->addWidget(linkbox);
 }
 
-bool QCalendara::isLinked(){
+bool
+QCalendara::isLinked()
+{
   return linkbox->isLinked();
 }
 
-QCalendara::~QCalendara(){
+QCalendara::~QCalendara()
+{
   delete linkbox;
 }

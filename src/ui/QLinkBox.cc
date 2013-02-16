@@ -14,13 +14,14 @@ QLinkBox::QLinkBox(std::string label,QWidget *parent):QWidget(parent)
   this->setLayout(lay);
 }
 
-bool QLinkBox::isLinked()
+bool
+QLinkBox::isLinked()
 {
   return this->linkbox->isChecked();
 }
 
-
-QLinkBox::~QLinkBox(){
+QLinkBox::~QLinkBox()
+{
   delete linkbox;
   delete linkboxlab;
   delete lay;

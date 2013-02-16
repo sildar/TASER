@@ -21,12 +21,12 @@ class QTask : public QWidget
 {
   Q_OBJECT
 
- public :
+public:
   QTask(Task* t);
 
   bool eventFilter(QObject* object, QEvent* event);
 
- private :
+private:
   QToolButton* expand;
   QToolButton* param;
   QToolButton* order;
@@ -37,10 +37,9 @@ class QTask : public QWidget
   QCalendara* cal;
   QWidget* calmenu;
 
-  public slots:
-    void setDateText(QDate date);
-  
-};
+public slots:
+  void setDateText(QDate date);
 
+};
 
 #endif
