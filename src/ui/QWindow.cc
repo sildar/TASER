@@ -14,5 +14,11 @@ QWindow::QWindow(QWidget* parent):QMainWindow(parent)
   file = menuBar()->addMenu("&Fichier");
   file->addAction(quit);
 
+  QMenu *pref;
+  pref = menuBar()->addMenu("&Edition");
+  
+  QMenu *help;
+  help = menuBar()->addMenu("&Help");
+
   connect(quit, SIGNAL(triggered()), qApp, SLOT(quit()));
 }

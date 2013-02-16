@@ -30,13 +30,13 @@ public:
     \brief Tells if the task has a parent (then, it is a subtask of
     some bigger task) or not (then it's a major task)
   */
-  bool hasParent();
+  bool hasParent() const;
 
   /*!
     \brief Returns true if the subtasks of this task are ordered,
     false if they aren't or if there's no subtask.
   */
-  bool hasOrderedSubtasks();
+  bool hasOrderedSubtasks() const;
 
   /*!
     \brief adds a subtask to its parent subtask list
@@ -71,13 +71,13 @@ public:
     \brief returns true if a task is checked (completed) and false
     otherwise
   */
-  bool isChecked();
+  bool isChecked() const;
 
   /*!
     \brief returns true if a task can be checked (no subtask
     unchecked) and false otherwise
   */
-  bool isCheckable();
+  bool isCheckable() const;
 
   /*!
     \brief Stores the current task and all of its subtasks recursively
@@ -93,17 +93,17 @@ public:
   /*!
     \brief getter for the name
   */
-  std::string getName();
+  std::string getName() const;
 
   /*!
     \brief getter for the date
   */
-  std::time_t getDate();
+  std::time_t getDate() const;
 
   /*!
     \brief getter for the index
   */
-  int getIndex();
+  int getIndex() const;
 
 
 private:

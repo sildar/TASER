@@ -98,14 +98,14 @@ Task::Task(TiXmlElement* root, Task* parent)
 
 
 bool
-Task::hasParent()
+Task::hasParent() const
 {
   return (this->parent != NULL);
 }
 
 
 bool
-Task::hasOrderedSubtasks()
+Task::hasOrderedSubtasks() const
 {
   return (subtasks.size() > 0 && orderedSubtasks);
 }
@@ -119,7 +119,7 @@ Task::addSubtask(Task* t)
 }
 
 bool
-Task::isChecked()
+Task::isChecked() const
 {
   return this->checked;
 }
@@ -172,7 +172,7 @@ Task::checkTask(){
 }
 
 bool
-Task::isCheckable()
+Task::isCheckable() const
 {
   if (this->parent != NULL && this->parent->hasOrderedSubtasks())
   {
@@ -260,16 +260,16 @@ Task::addSubtask(std::string name, time_t date){
 }
 
 std::string
-Task::getName(){
+Task::getName() const{
   return name;
 }
 
 std::time_t
-Task::getDate(){
+Task::getDate() const{
   return date;
 }
 
 int
-Task::getIndex(){
+Task::getIndex() const{
   return index;
 }
