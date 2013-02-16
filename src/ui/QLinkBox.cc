@@ -6,6 +6,7 @@ QLinkBox::QLinkBox(std::string label,QWidget *parent):QWidget(parent)
 {
   this->linkboxlab = new QLabel(QString(label.c_str()));
   this->linkbox = new QCheckBox();
+  this->linkbox->setChecked(true);
   this->lay = new QHBoxLayout();
 
   lay->addWidget(linkbox);

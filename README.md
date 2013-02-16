@@ -5,7 +5,7 @@ TASk managER, a GUI problem
 
 To compile
 
-$qmake -o Makefile taser.pro
+$qmake
 
 and then
 

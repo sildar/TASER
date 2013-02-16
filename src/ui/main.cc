@@ -74,7 +74,7 @@ int main(int argc, char** argv)
   lay->addWidget(qtask);
   lay->addWidget(qtask2);
   lay->addWidget(qtask3);
-  lay->addStretch(); // is it necessary?
+  //lay->addStretch(); // is it necessary?
 
   container->setLayout(lay);
 
