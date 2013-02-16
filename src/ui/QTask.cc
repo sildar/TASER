@@ -35,8 +35,23 @@ QTask::QTask(Task* t)
   close->setStyleSheet("color: red");
   this->order = new QLabel();
   order->setText("-");
+
   this->param = new QToolButton();
   param->setIcon(QIcon("./resources/param_icon_black_32.png"));
+  QMenu *menu = new QMenu();
+  menu->addAction(tr("Ajouter une tâche"));
+  menu->addAction(tr("Marquer comme fait"));
+  menu->addSeparator();
+  menu->addAction(tr("Insérer un template"));
+  menu->addAction(tr("Sauver un template"));
+  menu->addSeparator();
+  menu->addAction(tr("Monter la tâche"));
+  menu->addAction(tr("Descendre la tâche"));
+  menu->addSeparator();
+  menu->addAction(tr("Déplier la tâche"));
+  menu->addAction(tr("Supprimer la tâche"));
+  param->setMenu(menu);
+  param->setPopupMode(QToolButton::InstantPopup);
   //param->setIconSize(QSize(20,20));
 
 
