@@ -1,4 +1,4 @@
-// -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
+// -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 
 #include "QCalendara.h"
 #include <QGridLayout>
@@ -17,15 +17,16 @@ QCalendara::QCalendara(QWidget *parent, QString* parentDate):QCalendarWidget(par
     }
   this->linkbox = new QLinkBox("Lier la tache a la tache principale");
 
-
-  this->layout()->addWidget(linkbox);  
-  
+  this->layout()->addWidget(linkbox);
 }
 
-bool QCalendara::isLinked(){
+bool
+QCalendara::isLinked()
+{
   return linkbox->isLinked();
 }
 
-QCalendara::~QCalendara(){
+QCalendara::~QCalendara()
+{
   delete linkbox;
 }

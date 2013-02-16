@@ -1,4 +1,4 @@
-// -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
+// -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 
 #include "QLinkBox.h"
 
@@ -14,13 +14,14 @@ QLinkBox::QLinkBox(std::string label,QWidget *parent):QWidget(parent)
   this->setLayout(lay);
 }
 
-bool QLinkBox::isLinked()
+bool
+QLinkBox::isLinked()
 {
   return this->linkbox->isChecked();
 }
 
-
-QLinkBox::~QLinkBox(){
+QLinkBox::~QLinkBox()
+{
   delete linkbox;
   delete linkboxlab;
   delete lay;

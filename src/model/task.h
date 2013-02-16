@@ -1,4 +1,5 @@
-// -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
+// -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
+
 #ifndef TASK_H
 #define TASH_H
 
@@ -11,12 +12,12 @@
 /*!
   A task class representing a task that can have subtasks, be checked
   or not and which is described by its name and an optional date.
- */
+*/
 class Task
 {
 
 public:
-  
+
   /*!
     \brief creates a Task and adds it to the subtask list of its
     parent (if it has a parent).
@@ -68,7 +69,7 @@ public:
 
   /*!
     \brief returns true if a task is checked (completed) and false
-    otherwise 
+    otherwise
   */
   bool isChecked();
 

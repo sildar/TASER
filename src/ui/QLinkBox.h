@@ -1,4 +1,4 @@
-// -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
+// -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 
 #ifndef QLINKBOX_H
 #define QLINKBOX_H
@@ -16,24 +16,24 @@ class QLinkBox : public QWidget
 {
   Q_OBJECT
 
- public:
+public:
   /*
     \brief constructor, the label is specified by the first, mandatory
-  parameter. 
+    parameter.
   */
   QLinkBox(std::string label, QWidget* parent=0);
   /*
     \brief says if the checkbox is checked
   */
   bool isLinked();
-  
+
   ~QLinkBox();
 
- private:
+private:
   QHBoxLayout* lay;
   QCheckBox *linkbox;
   QLabel *linkboxlab;
-  
+
 };
 
 #endif

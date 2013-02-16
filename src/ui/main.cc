@@ -1,4 +1,5 @@
-// -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
+// -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
+
 #include <iostream>
 #include <QApplication>
 #include <QScrollArea>
@@ -53,7 +54,6 @@ int main(int argc, char** argv)
 
   //my tests
 
-  
   std::cout << "avant" << std::endl;
   QApplication app(argc, argv);
 
@@ -69,7 +69,7 @@ int main(int argc, char** argv)
 
   Task* t3 = new Task("Titre 3", NULL, true, time(NULL));
   QTask* qtask3 = new QTask(t3);
-  
+
   lay->addWidget(qtask);
   lay->addWidget(qtask2);
   lay->addWidget(qtask3);
@@ -81,6 +81,5 @@ int main(int argc, char** argv)
 
   return app.exec();
 
-  
-    return 0;
+  return 0;
 }

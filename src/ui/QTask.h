@@ -1,4 +1,4 @@
-// -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
+// -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 
 #ifndef QTASK_H
 #define QTASK_H
@@ -21,26 +21,29 @@ class QTask : public QWidget
 {
   Q_OBJECT
 
- public :
+public:
   QTask(Task* t);
 
   bool eventFilter(QObject* object, QEvent* event);
 
- private :
-  QToolButton* extend;
-  QToolButton* param;
-  QToolButton* order;
-  QToolButton* close;
-  QLabel* text;
-  QLineEdit* date;
+private:
   QCheckBox* check;
+  QToolButton* expand;
+  QToolButton* param;
+
+  QLabel* order;
+
+  QLabel* text;
+
+  QLineEdit* date;
   QCalendara* cal;
   QWidget* calmenu;
 
-  public slots:
-    void setDateText(QDate date);
-  
-};
+  QToolButton* close;
 
+public slots:
+  void setDateText(QDate date);
+
+};
 
 #endif

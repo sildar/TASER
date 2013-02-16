@@ -1,4 +1,4 @@
-// -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
+// -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 
 #ifndef QCALENDARA_H
 #define QCALENDARA_H
@@ -10,13 +10,13 @@
 
 /*!
   \brief class containing a calendar and a qlinkbox wich says if a
-  task is linked to its master 
+  task is linked to its master
 */
 class QCalendara : public QCalendarWidget
 {
   Q_OBJECT
 
- public:
+public:
   /*!
     \brief Constructor of the calendara
   */
@@ -28,12 +28,9 @@ class QCalendara : public QCalendarWidget
 
   ~QCalendara();
 
- private:
+private:
   QLinkBox* linkbox;
 
-
 };
-
-
 
 #endif
