@@ -27,7 +27,7 @@ class QTask : public QWidget
   bool eventFilter(QObject* object, QEvent* event);
 
  private :
-  QToolButton* extend;
+  QToolButton* expand;
   QToolButton* param;
   QToolButton* order;
   QToolButton* close;

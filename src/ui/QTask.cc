@@ -26,8 +26,8 @@ QTask::QTask(Task* t){
 
   this->check = new QCheckBox();
   //0x2193 is a arrow down
-  this->extend = new QToolButton();
-  extend->setText(QChar(0x2193));
+  this->expand = new QToolButton();
+  expand->setText(QChar(0x2193));
   this->close = new QToolButton();
   close->setText("x");
   close->setStyleSheet("color: red");
@@ -40,7 +40,7 @@ QTask::QTask(Task* t){
 
   
   lay->addWidget(check);
-  lay->addWidget(extend);
+  lay->addWidget(expand);
   lay->addWidget(param);
 
   //separator
