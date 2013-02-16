@@ -46,7 +46,7 @@ private:
 
 public slots:
   void setDateText(QDate date);
-  void close();
+  void closeTask();
 
 };
 

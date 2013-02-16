@@ -113,7 +113,7 @@ QTask::setDateText(QDate aDate)
 }
 
 void
-QTask::close(){
+QTask::closeTask(){
   delete this;
 }
 
