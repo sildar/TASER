@@ -14,6 +14,7 @@ QTask::QTask(Task* t)
 
   // Check button
   check = new QCheckBox();
+  connect(check, SIGNAL(clicked()), this, SLOT(checkTask()));
   lay->addWidget(check);
 
   //0x2193 is a arrow down
@@ -111,6 +112,12 @@ void
 QTask::setDateText(QDate aDate)
 {
   date->setText(aDate.toString());
+}
+
+void
+QTask::checkTask()
+{
+  task->checkTask();
 }
 
 void
