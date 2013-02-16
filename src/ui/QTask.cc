@@ -12,7 +12,7 @@ QTask::QTask(Task* t)
   QString datestr = ctime(&datet);
 
 
-
+  this->task = t;
   this->text = new QLabel(textstr);
   this->date = new QLineEdit(datestr);
   date->installEventFilter(this);
@@ -82,6 +82,7 @@ QTask::QTask(Task* t)
   this->installEventFilter(this);
 
   connect(cal, SIGNAL(clicked(QDate)), this, SLOT(setDateText(QDate)));
+  connect(close, SIGNAL(clicked()), this, SLOT(close()));
 
 }
 
@@ -109,4 +110,22 @@ void
 QTask::setDateText(QDate aDate)
 {
   date->setText(aDate.toString());
+}
+
+void
+QTask::close(){
+  delete this;
+}
+
+QTask::~QTask(){
+  delete check;
+  delete expand;
+  delete param;
+  delete order;
+  delete text;
+  delete date;
+  delete cal;
+  delete calmenu;
+  delete close;
+  delete task;
 }
