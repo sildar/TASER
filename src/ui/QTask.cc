@@ -13,7 +13,8 @@ QTask::QTask(Task* t)
 
 
   this->task = t;
-  this->text = new QLabel(textstr);
+  // this->text = new QLabel(textstr);
+  text = new QLabelEdit(textstr);
   this->date = new QLineEdit(datestr);
   date->installEventFilter(this);
 

@@ -12,7 +12,8 @@ SOURCES =                               \
     src/ui/QTask.cc                     \
     src/ui/QCalendara.cc                \
     src/ui/QLinkBox.cc                  \
-    src/ui/QWindow.cc
+    src/ui/QWindow.cc                   \
+    src/ui/QLabelEdit.cc
 
 HEADERS =                               \
     src/model/task.h                    \
@@ -21,6 +22,9 @@ HEADERS =                               \
     src/ui/QTask.h                      \
     src/ui/QCalendara.h                 \
     src/ui/QLinkBox.h                   \
-    src/ui/QWindow.h
+    src/ui/QWindow.h                    \
+    src/ui/QLabelEdit.h
 
 RESOURCES = taser.qrc
+
+DEFINES *= QT_USE_QSTRINGBUILDER

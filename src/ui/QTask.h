@@ -16,6 +16,7 @@
 #include <QEvent>
 #include <QMenu>
 #include <QWidgetAction>
+#include "QLabelEdit.h"
 
 class QTask : public QWidget
 {
@@ -34,7 +35,7 @@ private:
 
   QLabel* order;
 
-  QLabel* text;
+  QLabelEdit* text;
 
   QLineEdit* date;
   QCalendara* cal;
