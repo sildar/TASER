@@ -8,7 +8,7 @@
 
 QWindow::QWindow(QWidget* parent):QMainWindow(parent)
 {
-  QAction *quit = new QAction("&Quit", this);
+  QAction *quit = new QAction("&Quitter", this);
 
   QMenu *file;
   file = menuBar()->addMenu("&Fichier");

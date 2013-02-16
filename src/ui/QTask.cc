@@ -15,6 +15,7 @@ QTask::QTask(Task* t)
   // Check button
   check = new QCheckBox();
   lay->addWidget(check);
+  connect(check, SIGNAL(toggled(bool)), this->task, SLOT(checkTask(bool)));
 
   //0x2193 is a arrow down
   expand = new QToolButton();

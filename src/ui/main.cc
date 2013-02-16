@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 
   //checks a task
 
-  parent->checkTask();
+  parent->checkTask(true);
   std::cout << parent->toString() << std::endl;
 
   delete(parent);
@@ -69,8 +69,8 @@ int main(int argc, char** argv)
   QWidget* container = new QWidget(qw);
   QVBoxLayout* lay = new QVBoxLayout();
 
-  Task* t = new Task("Titre 1", NULL, true, time(NULL));
-  QTask* qtask = new QTask(t);
+  Task* t1 = new Task("Titre 1", NULL, true, time(NULL));
+  QTask* qtask1 = new QTask(t1);
 
   Task* t2 = new Task("Titre 2", NULL, true, time(NULL));
   QTask* qtask2 = new QTask(t2);
@@ -78,7 +78,7 @@ int main(int argc, char** argv)
   Task* t3 = new Task("Titre 3", NULL, true, time(NULL));
   QTask* qtask3 = new QTask(t3);
 
-  lay->addWidget(qtask);
+  lay->addWidget(qtask1);
   lay->addWidget(qtask2);
   lay->addWidget(qtask3);
   lay->addStretch(); // necessary
@@ -90,6 +90,4 @@ int main(int argc, char** argv)
   qw->show();
 
   return app.exec();
-
-  return 0;
 }
