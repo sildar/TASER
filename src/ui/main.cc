@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 
   //checks a task
 
-  parent->checkTask(true);
+  parent->checkTask();
   std::cout << parent->toString() << std::endl;
 
   delete(parent);
@@ -66,7 +66,10 @@ int main(int argc, char** argv)
   qss.close();
   
   QWindow* qw = new QWindow();
-  QWidget* container = new QWidget(qw);
+  QScrollArea* scrollArea = new QScrollArea(qw);
+  scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+  QWidget* container = new QWidget(scrollArea);
+  container->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
   QVBoxLayout* lay = new QVBoxLayout();
 
   Task* t1 = new Task("Titre 1", NULL, true, time(NULL));
@@ -85,7 +88,8 @@ int main(int argc, char** argv)
 
   container->setLayout(lay);
 
-  qw->setCentralWidget(container);
+  scrollArea->setWidget(container);
+  qw->setCentralWidget(scrollArea);
 
   qw->show();
 

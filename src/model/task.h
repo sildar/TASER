@@ -7,16 +7,14 @@
 #include <string>
 #include <ctime>
 #include <iostream>
-#include <QObject>
 #include "tinyxml/tinyxml.h"
 
 /*!
   A task class representing a task that can have subtasks, be checked
   or not and which is described by its name and an optional date.
 */
-class Task : public QObject
+class Task
 {
-  Q_OBJECT
 
 public:
 
@@ -63,6 +61,13 @@ public:
   void deleteSubtask(Task* t);
 
   /*!
+    \brief checks a task when it's been completed. If it's part of an
+    ordered task list, it is impossible to check it before the
+    previous ones.
+  */
+  void checkTask();
+
+  /*!
     \brief returns true if a task is checked (completed) and false
     otherwise
   */
@@ -99,16 +104,6 @@ public:
     \brief getter for the index
   */
   int getIndex() const;
-
-
-public slots:
-
-  /*!
-    \brief checks a task when it's been completed. If it's part of an
-    ordered task list, it is impossible to check it before the
-    previous ones.
-  */
-  void checkTask(bool checked);
 
 
 private:

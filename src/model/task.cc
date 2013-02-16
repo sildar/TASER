@@ -163,11 +163,11 @@ Task::deleteSubtask(Task* t)
 }
 
 void
-Task::checkTask(bool checked)
-{
+Task::checkTask(){
+
   if (this->isCheckable())
   {
-    this->checked = checked;
+    this->checked = !(this->checked);
   }
 }
 
