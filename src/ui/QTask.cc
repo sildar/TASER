@@ -115,5 +115,6 @@ QTask::setDateText(QDate aDate)
 
 void
 QTask::closeTask(){
+  delete task;
   delete this;
 }
