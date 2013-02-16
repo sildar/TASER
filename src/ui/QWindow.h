@@ -14,6 +14,4 @@ class QWindow : public QMainWindow{
 
 };
 
-
-
 #endif

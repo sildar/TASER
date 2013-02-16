@@ -117,16 +117,3 @@ void
 QTask::closeTask(){
   delete this;
 }
-
-QTask::~QTask(){
-  delete check;
-  delete expand;
-  delete param;
-  delete order;
-  delete text;
-  delete date;
-  delete cal;
-  delete calmenu;
-  delete close;
-  delete task;
-}

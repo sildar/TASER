@@ -27,8 +27,6 @@ public:
   */
   bool isLinked();
 
-  ~QLinkBox();
-
 private:
   QHBoxLayout* lay;
   QCheckBox *linkbox;

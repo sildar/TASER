@@ -26,8 +26,6 @@ public:
   */
   bool isLinked();
 
-  ~QCalendara();
-
 private:
   QLinkBox* linkbox;
 

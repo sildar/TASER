@@ -25,8 +25,3 @@ QCalendara::isLinked()
 {
   return linkbox->isLinked();
 }
-
-QCalendara::~QCalendara()
-{
-  delete linkbox;
-}

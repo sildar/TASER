@@ -24,7 +24,6 @@ class QTask : public QWidget
 
 public:
   QTask(Task* t);
-  ~QTask();
 
   bool eventFilter(QObject* object, QEvent* event);
 
