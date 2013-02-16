@@ -1,6 +1,7 @@
 // -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 #include <iostream>
 #include <QApplication>
+#include <QScrollArea>
 #include "../ui/QTask.h"
 #include "../ui/QCalendara.h"
 
@@ -56,9 +57,9 @@ int main(int argc, char** argv)
   std::cout << "avant" << std::endl;
   QApplication app(argc, argv);
 
-  QWidget window;
+  QScrollArea window;
+  QWidget *container = new QWidget();
   QVBoxLayout* lay = new QVBoxLayout();
-  
 
   Task* t = new Task("Titre 1", NULL, true, time(NULL));
   QTask* qtask = new QTask(t);
@@ -72,7 +73,9 @@ int main(int argc, char** argv)
   lay->addWidget(qtask);
   lay->addWidget(qtask2);
   lay->addWidget(qtask3);
-  window.setLayout(lay);
+  lay->addStretch(); // is it necessary?
+  container->setLayout(lay);
+  window.setWidget(container);
 
   window.show();
 
