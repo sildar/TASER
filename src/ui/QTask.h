@@ -29,7 +29,7 @@ public:
 private:
   QToolButton* expand;
   QToolButton* param;
-  QToolButton* order;
+  QLabel* order;
   QToolButton* close;
   QLabel* text;
   QLineEdit* date;

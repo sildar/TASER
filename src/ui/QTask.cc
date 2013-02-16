@@ -33,7 +33,7 @@ QTask::QTask(Task* t)
   this->close = new QToolButton();
   close->setText("x");
   close->setStyleSheet("color: red");
-  this->order = new QToolButton();
+  this->order = new QLabel();
   order->setText("-");
   this->param = new QToolButton();
   param->setIcon(QIcon("./resources/param_icon_black_32.png"));
