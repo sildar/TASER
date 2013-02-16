@@ -67,6 +67,7 @@ QTask::QTask(Task* t)
 
   calmenu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
   calmenu->resize(cal->sizeHint());
+  connect(cal, SIGNAL(clicked(QDate)), this, SLOT(setDateText(QDate)));
 
   // Separator
   QFrame *f2 = new QFrame();
@@ -77,14 +78,12 @@ QTask::QTask(Task* t)
   close = new QToolButton();
   close->setText("x");
   close->setStyleSheet("color: red");
+  connect(close, SIGNAL(clicked()), this, SLOT(close()));
   lay->addWidget(close);
 
   setLayout(lay);
 
   installEventFilter(this);
-
-  connect(cal, SIGNAL(clicked(QDate)), this, SLOT(setDateText(QDate)));
-  connect(close, SIGNAL(clicked()), this, SLOT(close()));
 
 }
 
