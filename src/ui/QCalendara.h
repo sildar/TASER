@@ -20,7 +20,7 @@ class QCalendara : public QCalendarWidget
   /*!
     \brief Constructor of the calendara
   */
-  QCalendara(QWidget *parent=0);
+  QCalendara(QWidget *parent=0, QString* parentDate=NULL);
   /*!
     \brief says if the task is linked to a master task
   */

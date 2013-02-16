@@ -17,7 +17,7 @@ QTask::QTask(Task* t){
   
   //prepares the popup
   this->calmenu = new QWidget();
-  this->cal = new QCalendara(calmenu);
+  this->cal = new QCalendara(calmenu, &datestr);
   calmenu->installEventFilter(this);
 
   calmenu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
