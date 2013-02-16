@@ -5,6 +5,7 @@
 #include <QScrollArea>
 #include "../ui/QTask.h"
 #include "../ui/QCalendara.h"
+#include "QWindow.h"
 
 int main(int argc, char** argv)
 {
@@ -56,9 +57,9 @@ int main(int argc, char** argv)
 
   std::cout << "avant" << std::endl;
   QApplication app(argc, argv);
-
-  QScrollArea window;
-  QWidget *container = new QWidget();
+  
+  QWindow* qw = new QWindow();
+  QWidget* container = new QWidget(qw);
   QVBoxLayout* lay = new QVBoxLayout();
 
   Task* t = new Task("Titre 1", NULL, true, time(NULL));
@@ -74,10 +75,12 @@ int main(int argc, char** argv)
   lay->addWidget(qtask2);
   lay->addWidget(qtask3);
   lay->addStretch(); // is it necessary?
-  container->setLayout(lay);
-  window.setWidget(container);
 
-  window.show();
+  container->setLayout(lay);
+
+  qw->setCentralWidget(container);
+
+  qw->show();
 
   return app.exec();
 
