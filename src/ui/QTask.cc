@@ -27,7 +27,9 @@ QTask::QTask(Task* t)
   param->setIcon(QIcon("./resources/param_icon_black_32.png"));
   QMenu *menu = new QMenu();
   menu->addAction(trUtf8("Ajouter une tâche"));
-  menu->addAction(trUtf8("Marquer comme fait"));
+  checkTaskAction = new QAction(trUtf8("Marquer comme fait"),menu);
+  //menu->addAction();
+  menu->addAction(checkTaskAction);
   menu->addSeparator();
   menu->addAction(trUtf8("Insérer un template"));
   menu->addAction(trUtf8("Sauver un template"));
@@ -40,6 +42,8 @@ QTask::QTask(Task* t)
   param->setMenu(menu);
   param->setPopupMode(QToolButton::InstantPopup);
   lay->addWidget(param);
+
+  connect(menu, SIGNAL(triggered(QAction*)), this, SLOT(menuActionManager(QAction*)));
 
   
   // Separator
@@ -118,6 +122,16 @@ void
 QTask::checkTask()
 {
   task->checkTask();
+}
+
+void
+QTask::menuActionManager(QAction* action)
+{
+  if (action == checkTaskAction)
+    {
+      this->checkTask();
+      this->check->setChecked(this->task->isChecked());
+    }
 }
 
 void

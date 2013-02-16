@@ -17,6 +17,7 @@
 #include <QMenu>
 #include <QWidgetAction>
 #include "QLabelEdit.h"
+#include <QAction>
 
 class QTask : public QWidget
 {
@@ -32,6 +33,10 @@ private:
   QToolButton* expand;
   QToolButton* param;
 
+  //actions for the param menu
+  QAction* addTaskAction;
+  QAction* checkTaskAction;
+
   QLabel* order;
 
   QLabelEdit* text;
@@ -40,14 +45,19 @@ private:
   QCalendara* cal;
   QWidget* calmenu;
 
-  Task* task;
 
   QToolButton* close;
+
+
+  Task* task;
 
 public slots:
   void setDateText(QDate date);
   void closeTask();
   void checkTask();
+
+private slots:
+  void menuActionManager(QAction* action);
 
 };
 
