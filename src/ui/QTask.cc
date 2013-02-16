@@ -55,8 +55,6 @@ QTask::QTask(Task* t)
   param->setPopupMode(QToolButton::InstantPopup);
   //param->setIconSize(QSize(20,20));
 
-
-
   lay->addWidget(check);
   lay->addWidget(expand);
   lay->addWidget(param);

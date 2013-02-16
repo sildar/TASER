@@ -2,15 +2,16 @@
 
 #include "QLabelEdit.h"
 
-QLabelEdit::QLabelEdit(QString text)
+QLabelEdit::QLabelEdit(QString &s)
 {
-  ro = new QPushButton(text);
+  text = s;
+  ro = new QLabel("<a href='title'>" % text % "</a>");
   rw = new QLineEdit(text);
   QVBoxLayout *layout = new QVBoxLayout();
   layout->addWidget(ro);
   layout->addWidget(rw);
 
-  connect(ro, SIGNAL(clicked()),
+  connect(ro, SIGNAL(linkActivated(const QString&)),
           this, SLOT(toggle()));
   connect(rw, SIGNAL(returnPressed()),
           this, SLOT(toggle()));
@@ -30,7 +31,8 @@ QLabelEdit::toggle()
     rw->selectAll();
   } else {
     current = ro;
-    ro->setText(rw->text());
+    text = rw->text();
+    ro->setText("<a href='title'>" % text % "</a>");
   }
   current->show();
 }

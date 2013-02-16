@@ -4,22 +4,23 @@
 #define _QLABELEDIT_H_
 
 #include <QWidget>
-#include <QPushButton>
-#include <QVBoxLayout>
+#include <QLabel>
 #include <QLineEdit>
+#include <QVBoxLayout>
 
 class QLabelEdit : public QWidget
 {
   Q_OBJECT
 
 public:
-  QLabelEdit(QString s);
+  QLabelEdit(QString &s);
 
 private slots:
   void toggle();
 
 private:
-  QPushButton *ro;
+  QString text;
+  QLabel *ro;
   QLineEdit *rw;
   QWidget *current;
 };
