@@ -1,8 +1,6 @@
 // -*- c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 #include <iostream>
 #include <QApplication>
-#include "../ui/HoverWidget.h"
-#include "../../ui_example.h"
 #include "../ui/QTask.h"
 #include "../ui/QCalendara.h"
 
