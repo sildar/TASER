@@ -1,0 +1,10 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file>taser.qss</file>
+    <file>resources/images_sources.txt</file>
+    <file>resources/param_icon_16.png</file>
+    <file>resources/param_icon_32.png</file>
+    <file>resources/param_icon_black_32.png</file>
+  </qresource>
+</RCC>

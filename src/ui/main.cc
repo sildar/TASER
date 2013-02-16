@@ -3,6 +3,7 @@
 #include <iostream>
 #include <QApplication>
 #include <QScrollArea>
+#include <QFile>
 #include "../ui/QTask.h"
 #include "../ui/QCalendara.h"
 #include "QWindow.h"
@@ -57,6 +58,12 @@ int main(int argc, char** argv)
 
   std::cout << "avant" << std::endl;
   QApplication app(argc, argv);
+
+  // Read taser.qss
+  QFile qss(":/taser.qss");
+  qss.open(QFile::ReadOnly);
+  app.setStyleSheet(qss.readAll());
+  qss.close();
   
   QWindow* qw = new QWindow();
   QWidget* container = new QWidget(qw);
