@@ -28,9 +28,10 @@ QTask::QTask(Task* t)
   QMenu *menu = new QMenu();
   menu->addAction(trUtf8("Ajouter une tâche"));
   checkTaskAction = new QAction(trUtf8("Marquer comme fait"),menu);
-  //menu->addAction();
   menu->addAction(checkTaskAction);
+
   menu->addSeparator();
+
   menu->addAction(trUtf8("Insérer un template"));
   menu->addAction(trUtf8("Sauver un template"));
   menu->addSeparator();
@@ -38,7 +39,10 @@ QTask::QTask(Task* t)
   menu->addAction(trUtf8("Descendre la tâche"));
   menu->addSeparator();
   menu->addAction(trUtf8("Déplier la tâche"));
-  menu->addAction(trUtf8("Supprimer la tâche"));
+
+  delTaskAction = new QAction(trUtf8("Supprimer la tâche"), menu);
+  menu->addAction(delTaskAction);  
+
   param->setMenu(menu);
   param->setPopupMode(QToolButton::InstantPopup);
   lay->addWidget(param);
@@ -131,6 +135,11 @@ QTask::menuActionManager(QAction* action)
     {
       this->checkTask();
       this->check->setChecked(this->task->isChecked());
+    }
+  else if (action == delTaskAction)
+    {
+      //core dumps. unable to track the error with a debugger.
+      //this->closeTask();
     }
 }
 

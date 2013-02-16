@@ -36,6 +36,7 @@ private:
   //actions for the param menu
   QAction* addTaskAction;
   QAction* checkTaskAction;
+  QAction* delTaskAction;
 
   QLabel* order;
 

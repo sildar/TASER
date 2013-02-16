@@ -1,4 +1,5 @@
 CONFIG += qt
+CONFIG += debug
 QMAKE_CLEAN += taser
 TARGET = taser
 
