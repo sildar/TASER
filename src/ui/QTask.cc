@@ -3,41 +3,26 @@
 #include "QTask.h"
 
 QTask::QTask(Task* t)
+  : task(t)
 {
 
-  QHBoxLayout* lay = new QHBoxLayout();
+  QHBoxLayout *lay = new QHBoxLayout();
 
-  QString textstr = QString::fromStdString(t->getName());
-  time_t datet = t->getDate();
+  QString textstr = QString::fromStdString(task->getName());
+  time_t datet = task->getDate();
   QString datestr = ctime(&datet);
 
+  // Check button
+  check = new QCheckBox();
+  lay->addWidget(check);
 
-  this->task = t;
-  // this->text = new QLabel(textstr);
-  text = new QLabelEdit(textstr);
-  this->date = new QLineEdit(datestr);
-  date->installEventFilter(this);
-
-  //prepares the popup
-  this->calmenu = new QWidget();
-  this->cal = new QCalendara(calmenu, &datestr);
-  calmenu->installEventFilter(this);
-
-  calmenu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-  calmenu->resize(cal->sizeHint());
-
-
-  this->check = new QCheckBox();
   //0x2193 is a arrow down
-  this->expand = new QToolButton();
+  expand = new QToolButton();
   expand->setText(QChar(0x2193));
-  this->close = new QToolButton();
-  close->setText("x");
-  close->setStyleSheet("color: red");
-  this->order = new QLabel();
-  order->setText("-");
+  lay->addWidget(expand);
 
-  this->param = new QToolButton();
+  // Parameter Button
+  param = new QToolButton();
   param->setIcon(QIcon("./resources/param_icon_black_32.png"));
   QMenu *menu = new QMenu();
   menu->addAction(trUtf8("Ajouter une tâche"));
@@ -53,32 +38,50 @@ QTask::QTask(Task* t)
   menu->addAction(trUtf8("Supprimer la tâche"));
   param->setMenu(menu);
   param->setPopupMode(QToolButton::InstantPopup);
-  //param->setIconSize(QSize(20,20));
-
-  lay->addWidget(check);
-  lay->addWidget(expand);
   lay->addWidget(param);
 
-  //separator
+  
+  // Separator
   QFrame *f = new QFrame();
   f->setFrameStyle( QFrame::VLine | QFrame::Sunken );
   lay->addWidget(f);
 
+  // Ordered or not
+  order = new QLabel();
+  order->setText("-");
   lay->addWidget(order);
+
+  // Task text
+  text = new QLabelEdit(textstr);
   lay->addWidget(text);
+
+  // Task date
+  date = new QLineEdit(datestr);
+  date->installEventFilter(this);
   lay->addWidget(date);
 
+  //prepares the popup
+  calmenu = new QWidget();
+  cal = new QCalendara(calmenu, &datestr);
+  calmenu->installEventFilter(this);
 
-  //separator
+  calmenu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+  calmenu->resize(cal->sizeHint());
+
+  // Separator
   QFrame *f2 = new QFrame();
   f2->setFrameStyle( QFrame::VLine | QFrame::Sunken );
   lay->addWidget(f2);
 
+  // Close button
+  close = new QToolButton();
+  close->setText("x");
+  close->setStyleSheet("color: red");
   lay->addWidget(close);
 
-  this->setLayout(lay);
+  setLayout(lay);
 
-  this->installEventFilter(this);
+  installEventFilter(this);
 
   connect(cal, SIGNAL(clicked(QDate)), this, SLOT(setDateText(QDate)));
   connect(close, SIGNAL(clicked()), this, SLOT(close()));
