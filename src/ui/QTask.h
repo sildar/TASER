@@ -27,15 +27,19 @@ public:
   bool eventFilter(QObject* object, QEvent* event);
 
 private:
+  QCheckBox* check;
   QToolButton* expand;
   QToolButton* param;
+
   QLabel* order;
-  QToolButton* close;
+
   QLabel* text;
+
   QLineEdit* date;
-  QCheckBox* check;
   QCalendara* cal;
   QWidget* calmenu;
+
+  QToolButton* close;
 
 public slots:
   void setDateText(QDate date);
