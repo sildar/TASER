@@ -25,6 +25,7 @@ class QTask : public QWidget
 
 public:
   QTask(Task* t, QTask* parent = NULL);
+  ~QTask();
 
   bool eventFilter(QObject* object, QEvent* event);
 
@@ -58,7 +59,6 @@ private:
 
 public slots:
   void setDateText(QDate date);
-  void closeTask();
   void checkTask();
   void changeText(bool isDown);
 

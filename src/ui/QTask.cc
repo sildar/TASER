@@ -5,6 +5,9 @@
 QTask::QTask(Task* t, QTask* parent)
   : task(t)
 {
+
+  this->setAttribute(Qt::WA_DeleteOnClose);
+
   QVBoxLayout *lay = new QVBoxLayout();
   setLayout(lay);
   lay->setContentsMargins(0, 0, 0, 0);
@@ -175,8 +178,8 @@ QTask::menuActionManager(QAction* action)
     }
   else if (action == delTaskAction)
     {
-      //core dumps. unable to track the error with a debugger.
-      //this->closeTask();
+      //carefull shaky part
+      this->close->click();
     }
   else if (action == expandTaskAction)
     {
@@ -184,9 +187,7 @@ QTask::menuActionManager(QAction* action)
     }
 }
 
-void
-QTask::closeTask()
-{
+
+QTask::~QTask(){
   delete task;
-  delete this;
 }
