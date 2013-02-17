@@ -6,7 +6,7 @@
 #include <QFile>
 #include "../ui/QTask.h"
 #include "../ui/QCalendara.h"
-#include <QMainWindow>
+#include "QWindow.h"
 
 int main(int argc, char** argv)
 {
@@ -65,7 +65,7 @@ int main(int argc, char** argv)
   app.setStyleSheet(qss.readAll());
   qss.close();
   
-  QMainWindow* mainWindow = new QMainWindow();
+  QWindow* mainWindow = new QWindow();
   mainWindow->resize(640, 400);
   QScrollArea* scrollArea = new QScrollArea(mainWindow);
   scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);

@@ -35,8 +35,11 @@ QTask::QTask(Task* t, QTask* parent)
   // Parameter Button and its menu
   param = new QToolButton();
   param->setIcon(QIcon("./resources/param_icon_black_32.png"));
+
   QMenu *menu = new QMenu();
-  menu->addAction(trUtf8("Ajouter une tâche"));
+
+  addTaskAction = new QAction(trUtf8("Ajouter une tâche"),menu);
+  menu->addAction(addTaskAction);
   checkTaskAction = new QAction(trUtf8("Marquer comme fait"),menu);
   menu->addAction(checkTaskAction);
 
