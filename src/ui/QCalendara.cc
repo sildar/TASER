@@ -5,16 +5,17 @@
 #include <iostream>
 #include <QTextCharFormat>
 
-QCalendara::QCalendara(QWidget *parent, QString* parentDate):QCalendarWidget(parent){
-
+QCalendara::QCalendara(QWidget *parent, QString* parentDate)
+  : QCalendarWidget(parent)
+{
   if (parentDate != NULL)
-    {
-      QTextCharFormat format = this->dateTextFormat(QDate::fromString(*parentDate));
-      format.setBackground(QBrush(Qt::green,Qt::SolidPattern));
-      format.setFontItalic(true);
-      std::cout << parentDate->toStdString() << std::endl;
-      this->setDateTextFormat(QDate::fromString(*parentDate), format);
-    }
+  {
+    QTextCharFormat format = this->dateTextFormat(QDate::fromString(*parentDate));
+    format.setBackground(QBrush(Qt::green,Qt::SolidPattern));
+    format.setFontItalic(true);
+    std::cout << parentDate->toStdString() << std::endl;
+    this->setDateTextFormat(QDate::fromString(*parentDate), format);
+  }
   this->linkbox = new QLinkBox(trUtf8("Lier la tache à la tâche principale"));
 
   this->layout()->addWidget(linkbox);
