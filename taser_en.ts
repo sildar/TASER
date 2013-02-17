@@ -12,17 +12,18 @@
 <context>
     <name>QTask</name>
     <message utf8="true">
-        <location filename="src/ui/QTask.cc" line="48"/>
+        <location filename="src/ui/QTask.cc" line="47"/>
         <source>Ajouter une tâche</source>
         <translation>Add task</translation>
     </message>
     <message>
-        <location filename="src/ui/QTask.cc" line="50"/>
+        <location filename="src/ui/QTask.cc" line="49"/>
         <source>Marquer comme fait</source>
         <translation>Check task</translation>
     </message>
     <message utf8="true">
-        <location filename="src/ui/QTask.cc" line="55"/>
+        <location filename="src/ui/QTask.cc" line="54"/>
+        <location filename="src/ui/QTask.cc" line="236"/>
         <source>Ordonner les tâches</source>
         <translation>Make tasks ordered</translation>
     </message>
@@ -55,6 +56,11 @@
         <location filename="src/ui/QTask.cc" line="66"/>
         <source>Supprimer la tâche</source>
         <translation>Delete task</translation>
+    </message>
+    <message>
+        <location filename="src/ui/QTask.cc" line="227"/>
+        <source>Enlever l&apos;ordre</source>
+        <translation>Remove order</translation>
     </message>
 </context>
 <context>
