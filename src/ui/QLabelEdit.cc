@@ -3,8 +3,8 @@
 #include "QLabelEdit.h"
 
 QLabelEdit::QLabelEdit(QString &s)
+  : text(s)
 {
-  text = s;
   ro = new QLabel("<a href='title'>" % text % "</a>");
   rw = new QLineEdit(text);
   QVBoxLayout *layout = new QVBoxLayout();
