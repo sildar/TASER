@@ -2,11 +2,16 @@
 
 #include "QTask.h"
 
-QTask::QTask(Task* t)
+QTask::QTask(Task* t, QTask* parent)
   : task(t)
 {
 
-  QHBoxLayout *lay = new QHBoxLayout();
+  QVBoxLayout *lay = new QVBoxLayout();
+  lay->setStretch(0, 1);
+  setLayout(lay);
+
+  this->qTaskWidget = new QWidget();
+  QHBoxLayout *qTaskLayout = new QHBoxLayout();
 
   QString textstr = QString::fromStdString(task->getName());
   time_t datet = task->getDate();
@@ -15,12 +20,13 @@ QTask::QTask(Task* t)
   // Check button
   check = new QCheckBox();
   connect(check, SIGNAL(clicked()), this, SLOT(checkTask()));
-  lay->addWidget(check);
+  qTaskLayout->addWidget(check);
 
   //0x2193 is a arrow down
   expand = new QToolButton();
   expand->setText(QChar(0x2193));
-  lay->addWidget(expand);
+  expand->setCheckable(true);
+  qTaskLayout->addWidget(expand);
 
   // Parameter Button
   param = new QToolButton();
@@ -45,7 +51,7 @@ QTask::QTask(Task* t)
 
   param->setMenu(menu);
   param->setPopupMode(QToolButton::InstantPopup);
-  lay->addWidget(param);
+  qTaskLayout->addWidget(param);
 
   connect(menu, SIGNAL(triggered(QAction*)), this, SLOT(menuActionManager(QAction*)));
 
@@ -53,21 +59,21 @@ QTask::QTask(Task* t)
   // Separator
   QFrame *f = new QFrame();
   f->setFrameStyle( QFrame::VLine | QFrame::Sunken );
-  lay->addWidget(f);
+  qTaskLayout->addWidget(f);
 
   // Ordered or not
   order = new QLabel();
   order->setText("-");
-  lay->addWidget(order);
+  qTaskLayout->addWidget(order);
 
   // Task text
   text = new QLabelEdit(textstr);
-  lay->addWidget(text);
+  qTaskLayout->addWidget(text);
 
   // Task date
   date = new QLineEdit(datestr);
   date->installEventFilter(this);
-  lay->addWidget(date);
+  qTaskLayout->addWidget(date);
 
   //prepares the popup
   calmenu = new QWidget();
@@ -81,19 +87,31 @@ QTask::QTask(Task* t)
   // Separator
   QFrame *f2 = new QFrame();
   f2->setFrameStyle( QFrame::VLine | QFrame::Sunken );
-  lay->addWidget(f2);
+  qTaskLayout->addWidget(f2);
 
   // Close button
   close = new QToolButton();
   close->setText("x");
   close->setStyleSheet("color: red");
   connect(close, SIGNAL(clicked()), this, SLOT(close()));
-  lay->addWidget(close);
+  qTaskLayout->addWidget(close);
 
-  setLayout(lay);
+  this->qTaskWidget->setLayout(qTaskLayout);
 
   installEventFilter(this);
 
+  this->subtaskContainer = new QWidget();
+  QVBoxLayout* subtaskLayout = new QVBoxLayout();
+  this->subtaskContainer->setLayout(subtaskLayout);
+  this->subtaskContainer->setVisible(false);
+  if (parent != NULL)
+  {
+    parent->subtaskContainer->layout()->addWidget(this);
+  }
+  connect(this->expand, SIGNAL(toggled(bool)), this->subtaskContainer, SLOT(setVisible(bool)));
+
+  lay->addWidget(this->qTaskWidget);
+  lay->addWidget(this->subtaskContainer);
 }
 
 bool
@@ -144,7 +162,8 @@ QTask::menuActionManager(QAction* action)
 }
 
 void
-QTask::closeTask(){
+QTask::closeTask()
+{
   delete task;
   delete this;
 }

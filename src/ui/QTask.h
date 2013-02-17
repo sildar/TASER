@@ -24,11 +24,12 @@ class QTask : public QWidget
   Q_OBJECT
 
 public:
-  QTask(Task* t);
+  QTask(Task* t, QTask* parent = NULL);
 
   bool eventFilter(QObject* object, QEvent* event);
 
 private:
+  QWidget* qTaskWidget;
   QCheckBox* check;
   QToolButton* expand;
   QToolButton* param;
@@ -49,8 +50,10 @@ private:
 
   QToolButton* close;
 
-
   Task* task;
+
+  // subtask-related attributes
+  QWidget* subtaskContainer;
 
 public slots:
   void setDateText(QDate date);
