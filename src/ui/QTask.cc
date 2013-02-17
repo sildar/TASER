@@ -19,13 +19,13 @@ QTask::QTask(Task* t, QTask* parent)
   QString textstr = QString::fromStdString(task->getName());
   time_t datet = task->getDate();
   QString datestr = ctime(&datet);
-  QDate dateq = QDateTime::fromTime_t(datet).date();
+  //QDate dateq = QDateTime::fromTime_t(datet).date();
+  QDate dateq = QDate::currentDate();
 
   if (parent != NULL)
     {
       dateq = parent->cal->selectedDate();
     }
-
 
   // Check button
   check = new QCheckBox();
