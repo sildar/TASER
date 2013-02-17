@@ -15,7 +15,7 @@ QCalendara::QCalendara(QWidget *parent, QString* parentDate):QCalendarWidget(par
       std::cout << parentDate->toStdString() << std::endl;
       this->setDateTextFormat(QDate::fromString(*parentDate), format);
     }
-  this->linkbox = new QLinkBox("Lier la tache a la tache principale");
+  this->linkbox = new QLinkBox(trUtf8("Lier la tache à la tâche principale"));
 
   this->layout()->addWidget(linkbox);
 }
