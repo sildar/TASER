@@ -215,6 +215,13 @@ QTask::menuActionManager(QAction* action)
     }
   else if (action == orderSubtasksAction)
     {
+      orderSubtasks();
+    }
+}
+
+void QTask::orderSubtasks()
+{
+
       this->task->setSubtasksOrdered(!this->task->hasOrderedSubtasks());
       if (this->task->hasOrderedSubtasks())
 	{
@@ -232,7 +239,6 @@ QTask::menuActionManager(QAction* action)
 	      curr->order->setText("-"); 
 	    }
 	}
-    }
 }
 
 void QTask::addSubtask(QTask* parent)

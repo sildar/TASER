@@ -171,7 +171,6 @@ Task::setSubtasksOrdered(bool order)
 	  i++;
 	}
     }
-    std::cout << "is ordered ? " << order << std::endl;
 }
 
 

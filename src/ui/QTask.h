@@ -93,6 +93,8 @@ private slots:
   */
   void closeTask();
 
+  void orderSubtasks();
+
 };
 
 #endif
