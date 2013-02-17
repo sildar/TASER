@@ -1,7 +1,7 @@
 #include "modelutil.h"
 
 void
-saveModel(std::string xmlFile, std::list<Task*> tasks){
+saveTasklist(std::string xmlFile, std::list<Task*> tasks){
   TiXmlDocument doc;
   TiXmlDeclaration* xmlDecl = new TiXmlDeclaration("1.0", "", "");
   TiXmlElement* root = new TiXmlElement("tasklist");
@@ -30,7 +30,7 @@ saveModel(std::string xmlFile, std::list<Task*> tasks){
 }
 
 std::list<Task*>
-loadModel(std::string xmlFile){
+loadTasklist(std::string xmlFile){
   std::list<Task*> tasklist = std::list<Task*>();
 
   TiXmlDocument doc(xmlFile.c_str());

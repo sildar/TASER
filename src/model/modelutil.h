@@ -9,11 +9,11 @@
   \brief Stores a list of tasks and all their subtasks recursively in an
   XML file.
 */
-void saveModel(std::string xmlFile, std::list<Task*> tasks);
+void saveTasklist(std::string xmlFile, std::list<Task*> tasks);
 
 /*!
   \brief Loads a list of tasks and all their subtasks from an XML file.
 */
-std::list<Task*> loadModel(std::string xmlFile);
+std::list<Task*> loadTasklist(std::string xmlFile);
 
 #endif // XML_H

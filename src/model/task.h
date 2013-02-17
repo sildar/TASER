@@ -125,8 +125,8 @@ private:
   */
   TiXmlElement* xmlSubtree();
 
-  friend void saveModel(std::string xmlFile, std::list<Task*> tasks);
-  friend std::list<Task*> loadModel(std::string xmlFile);
+  friend void saveTasklist(std::string xmlFile, std::list<Task*> tasks);
+  friend std::list<Task*> loadTasklist(std::string xmlFile);
 };
 
 #endif // TASK_H
