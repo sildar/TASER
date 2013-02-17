@@ -16,7 +16,8 @@ SOURCES =                               \
     src/ui/QWindow.cc                   \
     src/ui/QLabelEdit.cc                \
     src/ui/QTaskContainer.cc \
-    src/model/modelutil.cc
+    src/model/modelutil.cc \
+    src/model/TaskController.cc
 
 HEADERS =                               \
     src/model/task.h                    \
@@ -28,7 +29,8 @@ HEADERS =                               \
     src/ui/QWindow.h                    \
     src/ui/QLabelEdit.h                 \
     src/ui/QTaskContainer.h \
-    src/model/modelutil.h
+    src/model/modelutil.h \
+    src/model/TaskController.h
 
 RESOURCES = taser.qrc
 
