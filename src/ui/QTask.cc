@@ -159,6 +159,7 @@ void
 QTask::setDateText(QDate aDate)
 {
   date->setText("<a href='date'>" % aDate.toString() % "</a>");
+  task->setDate(QDateTime(aDate).QDateTime::toTime_t());
 }
 
 void

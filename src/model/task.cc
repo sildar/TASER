@@ -26,6 +26,12 @@ Task::Task(std::string name, Task* parent, bool ordered, time_t date)
 }
 
 
+void
+Task::setDate(time_t aDate)
+{
+  this->date = aDate;
+}
+
 bool
 Task::hasParent() const
 {

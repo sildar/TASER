@@ -92,6 +92,8 @@ public:
   */
   std::time_t getDate() const;
 
+  void setDate(time_t aDate);
+
   /*!
     \brief getter for the index
   */
