@@ -7,8 +7,8 @@
 
 class QWindow : public QMainWindow{
   Q_OBJECT
-
- public:
+  
+public:
   QWindow(QWidget* parent=0);
 
 

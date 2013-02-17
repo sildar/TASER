@@ -14,7 +14,8 @@ SOURCES =                               \
     src/ui/QCalendara.cc                \
     src/ui/QLinkBox.cc                  \
     src/ui/QWindow.cc                   \
-    src/ui/QLabelEdit.cc
+    src/ui/QLabelEdit.cc                \
+    src/ui/QTaskContainer.cc
 
 HEADERS =                               \
     src/model/task.h                    \
@@ -24,7 +25,8 @@ HEADERS =                               \
     src/ui/QCalendara.h                 \
     src/ui/QLinkBox.h                   \
     src/ui/QWindow.h                    \
-    src/ui/QLabelEdit.h
+    src/ui/QLabelEdit.h                 \
+    src/ui/QTaskContainer.h
 
 RESOURCES = taser.qrc
 
