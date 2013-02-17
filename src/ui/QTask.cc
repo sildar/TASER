@@ -27,8 +27,9 @@ QTask::QTask(Task* t, QTask* parent)
   expand->setText(QChar(0x2193));
   expand->setCheckable(true);
   qTaskLayout->addWidget(expand);
+  connect(this->expand, SIGNAL(toggled(bool)), this, SLOT(changeText(bool)));
 
-  // Parameter Button
+  // Parameter Button and its menu
   param = new QToolButton();
   param->setIcon(QIcon("./resources/param_icon_black_32.png"));
   QMenu *menu = new QMenu();
@@ -44,7 +45,8 @@ QTask::QTask(Task* t, QTask* parent)
   menu->addAction(trUtf8("Monter la tâche"));
   menu->addAction(trUtf8("Descendre la tâche"));
   menu->addSeparator();
-  menu->addAction(trUtf8("Déplier la tâche"));
+  expandTaskAction = new QAction(trUtf8("Déplier la tâche"),menu);
+  menu->addAction(expandTaskAction);
 
   delTaskAction = new QAction(trUtf8("Supprimer la tâche"), menu);
   menu->addAction(delTaskAction);  
@@ -102,6 +104,7 @@ QTask::QTask(Task* t, QTask* parent)
 
   installEventFilter(this);
 
+  //Management of the subtasks
   this->subtaskContainer = new QWidget();
   QVBoxLayout* subtaskLayout = new QVBoxLayout();
   subtaskLayout->setContentsMargins(20, 0, 0, 0);
@@ -112,7 +115,6 @@ QTask::QTask(Task* t, QTask* parent)
     parent->subtaskContainer->layout()->addWidget(this);
   }
   connect(this->expand, SIGNAL(toggled(bool)), this->subtaskContainer, SLOT(setVisible(bool)));
-  connect(this->expand, SIGNAL(toggled(bool)), this, SLOT(changeText(bool)));
 
   lay->addWidget(this->qTaskWidget);
   lay->addWidget(this->subtaskContainer);
@@ -175,6 +177,10 @@ QTask::menuActionManager(QAction* action)
     {
       //core dumps. unable to track the error with a debugger.
       //this->closeTask();
+    }
+  else if (action == expandTaskAction)
+    {
+      this->expand->toggle();
     }
 }
 
