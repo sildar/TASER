@@ -23,9 +23,9 @@ QTask::QTask(Task* t, QTask* parent)
   QDate dateq = QDate::currentDate();
 
   if (parent != NULL)
-    {
-      dateq = parent->cal->selectedDate();
-    }
+  {
+    dateq = parent->cal->selectedDate();
+  }
 
   // Check button
   check = new QCheckBox();
@@ -86,14 +86,13 @@ QTask::QTask(Task* t, QTask* parent)
   order = new QLabel();
   order->setToolTip(trUtf8("Ordonner les tâches"));
   if (parent != NULL && parent->task->hasOrderedSubtasks())
-    {
-      
-      order->setText(QString::number(t->getIndex()));
-    }
+  {
+    order->setText(QString::number(t->getIndex()));
+  }
   else
-    {
-      order->setText("-");
-    }
+  {
+    order->setText("-");
+  }
   qTaskLayout->addWidget(order);
 
   // Task text
@@ -177,13 +176,13 @@ void
 QTask::changeText(bool isPressed)
 {
   if (isPressed)
-    {
-      expand->setText(QChar(0x2191));
-    }
+  {
+    expand->setText(QChar(0x2191));
+  }
   else
-    {
-      expand->setText(QChar(0x2193));
-    }
+  {
+    expand->setText(QChar(0x2193));
+  }
 }
 
 void
@@ -196,26 +195,26 @@ void
 QTask::menuActionManager(QAction* action)
 {
   if (action == checkTaskAction)
-    {
-      this->checkTask();
-      this->check->setChecked(this->task->isChecked());
-    }
+  {
+    this->checkTask();
+    this->check->setChecked(this->task->isChecked());
+  }
   else if (action == delTaskAction)
-    {
-      //carefull shaky part
-      this->closeButton->click();
-    }
+  {
+    //carefull shaky part
+    this->closeButton->click();
+  }
   else if (action == expandTaskAction)
-    {
+  {
+    this->expand->toggle();
+  }
+  else if (action == addTaskAction)
+  {
+    this->addSubtask(this);
+    if (!this->expand->isChecked()){
       this->expand->toggle();
     }
-  else if (action == addTaskAction)
-    {
-      this->addSubtask(this);
-      if (!this->expand->isChecked()){
-	this->expand->toggle();
-      }
-    }
+  }
   else if (action == orderSubtasksAction)
     {
       orderSubtasks();
@@ -255,9 +254,9 @@ void QTask::addSubtask(QTask* parent)
 
 void QTask::closeTask(){
   for (int i=0; i < this->subtaskContainer->layout()->count(); i++)
-    {
-      this->subtaskContainer->layout()->itemAt(i)->widget()->close();
-    }
+  {
+    this->subtaskContainer->layout()->itemAt(i)->widget()->close();
+  }
   this->close();
 }
 
