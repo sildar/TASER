@@ -10,6 +10,8 @@
 #include <QHBoxLayout>
 #include <QScrollArea>
 #include <QPushButton>
+#include <QPainter>
+#include <QStyleOption>
 
 class QTaskContainer : public QWidget
 {
@@ -17,13 +19,13 @@ class QTaskContainer : public QWidget
 
  public:
   QTaskContainer(QWidget* parent=0);
+  void paintEvent(QPaintEvent *qpe);
 
-  public slots:
+public slots:
     /*!
       \brief adds a main QTask
     */
     void addTask(Task* parent=0);
-  
  private:
   QVBoxLayout* mainLayout;
   QHBoxLayout* buttonLayout;

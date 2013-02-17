@@ -245,10 +245,12 @@ void QTask::orderSubtasks()
 
 void QTask::addSubtask(QTask* parent)
 {
+  setStyle(style());
   Task* t = new Task("Titre", parent->task,
                      parent->task->hasOrderedSubtasks(),
                      parent->task->getDate());
   QTask* task = new QTask(t, parent);
+  task->setProperty("foo", false);
 }
 
 void QTask::closeTask(){
@@ -262,4 +264,13 @@ void QTask::closeTask(){
 QTask::~QTask()
 {
   delete task;
+}
+
+void
+QTask::paintEvent(QPaintEvent *qpe)
+{
+  QStyleOption opt;
+  opt.init(this);
+  QPainter p(this);
+  style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }

@@ -5,9 +5,7 @@
 QTaskContainer::QTaskContainer(QWidget* parent)
   : QWidget(parent)
 {
-    
   addTaskButton = new QPushButton(trUtf8("Nouvelle Tâche"));
-
 
   tasks = std::list<QTask*>();
   tasksLayout = new QVBoxLayout();
@@ -40,7 +38,17 @@ QTaskContainer::addTask(Task* parent)
     this->tasksLayout->setStretch(i, 0);
   }
 
+  setStyle(style());
   tasks.push_back(qtask);
   this->tasksLayout->addWidget(qtask);  
   this->tasksLayout->addStretch(1);
+}
+
+void
+QTaskContainer::paintEvent(QPaintEvent *qpe)
+{
+  QStyleOption opt;
+  opt.init(this);
+  QPainter p(this);
+  style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }

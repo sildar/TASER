@@ -19,6 +19,8 @@
 #include "QLabelEdit.h"
 #include <QAction>
 #include <QDateTime>
+#include <QPainter>
+#include <QStyleOption>
 
 class QTask : public QWidget
 {
@@ -27,6 +29,7 @@ class QTask : public QWidget
 public:
   QTask(Task* t, QTask* parent = NULL);
   ~QTask();
+  void paintEvent(QPaintEvent *qpe);
 
   /*!
     \brief eventFilter for specific actions
