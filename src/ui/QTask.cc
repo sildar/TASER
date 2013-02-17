@@ -200,7 +200,9 @@ QTask::menuActionManager(QAction* action)
 
 void QTask::addSubtask(QTask* parent)
 {
-  Task* t = new Task("Titre",parent->task,parent->task->hasOrderedSubtasks(),parent->task->getDate());
+  Task* t = new Task("Titre", parent->task,
+                     parent->task->hasOrderedSubtasks(),
+                     parent->task->getDate());
   QTask* task = new QTask(t, parent);
 }
 
@@ -212,7 +214,7 @@ void QTask::closeTask(){
   this->close();
 }
 
-
-QTask::~QTask(){
+QTask::~QTask()
+{
   delete task;
 }
