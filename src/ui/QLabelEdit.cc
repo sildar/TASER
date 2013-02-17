@@ -43,7 +43,14 @@ QLabelEdit::enableRo()
     current->hide();
     current = ro;
     current->show();
-    text = rw->text();
+    if (text.isEmpty())
+      {
+	text = rw->text();
+      }
+    else
+      {
+	text = "-";
+      }
     ro->setText("<a href='title'>" % text % "</a>");
   }
 }
