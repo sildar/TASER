@@ -99,11 +99,11 @@ QTask::QTask(Task* t, QTask* parent)
   qTaskLayout->addWidget(f2);
 
   // Close button
-  close = new QToolButton();
-  close->setText("x");
-  close->setStyleSheet("color: red");
-  connect(close, SIGNAL(clicked()), this, SLOT(close()));
-  qTaskLayout->addWidget(close);
+  closeButton = new QToolButton();
+  closeButton->setText("x");
+  closeButton->setStyleSheet("color: red");
+  connect(closeButton, SIGNAL(clicked()), this, SLOT(closeTask()));
+  qTaskLayout->addWidget(closeButton);
 
   this->qTaskWidget->setLayout(qTaskLayout);
 
@@ -181,7 +181,7 @@ QTask::menuActionManager(QAction* action)
   else if (action == delTaskAction)
     {
       //carefull shaky part
-      this->close->click();
+      this->closeButton->click();
     }
   else if (action == expandTaskAction)
     {
@@ -200,6 +200,14 @@ void QTask::addSubtask(QTask* parent)
 {
   Task* t = new Task("Titre",parent->task,parent->task->hasOrderedSubtasks(),parent->task->getDate());
   QTask* task = new QTask(t, parent);
+}
+
+void QTask::closeTask(){
+  for (int i=0; i < this->subtaskContainer->layout()->count(); i++)
+    {
+      this->subtaskContainer->layout()->itemAt(i)->widget()->close();
+    }
+  this->close();
 }
 
 

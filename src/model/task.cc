@@ -245,10 +245,12 @@ Task::xmlSubtree()
 
 Task::~Task()
 {
+  /*
   for (std::list<Task*>::iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
   {
     delete *it;
   }
+  */
 }
 
 Task*

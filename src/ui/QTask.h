@@ -53,7 +53,7 @@ private:
   QWidget* calmenu;
 
 
-  QToolButton* close;
+  QToolButton* closeButton;
 
 
 
@@ -67,6 +67,7 @@ public slots:
 
 private slots:
   void menuActionManager(QAction* action);
+  void closeTask();
 
 };
 
