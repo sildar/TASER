@@ -112,6 +112,7 @@ QTask::QTask(Task* t, QTask* parent)
     parent->subtaskContainer->layout()->addWidget(this);
   }
   connect(this->expand, SIGNAL(toggled(bool)), this->subtaskContainer, SLOT(setVisible(bool)));
+  connect(this->expand, SIGNAL(toggled(bool)), this, SLOT(changeText(bool)));
 
   lay->addWidget(this->qTaskWidget);
   lay->addWidget(this->subtaskContainer);
@@ -141,6 +142,19 @@ void
 QTask::setDateText(QDate aDate)
 {
   date->setText(aDate.toString());
+}
+
+void
+QTask::changeText(bool isPressed)
+{
+  if (isPressed)
+    {
+      expand->setText(QChar(0x2191));
+    }
+  else
+    {
+      expand->setText(QChar(0x2193));
+    }
 }
 
 void

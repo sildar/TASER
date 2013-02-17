@@ -59,6 +59,7 @@ public slots:
   void setDateText(QDate date);
   void closeTask();
   void checkTask();
+  void changeText(bool isDown);
 
 private slots:
   void menuActionManager(QAction* action);
