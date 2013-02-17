@@ -216,6 +216,22 @@ QTask::menuActionManager(QAction* action)
   else if (action == orderSubtasksAction)
     {
       this->task->setSubtasksOrdered(!this->task->hasOrderedSubtasks());
+      if (this->task->hasOrderedSubtasks())
+	{
+	  for (int i=0; i<this->subtaskContainer->layout()->count(); i++)
+	    {
+	      QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+	      curr->order->setText(QString::number(curr->task->getIndex())); 
+	    }
+	}
+      else
+	{
+	  for (int i=0; i<this->subtaskContainer->layout()->count(); i++)
+	    {
+	      QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+	      curr->order->setText("-"); 
+	    }
+	}
     }
 }
 

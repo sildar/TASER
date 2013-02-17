@@ -162,10 +162,15 @@ void
 Task::setSubtasksOrdered(bool order)
 {
   this->orderedSubtasks = order;
-    for (std::list<Task*>::iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
-      {
-	(*it)->index = order;
-      }
+  int i = 1;
+  if (order)
+    {
+      for (std::list<Task*>::iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
+	{
+	  (*it)->index = i;
+	  i++;
+	}
+    }
     std::cout << "is ordered ? " << order << std::endl;
 }
 
