@@ -48,7 +48,7 @@ private:
 
   QLabelEdit* text;
 
-  QLineEdit* date;
+  QLabel* date;
   QCalendara* cal;
   QWidget* calmenu;
 
