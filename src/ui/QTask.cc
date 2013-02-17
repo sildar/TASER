@@ -29,11 +29,13 @@ QTask::QTask(Task* t, QTask* parent)
 
   // Check button
   check = new QCheckBox();
+  check->setToolTip(trUtf8("Marquer comme fait"));
   connect(check, SIGNAL(clicked()), this, SLOT(checkTask()));
   qTaskLayout->addWidget(check);
 
   //0x2193 is a arrow down
   expand = new QToolButton();
+  expand->setToolTip(trUtf8("Déplier la tâche"));
   expand->setText(QChar(0x2193));
   expand->setCheckable(true);
   qTaskLayout->addWidget(expand);
@@ -41,6 +43,7 @@ QTask::QTask(Task* t, QTask* parent)
 
   // Parameter Button and its menu
   param = new QToolButton();
+  param->setToolTip(trUtf8("Actions disponibles"));
   param->setIcon(QIcon("./resources/param_icon_black_32.png"));
 
   QMenu *menu = new QMenu();
@@ -80,6 +83,7 @@ QTask::QTask(Task* t, QTask* parent)
 
   // Ordered or not
   order = new QLabel();
+  order->setToolTip(trUtf8("Ordonner les tâches"));
   if (parent != NULL && parent->task->hasOrderedSubtasks())
     {
       
@@ -118,6 +122,7 @@ QTask::QTask(Task* t, QTask* parent)
 
   // Close button
   closeButton = new QToolButton();
+  closeButton->setToolTip(trUtf8("Supprimer la tâche"));
   closeButton->setText("x");
   closeButton->setStyleSheet("color: red");
   connect(closeButton, SIGNAL(clicked()), this, SLOT(closeTask()));
