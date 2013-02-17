@@ -24,8 +24,6 @@ public:
   */
   Task(std::string name, Task* parent, bool ordered, time_t date = NULL);
 
-  Task(std::string xmlFileName, Task *parent = NULL);
-
   /*!
     \brief Tells if the task has a parent (then, it is a subtask of
     some bigger task) or not (then it's a major task)
@@ -80,12 +78,6 @@ public:
   bool isCheckable() const;
 
   /*!
-    \brief Stores the current task and all of its subtasks recursively
-    in an XML file.
-  */
-  void storeAsXML(std::string filename);
-
-  /*!
     \brief deletes a task and all its subtasks
   */
   ~Task();
@@ -104,6 +96,17 @@ public:
     \brief getter for the index
   */
   int getIndex() const;
+
+  /*!
+    \brief Stores a list of tasks and all their subtasks recursively in an
+    XML file.
+  */
+  static void saveModel(std::string xmlFile, std::list<Task*> tasks);
+
+  /*!
+    \brief Loads a list of tasks and all their subtasks from an XML file.
+  */
+  static std::list<Task*> loadModel(std::string xmlFile);
 
 
 private:

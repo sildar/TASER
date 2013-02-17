@@ -25,77 +25,6 @@ Task::Task(std::string name, Task* parent, bool ordered, time_t date)
   }
 }
 
-Task::Task(std::string xmlFileName, Task* parent)
-{
-  this->checked = false;
-  this->orderedSubtasks = false;
-  subtasks = std::list<Task*>();
-
-  TiXmlDocument doc(xmlFileName.c_str());
-  doc.LoadFile();
-  TiXmlElement* root = doc.RootElement();
-
-  int dateInt = 0;
-  root->Attribute("date", &dateInt);
-  this->date = dateInt;
-  std::string yes = "yes";
-  const char* orderedSubStr = root->Attribute("ordered-subtasks");
-  const char* checkedStr = root->Attribute("checked");
-  if (orderedSubStr != NULL && yes.compare(orderedSubStr) == 0)
-  {
-    this->orderedSubtasks = true;
-  }
-  if (checkedStr != NULL && yes.compare(checkedStr) == 0)
-  {
-    this->checked = true;
-  }
-  this->name = root->FirstChildElement("name")->GetText();
-
-  for(TiXmlElement* child = root->FirstChildElement("task"); child; child = child->NextSiblingElement("task"))
-  {
-    new Task(child, this);
-  }
-
-  if (parent != NULL)
-  {
-    this->parent = parent;
-    this->parent->addSubtask(this);
-  }
-}
-
-Task::Task(TiXmlElement* root, Task* parent)
-{
-  this->checked = false;
-  this->orderedSubtasks = false;
-  subtasks = std::list<Task*>();
-
-  int dateInt = 0;
-  root->Attribute("date", &dateInt);
-  this->date = dateInt;
-  std::string yes = "yes";
-  const char* orderedSubStr = root->Attribute("ordered-subtasks");
-  const char* checkedStr = root->Attribute("checked");
-  if (orderedSubStr != NULL && yes.compare(orderedSubStr) == 0)
-  {
-    this->orderedSubtasks = true;
-  }
-  if (checkedStr != NULL && yes.compare(checkedStr) == 0)
-  {
-    this->checked = true;
-  }
-  this->name = root->FirstChildElement("name")->GetText();
-
-  for(TiXmlElement* child = root->FirstChildElement("task"); child; child = child->NextSiblingElement("task"))
-  {
-    new Task(child, this);
-  }
-
-  if (parent != NULL) {
-    this->parent = parent;
-    this->parent->addSubtask(this);
-  }
-}
-
 
 bool
 Task::hasParent() const
@@ -191,17 +120,59 @@ Task::isCheckable() const
   return true;
 }
 
-void
-Task::storeAsXML(std::string filename)
+Task::~Task()
 {
+  /*
+  for (std::list<Task*>::iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
+  {
+    delete *it;
+  }
+  */
+}
+
+Task*
+Task::addSubtask(std::string name, time_t date){
+
+  Task* newTask = new Task(name,this, this->hasOrderedSubtasks(),date);
+  return newTask;
+}
+
+std::string
+Task::getName() const{
+  return name;
+}
+
+std::time_t
+Task::getDate() const{
+  return date;
+}
+
+int
+Task::getIndex() const{
+  return index;
+}
+
+
+void
+Task::saveModel(std::string xmlFile, std::list<Task*> tasks){
   TiXmlDocument doc;
   TiXmlDeclaration* xmlDecl = new TiXmlDeclaration("1.0", "", "");
-  TiXmlElement* root = xmlSubtree();
+  TiXmlElement* root = new TiXmlElement("tasklist");
+
+  // save each task recursively
+  if (tasks.size() > 0)
+  {
+    for (std::list<Task*>::iterator iter = tasks.begin();
+         iter != tasks.end(); iter++)
+    {
+      root->LinkEndChild((*iter)->xmlSubtree());
+    }
+  }
 
   doc.LinkEndChild(xmlDecl);
   doc.LinkEndChild(root);
 
-  doc.SaveFile(filename.c_str());
+  doc.SaveFile(xmlFile.c_str());
 
   /* Note: the LinkEndChild method uses pointers instead of references, so
    * that when linked, the objects become owned (and deleted) by tinyXml.
@@ -209,6 +180,22 @@ Task::storeAsXML(std::string filename)
    * with care as it uses a different memory model than the other insert
    * functions.
    */
+}
+
+std::list<Task*>
+Task::loadModel(std::string xmlFile){
+  std::list<Task*> tasklist = std::list<Task*>();
+
+  TiXmlDocument doc(xmlFile.c_str());
+  doc.LoadFile();
+  TiXmlElement* root = doc.RootElement();
+
+  for(TiXmlElement* task = root->FirstChildElement("task"); task; task = task->NextSiblingElement("task"))
+  {
+    tasklist.push_back(new Task(task));
+  }
+
+  return tasklist;
 }
 
 TiXmlElement*
@@ -243,34 +230,35 @@ Task::xmlSubtree()
   return root;
 }
 
-Task::~Task()
+Task::Task(TiXmlElement* root, Task* parent)
 {
-  /*
-  for (std::list<Task*>::iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
+  this->checked = false;
+  this->orderedSubtasks = false;
+  subtasks = std::list<Task*>();
+
+  int dateInt = 0;
+  root->Attribute("date", &dateInt);
+  this->date = dateInt;
+  std::string yes = "yes";
+  const char* orderedSubStr = root->Attribute("ordered-subtasks");
+  const char* checkedStr = root->Attribute("checked");
+  if (orderedSubStr != NULL && yes.compare(orderedSubStr) == 0)
   {
-    delete *it;
+    this->orderedSubtasks = true;
   }
-  */
-}
+  if (checkedStr != NULL && yes.compare(checkedStr) == 0)
+  {
+    this->checked = true;
+  }
+  this->name = root->FirstChildElement("name")->GetText();
 
-Task*
-Task::addSubtask(std::string name, time_t date){
+  for(TiXmlElement* child = root->FirstChildElement("task"); child; child = child->NextSiblingElement("task"))
+  {
+    new Task(child, this);
+  }
 
-  Task* newTask = new Task(name,this, this->hasOrderedSubtasks(),date);
-  return newTask;
-}
-
-std::string
-Task::getName() const{
-  return name;
-}
-
-std::time_t
-Task::getDate() const{
-  return date;
-}
-
-int
-Task::getIndex() const{
-  return index;
+  if (parent != NULL) {
+    this->parent = parent;
+    this->parent->addSubtask(this);
+  }
 }

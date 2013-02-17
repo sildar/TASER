@@ -80,10 +80,10 @@ int main(int argc, char** argv)
   Task* t3 = new Task("Titre 3", NULL, true, time(NULL));
   QTask* qtask3 = new QTask(t3);
 
-  Task* t4 = new Task("Titre 4", NULL, true, time(NULL));
+  Task* t4 = new Task("Titre 4", t1, true, time(NULL));
   QTask* qtask4 = new QTask(t4, qtask1);
 
-  Task* t5 = new Task("Titre 5", NULL, true, time(NULL));
+  Task* t5 = new Task("Titre 5", t2, true, time(NULL));
   QTask* qtask5 = new QTask(t5, qtask2);
 
   mainWindow->setScrolledWidget(container);
