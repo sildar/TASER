@@ -28,7 +28,14 @@ public:
   QTask(Task* t, QTask* parent = NULL);
   ~QTask();
 
+  /*!
+    \brief eventFilter for specific actions
+  */
   bool eventFilter(QObject* object, QEvent* event);
+  /*!
+    \brief
+    adds a subtask to an existing Qtask
+  */
   void addSubtask(QTask* parent);
 
   Task* task;
@@ -62,12 +69,27 @@ private:
   QWidget* subtaskContainer;
 
 public slots:
+  /*!
+    \brief updates the date label
+  */
   void setDateText(QDate date);
+  /*!
+    \brief check or uncheck a QTask
+  */
   void checkTask();
+  /*!
+    \brief changes the text of the expand button (arrow direction)
+  */
   void changeText(bool isDown);
 
 private slots:
+  /*!
+    \brief manages all the actions available in the param menu
+  */
   void menuActionManager(QAction* action);
+  /*!
+    \brief closes a task and its subtasks
+  */
   void closeTask();
 
 };

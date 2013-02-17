@@ -20,6 +20,9 @@ class QTaskContainer : public QWidget
   ~QTaskContainer(){}
 
   public slots:
+    /*!
+      \brief adds a main QTask
+    */
     void addTask(Task* parent=0);
   
  private:
