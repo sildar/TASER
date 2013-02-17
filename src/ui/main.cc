@@ -68,14 +68,8 @@ int main(int argc, char** argv)
   
   QWindow* mainWindow = new QWindow();
   mainWindow->resize(640, 400);
-  /*
-  QScrollArea* scrollArea = new QScrollArea(mainWindow);
-  scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-  scrollArea->setWidgetResizable(true);
-  QVBoxLayout* scrollLayout = new QVBoxLayout(scrollArea);
-  */
+
   QTaskContainer* container = new QTaskContainer();
-  //QVBoxLayout* lay = new QVBoxLayout(container);
 
   Task* t1 = new Task("Titre 1", NULL, true, time(NULL));
   QTask* qtask1 = new QTask(t1);
@@ -92,16 +86,7 @@ int main(int argc, char** argv)
   Task* t5 = new Task("Titre 5", NULL, true, time(NULL));
   QTask* qtask5 = new QTask(t5, qtask2);
 
-  /*
-  lay->addWidget(qtask1);
-  lay->addWidget(qtask2);
-  lay->addWidget(qtask3);
-  lay->addStretch(); // necessary
-  */
-  //container->addTask(t1);
-  //container->addTask(t2);
-  //scrollArea->setWidget(container);
-  mainWindow->setCentralWidget(container);
+  mainWindow->setScrolledWidget(container);
 
   mainWindow->show();
 

@@ -79,7 +79,7 @@ QTask::QTask(Task* t, QTask* parent)
   qTaskLayout->addWidget(text);
 
   // Task date
-  date = new QLineEdit(datestr);
+  date = new QLabel("<a href='date'>" % datestr % "</a>");
   date->installEventFilter(this);
   date->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
   qTaskLayout->addWidget(date);
@@ -148,7 +148,7 @@ QTask::eventFilter(QObject* object, QEvent* event)
 void
 QTask::setDateText(QDate aDate)
 {
-  date->setText(aDate.toString());
+  date->setText("<a href='date'>" % aDate.toString() % "</a>");
 }
 
 void
