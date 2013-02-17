@@ -51,6 +51,7 @@ private:
   QAction* checkTaskAction;
   QAction* delTaskAction;
   QAction* expandTaskAction;
+  QAction* orderSubtasksAction;
 
   QLabel* order;
 

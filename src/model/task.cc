@@ -158,6 +158,17 @@ Task::getIndex() const{
   return index;
 }
 
+void
+Task::setSubtasksOrdered(bool order)
+{
+  this->orderedSubtasks = order;
+    for (std::list<Task*>::iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
+      {
+	(*it)->index = order;
+      }
+    std::cout << "is ordered ? " << order << std::endl;
+}
+
 
 TiXmlElement*
 Task::xmlSubtree()

@@ -23,7 +23,6 @@ QTask::QTask(Task* t, QTask* parent)
 
   if (parent != NULL)
     {
-      std::cout << parent->cal->selectedDate().toString().toStdString() << std::endl;
       dateq = parent->cal->selectedDate();
     }
 
@@ -52,7 +51,8 @@ QTask::QTask(Task* t, QTask* parent)
 
   menu->addSeparator();
 
- menu->addAction(trUtf8("Ordonner les tâches"));
+  orderSubtasksAction = new QAction(trUtf8("Ordonner les tâches"),menu);
+  menu->addAction(orderSubtasksAction);
   menu->addSeparator();
   menu->addAction(trUtf8("Insérer un template"));
   menu->addAction(trUtf8("Sauver un template"));
@@ -80,7 +80,15 @@ QTask::QTask(Task* t, QTask* parent)
 
   // Ordered or not
   order = new QLabel();
-  order->setText("-");
+  if (parent != NULL && parent->task->hasOrderedSubtasks())
+    {
+      
+      order->setText(QString::number(t->getIndex()));
+    }
+  else
+    {
+      order->setText("-");
+    }
   qTaskLayout->addWidget(order);
 
   // Task text
@@ -204,6 +212,10 @@ QTask::menuActionManager(QAction* action)
       if (!this->expand->isChecked()){
 	this->expand->toggle();
       }
+    }
+  else if (action == orderSubtasksAction)
+    {
+      this->task->setSubtasksOrdered(!this->task->hasOrderedSubtasks());
     }
 }
 

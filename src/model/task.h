@@ -99,6 +99,8 @@ public:
   */
   int getIndex() const;
 
+  void setSubtasksOrdered(bool order);
+
 
 private:
 
