@@ -39,7 +39,7 @@ public:
     \brief
     adds a subtask to an existing Qtask
   */
-  void addSubtask(QTask* parent);
+  void addSubtask();
 
   Task* task;
 

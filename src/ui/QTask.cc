@@ -243,13 +243,13 @@ void QTask::orderSubtasks()
     }
 }
 
-void QTask::addSubtask(QTask* parent)
+void QTask::addSubtask()
 {
   setStyle(style());
-  Task* t = new Task("Titre", parent->task,
-                     parent->task->hasOrderedSubtasks(),
-                     parent->task->getDate());
-  QTask* task = new QTask(t, parent);
+  Task* t = new Task("Titre", this->task,
+                     this->task->hasOrderedSubtasks(),
+                     this->task->getDate());
+  QTask* task = new QTask(t, this);
   task->setProperty("foo", false);
 }
 
