@@ -28,6 +28,9 @@ public:
   ~QTask();
 
   bool eventFilter(QObject* object, QEvent* event);
+  void addSubtask(QTask* parent);
+
+  Task* task;
 
 private:
   QWidget* qTaskWidget;
@@ -52,7 +55,7 @@ private:
 
   QToolButton* close;
 
-  Task* task;
+
 
   // subtask-related attributes
   QWidget* subtaskContainer;

@@ -37,7 +37,6 @@ QTask::QTask(Task* t, QTask* parent)
   param->setIcon(QIcon("./resources/param_icon_black_32.png"));
 
   QMenu *menu = new QMenu();
-
   addTaskAction = new QAction(trUtf8("Ajouter une tâche"),menu);
   menu->addAction(addTaskAction);
   checkTaskAction = new QAction(trUtf8("Marquer comme fait"),menu);
@@ -188,6 +187,16 @@ QTask::menuActionManager(QAction* action)
     {
       this->expand->toggle();
     }
+  else if (action == addTaskAction)
+    {
+      this->addSubtask(this);
+    }
+}
+
+void QTask::addSubtask(QTask* parent)
+{
+  Task* t = new Task("Titre",parent->task,parent->task->hasOrderedSubtasks(),parent->task->getDate());
+  QTask* task = new QTask(t, parent);
 }
 
 
