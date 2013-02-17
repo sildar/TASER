@@ -21,7 +21,7 @@ public:
     \brief constructor, the label is specified by the first, mandatory
     parameter.
   */
-  QLinkBox(std::string label, QWidget* parent=0);
+  QLinkBox(QString label, QWidget* parent=0);
   /*
     \brief says if the checkbox is checked
   */
