@@ -221,24 +221,25 @@ QTask::menuActionManager(QAction* action)
 
 void QTask::orderSubtasks()
 {
-
-      this->task->setSubtasksOrdered(!this->task->hasOrderedSubtasks());
-      if (this->task->hasOrderedSubtasks())
+  this->task->setSubtasksOrdered(!this->task->hasOrderedSubtasks());
+  if (this->task->hasOrderedSubtasks())
+    {
+      orderSubtasksAction->setText(trUtf8("Enlever l'ordre"));
+      for (int i=0; i < this->subtaskContainer->layout()->count(); i++)
 	{
-	  for (int i=0; i<this->subtaskContainer->layout()->count(); i++)
-	    {
-	      QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
-	      curr->order->setText(QString::number(curr->task->getIndex())); 
-	    }
+	  QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+	  curr->order->setText(QString::number(curr->task->getIndex())); 
 	}
-      else
+    }
+  else
+    {
+      orderSubtasksAction->setText(trUtf8("Ordonner les tâches"));
+      for (int i=0; i<this->subtaskContainer->layout()->count(); i++)
 	{
-	  for (int i=0; i<this->subtaskContainer->layout()->count(); i++)
-	    {
-	      QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
-	      curr->order->setText("-"); 
-	    }
+	  QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+	  curr->order->setText("-"); 
 	}
+    }
 }
 
 void QTask::addSubtask(QTask* parent)
