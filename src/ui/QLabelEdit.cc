@@ -22,8 +22,6 @@ QLabelEdit::QLabelEdit(QString &s)
   setLayout(layout);
 }
 
-#include <QtDebug>
-
 void
 QLabelEdit::enableRw()
 {

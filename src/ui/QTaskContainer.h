@@ -17,7 +17,6 @@ class QTaskContainer : public QWidget
 
  public:
   QTaskContainer(QWidget* parent=0);
-  ~QTaskContainer(){}
 
   public slots:
     /*!

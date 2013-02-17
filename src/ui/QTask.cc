@@ -146,15 +146,12 @@ QTask::QTask(Task* t, QTask* parent)
 bool
 QTask::eventFilter(QObject* object, QEvent* event)
 {
-  if(object == date)
-  {
+  if(object == date) {
     if(event->type() == QEvent::MouseButtonPress) {
       calmenu->show();
       return false; // lets the event continue to the edit
     }
-  }
-  else if (object == this)
-  {
+  } else if (object == this) {
     if(event->type() == QEvent::WindowActivate) {
       calmenu->hide();
       return false; // lets the event continue to the edit

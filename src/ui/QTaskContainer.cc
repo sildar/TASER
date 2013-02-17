@@ -1,6 +1,7 @@
 #include "QTaskContainer.h"
 
-QTaskContainer::QTaskContainer(QWidget* parent) :QWidget(parent)
+QTaskContainer::QTaskContainer(QWidget* parent)
+    : QWidget(parent)
 {
 
   addTaskButton = new QPushButton(trUtf8("Nouvelle Tâche"));
