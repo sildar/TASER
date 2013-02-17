@@ -9,17 +9,17 @@
 
 QWindow::QWindow(QWidget* parent):QMainWindow(parent)
 {
-  QAction *quit = new QAction("&Quitter", this);
+  QAction *quit = new QAction(trUtf8("Quitter"), this);
 
   QMenu *file;
-  file = menuBar()->addMenu("&Fichier");
+  file = menuBar()->addMenu(trUtf8("Fichier"));
   file->addAction(quit);
 
   QMenu *pref;
-  pref = menuBar()->addMenu("&Edition");
+  pref = menuBar()->addMenu(trUtf8("Edition"));
   
   QMenu *help;
-  help = menuBar()->addMenu("&Help");
+  help = menuBar()->addMenu(trUtf8("Aide"));
 
   connect(quit, SIGNAL(triggered()), qApp, SLOT(quit()));
 

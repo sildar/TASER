@@ -18,40 +18,40 @@
     </message>
     <message>
         <location filename="src/ui/QTask.cc" line="32"/>
-        <location filename="src/ui/QTask.cc" line="52"/>
+        <location filename="src/ui/QTask.cc" line="53"/>
         <source>Marquer comme fait</source>
         <translation>Check task</translation>
     </message>
     <message utf8="true">
-        <location filename="src/ui/QTask.cc" line="57"/>
-        <location filename="src/ui/QTask.cc" line="86"/>
-        <location filename="src/ui/QTask.cc" line="238"/>
+        <location filename="src/ui/QTask.cc" line="58"/>
+        <location filename="src/ui/QTask.cc" line="87"/>
+        <location filename="src/ui/QTask.cc" line="239"/>
         <source>Ordonner les tâches</source>
         <translation>Make tasks ordered</translation>
     </message>
     <message utf8="true">
-        <location filename="src/ui/QTask.cc" line="60"/>
+        <location filename="src/ui/QTask.cc" line="61"/>
         <source>Insérer un template</source>
         <translation>Insert template</translation>
     </message>
     <message>
-        <location filename="src/ui/QTask.cc" line="61"/>
+        <location filename="src/ui/QTask.cc" line="62"/>
         <source>Sauver un template</source>
         <translation>Save template</translation>
     </message>
     <message utf8="true">
-        <location filename="src/ui/QTask.cc" line="63"/>
+        <location filename="src/ui/QTask.cc" line="64"/>
         <source>Monter la tâche</source>
         <translation>Task up</translation>
     </message>
     <message utf8="true">
-        <location filename="src/ui/QTask.cc" line="64"/>
+        <location filename="src/ui/QTask.cc" line="65"/>
         <source>Descendre la tâche</source>
         <translation>Task down</translation>
     </message>
     <message utf8="true">
         <location filename="src/ui/QTask.cc" line="38"/>
-        <location filename="src/ui/QTask.cc" line="66"/>
+        <location filename="src/ui/QTask.cc" line="67"/>
         <source>Déplier la tâche</source>
         <translation>Expand task</translation>
     </message>
@@ -61,13 +61,13 @@
         <translation>Avaible actions</translation>
     </message>
     <message utf8="true">
-        <location filename="src/ui/QTask.cc" line="69"/>
-        <location filename="src/ui/QTask.cc" line="125"/>
+        <location filename="src/ui/QTask.cc" line="70"/>
+        <location filename="src/ui/QTask.cc" line="126"/>
         <source>Supprimer la tâche</source>
         <translation>Delete task</translation>
     </message>
     <message>
-        <location filename="src/ui/QTask.cc" line="229"/>
+        <location filename="src/ui/QTask.cc" line="230"/>
         <source>Enlever l&apos;ordre</source>
         <translation>Remove order</translation>
     </message>
@@ -78,6 +78,33 @@
         <location filename="src/ui/QTaskContainer.cc" line="7"/>
         <source>Nouvelle Tâche</source>
         <translation>New Task</translation>
+    </message>
+</context>
+<context>
+    <name>QWindow</name>
+    <message>
+        <location filename="src/ui/QWindow.cc" line="12"/>
+        <source>Quitter</source>
+        <translation>Quit</translation>
+    </message>
+    <message>
+        <location filename="src/ui/QWindow.cc" line="15"/>
+        <source>Fichier</source>
+        <translation>File</translation>
+    </message>
+    <message>
+        <location filename="src/ui/QWindow.cc" line="19"/>
+        <source>Edition</source>
+        <translation>Parameters</translation>
+    </message>
+    <message>
+        <location filename="src/ui/QWindow.cc" line="22"/>
+        <source>Aide</source>
+        <translation>Help</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="obsolete">Help</translation>
     </message>
 </context>
 </TS>

@@ -48,6 +48,7 @@ QTask::QTask(Task* t, QTask* parent)
 
   QMenu *menu = new QMenu();
   addTaskAction = new QAction(trUtf8("Ajouter une tâche"),menu);
+  //addTaskAction->setShortcut(QKeySequence(trUtf8("CTRL+T")));
   menu->addAction(addTaskAction);
   checkTaskAction = new QAction(trUtf8("Marquer comme fait"),menu);
   menu->addAction(checkTaskAction);

@@ -64,8 +64,6 @@ private:
 
   QToolButton* closeButton;
 
-
-
   // subtask-related attributes
   QWidget* subtaskContainer;
 
