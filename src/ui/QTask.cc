@@ -190,6 +190,9 @@ QTask::menuActionManager(QAction* action)
   else if (action == addTaskAction)
     {
       this->addSubtask(this);
+      if (!this->expand->isChecked()){
+	this->expand->toggle();
+      }
     }
 }
 
