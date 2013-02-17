@@ -1,7 +1,7 @@
 // -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 
 #ifndef TASK_H
-#define TASH_H
+#define TASK_H
 
 #include <list>
 #include <string>
@@ -97,17 +97,6 @@ public:
   */
   int getIndex() const;
 
-  /*!
-    \brief Stores a list of tasks and all their subtasks recursively in an
-    XML file.
-  */
-  static void saveModel(std::string xmlFile, std::list<Task*> tasks);
-
-  /*!
-    \brief Loads a list of tasks and all their subtasks from an XML file.
-  */
-  static std::list<Task*> loadModel(std::string xmlFile);
-
 
 private:
 
@@ -132,6 +121,8 @@ private:
   */
   TiXmlElement* xmlSubtree();
 
+  friend void saveModel(std::string xmlFile, std::list<Task*> tasks);
+  friend std::list<Task*> loadModel(std::string xmlFile);
 };
 
 #endif // TASK_H
