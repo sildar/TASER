@@ -15,6 +15,9 @@ QTaskContainer::QTaskContainer(QWidget* parent) :QWidget(parent)
   
   mainLayout->addLayout(buttonLayout);
   mainLayout->addLayout(tasksLayout);
+  mainLayout->addStretch(1);
+
+  connect(addTaskButton,SIGNAL(clicked()),this,SLOT(addTask()));
 
 
 }
@@ -31,8 +34,13 @@ QTaskContainer::addTask(Task* parent)
     {
       qtask = new QTask(new Task("Titre",NULL,false,NULL));
     }
+
+  for (int i = 0; i <= this->tasks.size()+1; i++)
+    {
+      this->tasksLayout->setStretch(i,0);
+    }
+
   tasks.push_back(qtask);
-  this->tasksLayout->addWidget(qtask);
-  this->tasksLayout->setStretch(this->tasks.size()-1,0);
+  this->tasksLayout->addWidget(qtask);  
   this->tasksLayout->addStretch(1);
 }

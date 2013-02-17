@@ -17,8 +17,10 @@ class QTaskContainer : public QWidget
 
  public:
   QTaskContainer(QWidget* parent=0);
-  void addTask(Task* parent=0);
   ~QTaskContainer(){}
+
+  public slots:
+    void addTask(Task* parent=0);
   
  private:
   QVBoxLayout* mainLayout;

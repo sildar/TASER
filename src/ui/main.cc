@@ -98,8 +98,8 @@ int main(int argc, char** argv)
   lay->addWidget(qtask3);
   lay->addStretch(); // necessary
   */
-  container->addTask(t1);
-  container->addTask(t2);
+  //container->addTask(t1);
+  //container->addTask(t2);
   //scrollArea->setWidget(container);
   mainWindow->setCentralWidget(container);
 
