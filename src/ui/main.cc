@@ -6,7 +6,7 @@
 #include <QFile>
 #include "../ui/QTask.h"
 #include "../ui/QCalendara.h"
-#include "QWindow.h"
+#include <QMainWindow>
 
 int main(int argc, char** argv)
 {
@@ -65,13 +65,14 @@ int main(int argc, char** argv)
   app.setStyleSheet(qss.readAll());
   qss.close();
   
-  QWindow* qw = new QWindow();
-  QScrollArea* scrollArea = new QScrollArea(qw);
+  QMainWindow* mainWindow = new QMainWindow();
+  mainWindow->resize(640, 400);
+  QScrollArea* scrollArea = new QScrollArea(mainWindow);
   scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-  QVBoxLayout* scrollLayout = new QVBoxLayout();
-  scrollArea->setLayout(scrollLayout);
-  QWidget* container = new QWidget(scrollArea);
-  QVBoxLayout* lay = new QVBoxLayout();
+  scrollArea->setWidgetResizable(true);
+  QVBoxLayout* scrollLayout = new QVBoxLayout(scrollArea);
+  QWidget* container = new QWidget();
+  QVBoxLayout* lay = new QVBoxLayout(container);
 
   Task* t1 = new Task("Titre 1", NULL, true, time(NULL));
   QTask* qtask1 = new QTask(t1);
@@ -93,12 +94,10 @@ int main(int argc, char** argv)
   lay->addWidget(qtask3);
   lay->addStretch(); // necessary
 
-  container->setLayout(lay);
-
   scrollArea->setWidget(container);
-  qw->setCentralWidget(scrollArea);
+  mainWindow->setCentralWidget(scrollArea);
 
-  qw->show();
+  mainWindow->show();
 
   return app.exec();
 }

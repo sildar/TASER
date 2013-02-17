@@ -5,13 +5,13 @@
 QTask::QTask(Task* t, QTask* parent)
   : task(t)
 {
-
   QVBoxLayout *lay = new QVBoxLayout();
-  lay->setStretch(0, 1);
   setLayout(lay);
+  lay->setContentsMargins(0, 0, 0, 0);
 
   this->qTaskWidget = new QWidget();
   QHBoxLayout *qTaskLayout = new QHBoxLayout();
+  qTaskLayout->setContentsMargins(0, 0, 0, 0);
 
   QString textstr = QString::fromStdString(task->getName());
   time_t datet = task->getDate();
@@ -68,11 +68,13 @@ QTask::QTask(Task* t, QTask* parent)
 
   // Task text
   text = new QLabelEdit(textstr);
+  text->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   qTaskLayout->addWidget(text);
 
   // Task date
   date = new QLineEdit(datestr);
   date->installEventFilter(this);
+  date->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
   qTaskLayout->addWidget(date);
 
   //prepares the popup
@@ -102,6 +104,7 @@ QTask::QTask(Task* t, QTask* parent)
 
   this->subtaskContainer = new QWidget();
   QVBoxLayout* subtaskLayout = new QVBoxLayout();
+  subtaskLayout->setContentsMargins(20, 0, 0, 0);
   this->subtaskContainer->setLayout(subtaskLayout);
   this->subtaskContainer->setVisible(false);
   if (parent != NULL)
