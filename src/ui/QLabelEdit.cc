@@ -29,6 +29,7 @@ QLabelEdit::toggle()
   if (current == ro) {
     current = rw;
     rw->selectAll();
+    rw->setFocus();
   } else {
     current = ro;
     text = rw->text();
