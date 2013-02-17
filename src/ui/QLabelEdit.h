@@ -16,7 +16,8 @@ public:
   QLabelEdit(QString &s);
 
 private slots:
-  void toggle();
+  void enableRw();
+  void enableRo();
 
 private:
   QString text;

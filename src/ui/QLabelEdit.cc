@@ -12,9 +12,9 @@ QLabelEdit::QLabelEdit(QString &s)
   layout->addWidget(rw);
 
   connect(ro, SIGNAL(linkActivated(const QString&)),
-          this, SLOT(toggle()));
-  connect(rw, SIGNAL(returnPressed()),
-          this, SLOT(toggle()));
+          this, SLOT(enableRw()));
+  connect(rw, SIGNAL(editingFinished()),
+          this, SLOT(enableRo()));
 
   current = ro;
   rw->hide();
@@ -22,18 +22,28 @@ QLabelEdit::QLabelEdit(QString &s)
   setLayout(layout);
 }
 
+#include <QtDebug>
+
 void
-QLabelEdit::toggle()
+QLabelEdit::enableRw()
 {
-  current->hide();
   if (current == ro) {
+    current->hide();
     current = rw;
+    current->show();
     rw->selectAll();
     rw->setFocus();
-  } else {
+  }
+}
+
+void
+QLabelEdit::enableRo()
+{
+  if (current == rw) {
+    current->hide();
     current = ro;
+    current->show();
     text = rw->text();
     ro->setText("<a href='title'>" % text % "</a>");
   }
-  current->show();
 }
