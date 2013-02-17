@@ -22,8 +22,7 @@ QTask::QTask(Task* t, QTask* parent)
   //QDate dateq = QDateTime::fromTime_t(datet).date();
   QDate dateq = QDate::currentDate();
 
-  if (parent != NULL)
-  {
+  if (parent != NULL) {
     dateq = parent->cal->selectedDate();
   }
 

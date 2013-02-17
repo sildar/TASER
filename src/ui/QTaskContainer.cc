@@ -1,9 +1,11 @@
+// -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
+
 #include "QTaskContainer.h"
 
 QTaskContainer::QTaskContainer(QWidget* parent)
-    : QWidget(parent)
+  : QWidget(parent)
 {
-
+    
   addTaskButton = new QPushButton(trUtf8("Nouvelle Tâche"));
 
 
@@ -27,19 +29,16 @@ void
 QTaskContainer::addTask(Task* parent)
 {
   QTask* qtask;
-  if (parent != NULL)
-    {
-      qtask = new QTask(new Task("Titre",parent,parent->hasOrderedSubtasks(),NULL));
-    }
-  else
-    {
-      qtask = new QTask(new Task("Titre",NULL,false,NULL));
-    }
+  if (parent != NULL) {
+    qtask = new QTask(new Task("Titre", parent,
+                               parent->hasOrderedSubtasks(), NULL));
+  } else {
+    qtask = new QTask(new Task("Titre", NULL, false, NULL));
+  }
 
-  for (int i = 0; i <= this->tasks.size()+1; i++)
-    {
-      this->tasksLayout->setStretch(i,0);
-    }
+  for (int i = 0; i <= (this->tasks.size() + 1); i++) {
+    this->tasksLayout->setStretch(i, 0);
+  }
 
   tasks.push_back(qtask);
   this->tasksLayout->addWidget(qtask);  
