@@ -19,6 +19,8 @@ QTask::QTask(Task* t, QTask* parent)
   QString textstr = QString::fromStdString(task->getName());
   time_t datet = task->getDate();
   QString datestr = ctime(&datet);
+  QDate dateq = QDateTime::fromTime_t(datet).date();
+
 
   // Check button
   check = new QCheckBox();
@@ -79,7 +81,7 @@ QTask::QTask(Task* t, QTask* parent)
   qTaskLayout->addWidget(text);
 
   // Task date
-  date = new QLabel("<a href='date'>" % datestr % "</a>");
+  date = new QLabel("<a href='date'>" % dateq.toString()   % "</a>");
   date->installEventFilter(this);
   date->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
   qTaskLayout->addWidget(date);
