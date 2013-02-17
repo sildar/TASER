@@ -148,7 +148,7 @@ QTask::eventFilter(QObject* object, QEvent* event)
 void
 QTask::setDateText(QDate aDate)
 {
-  date->setText(aDate.toString());
+  date->setText("<a href='date'>" % aDate.toString() % "</a>");
 }
 
 void
