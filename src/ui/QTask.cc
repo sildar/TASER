@@ -21,6 +21,12 @@ QTask::QTask(Task* t, QTask* parent)
   QString datestr = ctime(&datet);
   QDate dateq = QDateTime::fromTime_t(datet).date();
 
+  if (parent != NULL)
+    {
+      std::cout << parent->cal->selectedDate().toString().toStdString() << std::endl;
+      dateq = parent->cal->selectedDate();
+    }
+
 
   // Check button
   check = new QCheckBox();
