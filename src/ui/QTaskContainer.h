@@ -7,7 +7,9 @@
 #include <list>
 #include "QTask.h"
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QScrollArea>
+#include <QPushButton>
 
 class QTaskContainer : public QWidget
 {
@@ -19,8 +21,11 @@ class QTaskContainer : public QWidget
   ~QTaskContainer(){}
   
  private:
-  QVBoxLayout* layout;
+  QVBoxLayout* mainLayout;
+  QHBoxLayout* buttonLayout;
+  QVBoxLayout* tasksLayout;
   std::list<QTask*> tasks;
+  QPushButton* addTaskButton;
   
 };
 

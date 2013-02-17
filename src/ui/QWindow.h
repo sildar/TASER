@@ -11,7 +11,6 @@ class QWindow : public QMainWindow{
 public:
   QWindow(QWidget* parent=0);
 
-
 };
 
 #endif
