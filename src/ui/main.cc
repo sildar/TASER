@@ -8,6 +8,9 @@
 #include "../ui/QCalendara.h"
 #include "QWindow.h"
 #include "QTaskContainer.h"
+#include <QTranslator>
+#include <QLibraryInfo>
+#include <QLocale>
 
 int main(int argc, char** argv)
 {
@@ -31,35 +34,20 @@ int main(int argc, char** argv)
   delete(parent);
 
 
-  /*
-
-  //prints the tree, then the tree after trying to check something
-  //impossible, then after checked both.
-  Task* t1 = new Task("t1",NULL,true);
-  Task* t11 = new Task("t1.1", t1, false);
-  Task* t12 = new Task("t1.2", t1, false);
-
-
-  std::cout << t1->toString() << std::endl;
-
-  t12->checkTask();
-
-  std::cout << t1->toString() << std::endl;
-
-  t11->checkTask();
-  t12->checkTask();
-
-  std::cout << t1->toString() << std::endl;
-
-  delete t1;
-
-  */
-
   //my tests
 
   std::cout << "avant" << std::endl;
   QApplication app(argc, argv);
-
+  
+  QTranslator qtTranslator;
+  qtTranslator.load("qt_" + QLocale::system().name(),
+		    QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+  app.installTranslator(&qtTranslator);
+  
+  QTranslator myappTranslator;
+  myappTranslator.load("taser_en"); //+ QLocale::system().name());
+  app.installTranslator(&myappTranslator);
+  
   // Read taser.qss
   QFile qss(":/taser.qss");
   qss.open(QFile::ReadOnly);

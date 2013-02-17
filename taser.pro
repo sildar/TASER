@@ -32,4 +32,6 @@ HEADERS =                               \
 
 RESOURCES = taser.qrc
 
+TRANSLATIONS = taser_en.ts
+
 DEFINES *= QT_USE_QSTRINGBUILDER

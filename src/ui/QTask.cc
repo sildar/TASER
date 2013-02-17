@@ -52,6 +52,8 @@ QTask::QTask(Task* t, QTask* parent)
 
   menu->addSeparator();
 
+ menu->addAction(trUtf8("Ordonner les tâches"));
+  menu->addSeparator();
   menu->addAction(trUtf8("Insérer un template"));
   menu->addAction(trUtf8("Sauver un template"));
   menu->addSeparator();
