@@ -193,6 +193,7 @@ QTask::changeText(bool isPressed)
 void
 QTask::checkTask()
 {
+  std::cout << "task is null ? " << (task == NULL) << std::endl;
   task->checkTask();
   setDone(task->isChecked());
 }
@@ -201,6 +202,7 @@ void
 QTask::menuActionManager(QAction* action)
 {
   if (action == checkTaskAction) {
+
     this->checkTask();
     this->check->setChecked(this->task->isChecked());
   } else if (action == delTaskAction) {

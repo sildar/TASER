@@ -45,7 +45,7 @@ QTaskContainer::addTask(QTask* task)
       theTasks.push_back((*it)->task);
     }
 
-TaskController::updateModel(theTasks);
+  TaskController::updateModel(theTasks);
   TaskController::saveModel();
 }
 
