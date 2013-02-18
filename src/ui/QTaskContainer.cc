@@ -5,6 +5,7 @@
 QTaskContainer::QTaskContainer(QWidget* parent)
   : QWidget(parent)
 {
+  currentTask = NULL;
   addTaskButton = new QPushButton(trUtf8("Nouvelle Tâche"));
 
   tasks = std::list<QTask*>();
@@ -38,10 +39,22 @@ QTaskContainer::addTask(Task* parent)
     this->tasksLayout->setStretch(i, 0);
   }
 
-  setStyle(style());
+  connect(qtask, SIGNAL(enabled(QTask*)),
+          this, SLOT(focusChanged(QTask*)));
+
   tasks.push_back(qtask);
   this->tasksLayout->addWidget(qtask);  
   this->tasksLayout->addStretch(1);
+}
+
+void
+QTaskContainer::focusChanged(QTask *qtask)
+{
+  // if (currentTask != NULL) {
+  //   currentTask->setCurrent(false);
+  // }
+  // currentTask = qtask;
+  // currentTask->setCurrent(true);
 }
 
 void

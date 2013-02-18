@@ -26,6 +26,9 @@ class QTask : public QWidget
 {
   Q_OBJECT
 
+  Q_PROPERTY(bool done READ done WRITE setDone)
+  Q_PROPERTY(bool current READ current WRITE setCurrent)
+
 public:
   QTask(Task* t, QTask* parent = NULL);
   ~QTask();
@@ -42,8 +45,14 @@ public:
   void addSubtask();
 
   Task* task;
+  bool done() const { return done_; }
+  void setDone(bool done) { done_ = done; }
+  bool current() const { return current_; }
+  void setCurrent(bool current) { current_ = current; }
 
 private:
+  bool done_;
+  bool current_;
   QWidget* qTaskWidget;
   QCheckBox* check;
   QToolButton* expand;
@@ -70,6 +79,9 @@ private:
   // subtask-related attributes
   QWidget* subtaskContainer;
 
+signals:
+  void enabled(QTask *);
+
 public slots:
   /*!
     \brief updates the date label
@@ -95,6 +107,8 @@ private slots:
   void closeTask();
 
   void orderSubtasks();
+  void enable();
+  void redraw();
 
 };
 

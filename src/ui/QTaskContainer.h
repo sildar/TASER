@@ -22,16 +22,21 @@ class QTaskContainer : public QWidget
   void paintEvent(QPaintEvent *qpe);
 
 public slots:
-    /*!
-      \brief adds a main QTask
-    */
-    void addTask(Task* parent=0);
+  /*!
+    \brief adds a main QTask
+  */
+  void addTask(Task* parent=0);
+
+private slots:
+  void focusChanged(QTask *);
+
  private:
   QVBoxLayout* mainLayout;
   QHBoxLayout* buttonLayout;
   QVBoxLayout* tasksLayout;
   std::list<QTask*> tasks;
   QPushButton* addTaskButton;
+  QTask *currentTask;
   
 };
 
