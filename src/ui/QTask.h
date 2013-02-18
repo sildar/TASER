@@ -98,7 +98,7 @@ private slots:
 
   void orderSubtasks();
 
-  void textChanged(QString s);
+  void textChanged(QString& s);
 
 };
 
