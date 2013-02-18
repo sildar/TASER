@@ -7,6 +7,8 @@
 QTask::QTask(Task* t, QTask* parent)
   : task(t)
 {
+  connect(this, SIGNAL(changedDone(bool)), this, SLOT(redraw()));
+  connect(this, SIGNAL(changedCurrent(bool)), this, SLOT(redraw()));
   setDone(false);
   // setCurrent(true);
   
@@ -290,7 +292,6 @@ void
 QTask::enable()
 {
   emit enabled(this);
-  redraw();
 }
 
 void
