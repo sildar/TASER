@@ -42,7 +42,7 @@ Task::hasParent() const
 bool
 Task::hasOrderedSubtasks() const
 {
-  return (subtasks.size() > 0 && orderedSubtasks);
+  return (!subtasks.empty() > 0 && orderedSubtasks);
 }
 
 

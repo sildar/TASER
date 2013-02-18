@@ -8,7 +8,6 @@ TaskController::TaskController()
 {
 }
 
-
 void TaskController::setQTaskContainer(QTaskContainer *qtc)
 {
   qTaskContainer = qtc;
@@ -23,6 +22,7 @@ void TaskController::addTask(Task* t)
 
 void TaskController::removeTask(Task* t)
 {
+  qTaskContainer->removeTask(t);
 }
 
 void TaskController::loadModel()

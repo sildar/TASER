@@ -22,6 +22,8 @@
 #include <QPainter>
 #include <QStyleOption>
 
+class TaskController;
+
 class QTask : public QWidget
 {
   Q_OBJECT

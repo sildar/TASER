@@ -25,7 +25,9 @@ class QTaskContainer : public QWidget
 public:
   QTaskContainer(QWidget* parent=0);
   void paintEvent(QPaintEvent *qpe);
-
+  
+  void removeTask(Task* t);
+  
   /*!
     \brief Adds a previously created root QTask to this widget.
   */

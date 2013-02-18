@@ -2,6 +2,7 @@
 
 #include "QTask.h"
 #include <QtDebug>
+#include "../model/TaskController.h"
 
 QTask::QTask(Task* t, QTask* parent)
   : task(t)
@@ -261,6 +262,7 @@ void QTask::textChanged(QString& s)
 
 QTask::~QTask()
 {
+  TaskController::removeTask(task);
   delete task;
 }
 

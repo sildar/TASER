@@ -74,3 +74,18 @@ QTaskContainer::paintEvent(QPaintEvent *)
   QPainter p(this);
   style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
 }
+
+
+void
+QTaskContainer::removeTask(Task* t){
+
+  for(std::list<QTask*>::iterator it = this->tasks.begin();
+      it != this->tasks.end(); ++it)
+  {
+    if ((*it)->task == t)
+    {
+      tasks.erase(it);
+      return;
+    }
+  }
+}
