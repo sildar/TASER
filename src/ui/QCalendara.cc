@@ -4,10 +4,13 @@
 #include <QGridLayout>
 #include <iostream>
 #include <QTextCharFormat>
+#include <QLocale>
 
 QCalendara::QCalendara(QWidget *parent, QString* parentDate)
   : QCalendarWidget(parent)
 {
+
+  this->setLocale(QLocale());
   if (parentDate != NULL)
   {
     QTextCharFormat format = this->dateTextFormat(QDate::fromString(*parentDate));
@@ -24,4 +27,17 @@ bool
 QCalendara::isLinked()
 {
   return linkbox->isLinked();
+}
+
+
+void QCalendara::changeEvent(QEvent* event)
+{
+  if (event->type() == QEvent::LanguageChange)
+    {
+      this->setLocale(QLocale());
+      linkbox->setText(trUtf8("Lier la tache à la tâche principale"));
+    }
+  
+  // remember to call base class implementation
+  QWidget::changeEvent(event);
 }

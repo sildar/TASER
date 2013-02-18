@@ -302,4 +302,16 @@ void QTask::changeEvent(QEvent* event)
 
 void QTask::retranslate(){
   addTaskAction->setText(trUtf8("Ajouter une tâche"));
+  checkTaskAction->setText(trUtf8("Marquer comme fait"));
+  delTaskAction->setText(trUtf8("Supprimer la tâche"));
+  expandTaskAction->setText(trUtf8("Déplier la tâche"));
+
+  if (this->task->hasOrderedSubtasks()) {
+    orderSubtasksAction->setText(trUtf8("Enlever l'ordre"));
+  }
+  else {
+      orderSubtasksAction->setText(trUtf8("Ordonner les tâches"));
+    }
+  
+  
 }

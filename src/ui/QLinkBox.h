@@ -27,6 +27,8 @@ public:
   */
   bool isLinked();
 
+  void setText(QString txt);
+
 private:
   QHBoxLayout* lay;
   QCheckBox *linkbox;

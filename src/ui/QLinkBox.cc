@@ -21,3 +21,9 @@ QLinkBox::isLinked()
 {
   return this->linkbox->isChecked();
 }
+
+void
+QLinkBox::setText(QString txt)
+{
+  linkboxlab->setText(txt);
+}

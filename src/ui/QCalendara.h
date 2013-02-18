@@ -6,6 +6,7 @@
 #include <QCalendarWidget>
 #include <QWidget>
 #include "QLinkBox.h"
+#include <QEvent>
 
 
 /*!
@@ -26,8 +27,11 @@ public:
   */
   bool isLinked();
 
+  void changeEvent(QEvent* event);
+
 private:
   QLinkBox* linkbox;
+
 
 };
 
