@@ -152,6 +152,10 @@ Task::getUp()
 	      pred--;
 	      this->parent->subtasks.insert(pred,*it);
 	      this->parent->subtasks.erase(it);
+
+	      bool wasOrdered = this->parent->hasOrderedSubtasks();
+	      this->parent->setSubtasksOrdered(true);
+	      this->parent->setSubtasksOrdered(wasOrdered);
 	      return;
 	    }
 	  pred++;
@@ -175,6 +179,9 @@ Task::getDown()
 	      it++;
 	      this->parent->subtasks.insert(it,t);
 	      this->parent->subtasks.erase(pred);
+	      bool wasOrdered = this->parent->hasOrderedSubtasks();
+	      this->parent->setSubtasksOrdered(true);
+	      this->parent->setSubtasksOrdered(wasOrdered);
 	      return;
 	    }
 	  pred++;
