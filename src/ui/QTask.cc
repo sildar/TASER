@@ -247,7 +247,7 @@ void QTask::orderSubtasks()
 void QTask::addSubtask()
 {
   setStyle(style());
-  Task* t = new Task("Titre", this->task,
+  Task* t = new Task(trUtf8("Titre").toStdString(), this->task,
                      this->task->hasOrderedSubtasks(),
                      this->task->getDate());
   QTask* task = new QTask(t, this);
