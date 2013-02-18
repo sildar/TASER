@@ -32,10 +32,6 @@ public:
   void addTask(QTask* task);
 
 public slots:
-  /*!
-    \brief adds a main QTask
-  */
-  void addTask(Task* parent=0);
 
   /*!
     \brief Creates a new root QTask.
