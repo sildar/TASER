@@ -292,6 +292,7 @@ void QTask::exchangeWidgets(int from, int change, QBoxLayout* layout)
 {
   QWidget* widget = layout->takeAt(from)->widget();
   layout->insertWidget(from+change,widget);
+  TaskController::saveModel();
 }
 
 QTask::~QTask()

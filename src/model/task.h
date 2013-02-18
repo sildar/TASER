@@ -122,6 +122,10 @@ public:
 
   void setSubtasksOrdered(bool order);
 
+  bool hasLinkedDate();
+
+  void setLinkedDate(bool isLinked);
+
 
 private:
 
@@ -132,6 +136,7 @@ private:
   std::list<Task*> subtasks;
   bool orderedSubtasks;
   bool checked;
+  bool dateIsLinked;
 
   /*!
     \brief Creates a task from an XML element. This constructor is used for

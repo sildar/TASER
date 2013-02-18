@@ -11,6 +11,7 @@ Task::Task(std::string name, Task* parent, bool ordered, time_t date)
   this->name = name;
   this->index = 0;
   this->parent = parent;
+  this->dateIsLinked = false;
 
   if (date != NULL){
     this->date = date;
@@ -29,6 +30,16 @@ Task::Task(std::string name, Task* parent, bool ordered, time_t date)
 void
 Task::setDate(time_t aDate)
 {
+  time_t diff = aDate - date;
+    for(std::list<Task*>::iterator it = this->subtasks.begin();
+      it != this->subtasks.end(); ++it)
+  {
+    if ((*it)->hasLinkedDate())
+      {
+	(*it)->setDate((*it)->getDate()+diff);
+      }
+  }
+
   this->date = aDate;
 }
 
@@ -261,6 +272,18 @@ Task::getIndex() const{
 std::list<Task*>
 Task::getSubtasks() const{
   return subtasks;
+}
+
+void
+Task::setLinkedDate(bool isLinked)
+{
+  dateIsLinked = isLinked;
+}
+
+bool
+Task::hasLinkedDate()
+{
+  return dateIsLinked;
 }
 
 
