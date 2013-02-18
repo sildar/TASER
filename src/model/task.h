@@ -81,6 +81,8 @@ public:
 
   bool hasLittleBrother();
 
+  void getUp();
+
   /*!
     \brief deletes a task and all its subtasks
   */

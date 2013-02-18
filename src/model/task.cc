@@ -136,6 +136,25 @@ Task::hasLittleBrother()
   return false;
 }
 
+
+void
+Task::getUp()
+{
+  if (this->hasBigBrother())
+    {
+      std::list<Task*>::iterator pred = this->parent->subtasks.begin();
+
+            for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it)      
+	{
+	  if ((*it) == this)//insert before sibling and erase itself from preceding location
+	    {
+	      this->parent->subtasks.insert(pred,*it);
+	      this->parent->subtasks.erase(it);
+	    }
+	}
+    }
+}
+
 void
 Task::checkTask(){
 
