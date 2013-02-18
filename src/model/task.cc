@@ -128,12 +128,16 @@ Task::isCheckable() const
 
 Task::~Task()
 {
-  /*
   for (std::list<Task*>::iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
   {
+    std::cout << "DELETING " << (*it)->name << std::endl;
     delete *it;
   }
-  */
+
+  if (this->parent != NULL)
+  {
+    this->parent->subtasks.remove(this);
+  }
 }
 
 Task*
@@ -146,6 +150,11 @@ Task::addSubtask(std::string name, time_t date){
 std::string
 Task::getName() const{
   return name;
+}
+
+void
+Task::setName(std::string aName){
+  this->name = aName;
 }
 
 std::time_t

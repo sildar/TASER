@@ -103,6 +103,7 @@ QTask::QTask(Task* t, QTask* parent)
   text = new QLabelEdit(textstr);
   text->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   qTaskLayout->addWidget(text);
+  connect(text,SIGNAL(textChanged(QString&)),this, SLOT(textChanged(QString&)));
 
   // Task date
   date = new QLabel("<a href='date'>" % dateq.toString()   % "</a>");
@@ -192,6 +193,7 @@ QTask::changeText(bool isPressed)
 void
 QTask::checkTask()
 {
+  std::cout << "task is null ? " << (task == NULL) << std::endl;
   task->checkTask();
   setDone(task->isChecked());
 }
@@ -237,7 +239,8 @@ void QTask::orderSubtasks()
 
 void QTask::addSubtask()
 {
-  Task* t = new Task("Titre", this->task,
+  setStyle(style());
+  Task* t = new Task(trUtf8("Titre").toStdString(), this->task,
                      this->task->hasOrderedSubtasks(),
                      this->task->getDate());
   QTask* task = new QTask(t, this);
@@ -249,6 +252,11 @@ void QTask::closeTask(){
     this->subtaskContainer->layout()->itemAt(i)->widget()->close();
   }
   this->close();
+}
+
+void QTask::textChanged(QString& s)
+{
+  task->setName(s.toStdString());
 }
 
 QTask::~QTask()

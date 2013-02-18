@@ -109,6 +109,7 @@ private slots:
   void orderSubtasks();
   void enable();
   void redraw();
+  void textChanged(QString& s);
 
 };
 

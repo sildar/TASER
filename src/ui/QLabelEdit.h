@@ -15,6 +15,9 @@ class QLabelEdit : public QWidget
 public:
   QLabelEdit(QString &s);
 
+signals:
+  void textChanged(QString& s);
+
 private slots:
   void enableRw();
   void enableRo();

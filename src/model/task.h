@@ -87,6 +87,8 @@ public:
   */
   std::string getName() const;
 
+  void setName(std::string aName);
+
   /*!
     \brief getter for the date
   */

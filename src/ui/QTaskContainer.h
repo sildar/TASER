@@ -13,13 +13,23 @@
 #include <QPainter>
 #include <QStyleOption>
 
+
+class TaskController;
+
 class QTaskContainer : public QWidget
 {
   Q_OBJECT
 
- public:
+  friend class TaskController;
+
+public:
   QTaskContainer(QWidget* parent=0);
   void paintEvent(QPaintEvent *qpe);
+
+  /*!
+    \brief Adds a previously created root QTask to this widget.
+  */
+  void addTask(QTask* task);
 
 public slots:
   /*!
@@ -27,17 +37,23 @@ public slots:
   */
   void addTask(Task* parent=0);
 
+  /*!
+    \brief Creates a new root QTask.
+  */
+  void newTask();
+
+
 private slots:
   void focusChanged(QTask *);
 
- private:
+private:
   QVBoxLayout* mainLayout;
   QHBoxLayout* buttonLayout;
   QVBoxLayout* tasksLayout;
   std::list<QTask*> tasks;
   QPushButton* addTaskButton;
   QTask *currentTask;
-  
+
 };
 
 
