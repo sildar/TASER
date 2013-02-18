@@ -34,7 +34,7 @@ QTaskContainer::addTask(Task* parent)
     qtask = new QTask(new Task("Titre", NULL, false, NULL));
   }
 
-  for (int i = 0; i <= (this->tasks.size() + 1); i++) {
+  for (unsigned int i = 0; i <= (this->tasks.size() + 1); i++) {
     this->tasksLayout->setStretch(i, 0);
   }
 
@@ -45,7 +45,7 @@ QTaskContainer::addTask(Task* parent)
 }
 
 void
-QTaskContainer::paintEvent(QPaintEvent *qpe)
+QTaskContainer::paintEvent(QPaintEvent *)
 {
   QStyleOption opt;
   opt.init(this);

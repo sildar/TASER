@@ -267,7 +267,7 @@ QTask::~QTask()
 }
 
 void
-QTask::paintEvent(QPaintEvent *qpe)
+QTask::paintEvent(QPaintEvent *)
 {
   QStyleOption opt;
   opt.init(this);
