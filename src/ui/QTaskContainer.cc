@@ -1,12 +1,12 @@
 // -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 
 #include "QTaskContainer.h"
+#include "../model/TaskController.h"
 
 QTaskContainer::QTaskContainer(QWidget* parent)
   : QWidget(parent)
 {
   addTaskButton = new QPushButton(trUtf8("Nouvelle Tâche"));
-
   tasks = std::list<QTask*>();
   tasksLayout = new QVBoxLayout();
   buttonLayout = new QHBoxLayout();
@@ -19,8 +19,9 @@ QTaskContainer::QTaskContainer(QWidget* parent)
   mainLayout->addStretch(1);
 
   connect(addTaskButton,SIGNAL(clicked()),this,SLOT(newTask()));
-
-
+  TaskController::setQTaskContainer(this);
+  TaskController::loadModel();
+  
 }
 
 void
@@ -34,6 +35,15 @@ QTaskContainer::addTask(QTask* task)
   tasks.push_back(task);
   this->tasksLayout->addWidget(task);
   this->tasksLayout->addStretch(1);
+
+  std::list<Task*> theTasks;
+  for (std::list<QTask*>::iterator it = tasks.begin(); it != tasks.end(); it++)
+    {
+      theTasks.push_back((*it)->task);
+    }
+
+TaskController::updateModel(theTasks);
+  TaskController::saveModel();
 }
 
 void

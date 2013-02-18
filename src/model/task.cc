@@ -152,6 +152,11 @@ Task::getName() const{
   return name;
 }
 
+void
+Task::setName(std::string aName){
+  this->name = aName;
+}
+
 std::time_t
 Task::getDate() const{
   return date;

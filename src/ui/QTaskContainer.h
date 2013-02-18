@@ -13,6 +13,9 @@
 #include <QPainter>
 #include <QStyleOption>
 
+
+class TaskController;
+
 class QTaskContainer : public QWidget
 {
   Q_OBJECT

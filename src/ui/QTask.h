@@ -44,6 +44,8 @@ public:
   Task* task;
 
 private:
+
+  
   QWidget* qTaskWidget;
   QCheckBox* check;
   QToolButton* expand;
@@ -95,6 +97,8 @@ private slots:
   void closeTask();
 
   void orderSubtasks();
+
+  void textChanged(QString s);
 
 };
 
