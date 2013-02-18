@@ -14,29 +14,6 @@
 
 int main(int argc, char** argv)
 {
-  //creates a parent and its child and print them.
-  Task* parent = new Task("parent", NULL, true);
-  Task* son = parent->addSubtask("son", time(NULL));
-  std::cout << "Hello, QtWorld !" << std::endl;
-
-  std::cout << parent->toString() << std::endl;
-
-
-  //deletes a subtask
-  parent->deleteSubtask(son);
-  std::cout << parent->toString() << std::endl;
-
-  //checks a task
-
-  parent->checkTask();
-  std::cout << parent->toString() << std::endl;
-
-  delete(parent);
-
-
-  //my tests
-
-  std::cout << "avant" << std::endl;
   QApplication app(argc, argv);
   
   QTranslator qtTranslator;

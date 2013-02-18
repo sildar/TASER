@@ -1,0 +1,11 @@
+QTask[current="true"] {
+border: 1px solid blue;
+}
+
+QTask[current="false"] {
+border-style: none;
+}
+
+QTask[done="true"] { background-color: green; }
+QTask[done="false"] { background-color: red; }
+
