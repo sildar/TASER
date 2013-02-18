@@ -101,6 +101,9 @@ public slots:
     \brief updates the date label
   */
   void setDateText(QDate date);
+  
+  void dateLinked(bool isLinked);
+
   /*!
     \brief check or uncheck a QTask
   */

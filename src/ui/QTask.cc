@@ -126,6 +126,7 @@ QTask::QTask(Task* t, QTask* parent)
   calmenu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
   calmenu->resize(cal->sizeHint());
   connect(cal, SIGNAL(clicked(QDate)), this, SLOT(setDateText(QDate)));
+  connect(cal, SIGNAL(boxChecked(bool)),this, SLOT(dateLinked(bool)));
 
   // Separator
   QFrame *f2 = new QFrame();
@@ -190,6 +191,13 @@ QTask::setDateText(QDate aDate)
 {
   date->setText("<a href='date'>" % aDate.toString() % "</a>");
   task->setDate(QDateTime(aDate).QDateTime::toTime_t());
+}
+
+void
+QTask::dateLinked(bool isLinked)
+{
+  this->dateIsLinked = isLinked;
+  this->task->setLinkedDate(isLinked);
 }
 
 void
