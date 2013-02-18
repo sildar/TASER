@@ -9,6 +9,7 @@ QTask::QTask(Task* t, QTask* parent)
 {
   setDone(false);
   // setCurrent(true);
+  pare = parent;
   
   this->setAttribute(Qt::WA_DeleteOnClose);
 
@@ -66,8 +67,10 @@ QTask::QTask(Task* t, QTask* parent)
   menu->addAction(trUtf8("Insérer un template"));
   menu->addAction(trUtf8("Sauver un template"));
   menu->addSeparator();
-  menu->addAction(trUtf8("Monter la tâche"));
-  menu->addAction(trUtf8("Descendre la tâche"));
+  upTaskAction = new QAction(trUtf8("Monter la tâche"),menu);
+  menu->addAction(upTaskAction);
+  downTaskAction = new QAction(trUtf8("Descendre la tâche"),menu);
+  menu->addAction(downTaskAction);
   menu->addSeparator();
   expandTaskAction = new QAction(trUtf8("Déplier la tâche"),menu);
   menu->addAction(expandTaskAction);
@@ -228,6 +231,20 @@ QTask::menuActionManager(QAction* action)
   } else if (action == orderSubtasksAction) {
     orderSubtasks();
   }
+  else if (action == upTaskAction){
+    if (this->task->hasBigBrother()) {
+      QBoxLayout* lay = (QBoxLayout*) pare->subtaskContainer->layout();
+      exchangeWidgets(this->task->getIndex()-1,-1,lay);
+      this->task->getUp();
+      }
+  }
+  else if (action == downTaskAction){
+    if (this->task->hasLittleBrother()){
+      QBoxLayout* lay = (QBoxLayout*) pare->subtaskContainer->layout();
+      exchangeWidgets(this->task->getIndex()-1,1,lay);
+      this->task->getDown();
+    }
+  }
 }
 
 void QTask::orderSubtasks()
@@ -268,6 +285,12 @@ void QTask::closeTask(){
 void QTask::textChanged(QString& s)
 {
   task->setName(s.toStdString());
+}
+
+void QTask::exchangeWidgets(int from, int change, QBoxLayout* layout)
+{
+  QWidget* widget = layout->takeAt(from)->widget();
+  layout->insertWidget(from+change,widget);
 }
 
 QTask::~QTask()
