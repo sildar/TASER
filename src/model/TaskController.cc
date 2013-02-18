@@ -29,9 +29,9 @@ void TaskController::loadModel()
 {
   tasks = loadTasklist("tasklist.xml");
   for (std::list<Task*>::iterator it = tasks.begin(); it != tasks.end(); it++)
-    {
-      addTask(*it);
-    }
+  {
+    addTask(*it);
+  }
 }
 
 void TaskController::saveModel()

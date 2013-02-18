@@ -37,9 +37,10 @@ loadTasklist(std::string xmlFile){
   doc.LoadFile();
   TiXmlElement* root = doc.RootElement();
 
-  for(TiXmlElement* task = root->FirstChildElement("task"); task; task = task->NextSiblingElement("task"))
+  for(TiXmlElement* element = root->FirstChildElement("task");
+      element; element = element->NextSiblingElement("task"))
   {
-    tasklist.push_back(new Task(task));
+    tasklist.push_back(new Task(element));
   }
 
   return tasklist;

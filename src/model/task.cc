@@ -281,8 +281,8 @@ Task::Task(TiXmlElement* root, Task* parent)
     new Task(child, this);
   }
 
+  this->parent = parent;
   if (parent != NULL) {
-    this->parent = parent;
     this->parent->addSubtask(this);
   }
 }
