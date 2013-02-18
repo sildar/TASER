@@ -29,8 +29,8 @@ class QTask : public QWidget
 {
   Q_OBJECT
 
-  Q_PROPERTY(bool done READ done WRITE setDone)
-  Q_PROPERTY(bool current READ current WRITE setCurrent)
+  Q_PROPERTY(bool done READ done WRITE setDone NOTIFY changedDone)
+  Q_PROPERTY(bool current READ current WRITE setCurrent NOTIFY changedCurrent)
 
 public:
   QTask(Task* t, QTask* parent = NULL);
@@ -52,9 +52,13 @@ public:
 
   Task* task;
   bool done() const { return done_; }
-  void setDone(bool done) { done_ = done; }
+  void setDone(bool done) { done_ = done; emit changedDone(done); }
   bool current() const { return current_; }
-  void setCurrent(bool current) { current_ = current; }
+  void setCurrent(bool current) { current_ = current; emit changedCurrent(current); }
+
+signals:
+  void changedDone(bool);
+  void changedCurrent(bool);
 
 private:
   bool done_;
