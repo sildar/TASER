@@ -18,11 +18,9 @@ QTask::QTask(Task* t, QTask* parent)
 
   QVBoxLayout *lay = new QVBoxLayout();
   setLayout(lay);
-  lay->setContentsMargins(0, 0, 0, 0);
 
   this->qTaskWidget = new QWidget();
   QHBoxLayout *qTaskLayout = new QHBoxLayout();
-  qTaskLayout->setContentsMargins(0, 0, 0, 0);
 
   QString textstr = QString::fromStdString(task->getName());
   time_t datet = task->getDate();
