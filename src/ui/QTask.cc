@@ -160,13 +160,10 @@ QTask::QTask(Task* t, QTask* parent)
 
   // recursive creation of QTasks, if any subtasks in this->task
   std::list<Task*> subtasks = this->task->getSubtasks();
-  if (subtasks.size() > 0)
+  for (std::list<Task*>::iterator it = subtasks.begin();
+       it != subtasks.end(); ++it)
   {
-    for (std::list<Task*>::iterator it = subtasks.begin();
-         it != subtasks.end(); ++it)
-    {
-      new QTask((*it), this);
-    }
+    new QTask((*it), this);
   }
 }
 
@@ -256,15 +253,15 @@ void QTask::orderSubtasks()
   if (this->task->hasOrderedSubtasks()) {
     orderSubtasksAction->setText(trUtf8("Enlever l'ordre"));
     for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
-	  QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
-	  curr->order->setText(QString::number(curr->task->getIndex())); 
-	}
+      QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+      curr->order->setText(QString::number(curr->task->getIndex()));
+    }
   } else {
     orderSubtasksAction->setText(trUtf8("Ordonner les tâches"));
     for (int i=0; i<this->subtaskContainer->layout()->count(); i++) {
-	  QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
-	  curr->order->setText("-"); 
-	}
+      QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+      curr->order->setText("-");
+    }
   }
 }
 
@@ -275,6 +272,7 @@ void QTask::addSubtask()
                      this->task->hasOrderedSubtasks(),
                      this->task->getDate());
   QTask* task = new QTask(t, this);
+  TaskController::saveModel();
 }
 
 void QTask::closeTask(){
@@ -298,8 +296,12 @@ void QTask::exchangeWidgets(int from, int change, QBoxLayout* layout)
 
 QTask::~QTask()
 {
-  TaskController::removeTask(task);
+  for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
+    QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+    delete curr;
+  }
   delete task;
+  TaskController::saveModel();
 }
 
 void

@@ -22,7 +22,7 @@ void TaskController::addTask(Task* t)
 
 void TaskController::removeTask(Task* t)
 {
-  qTaskContainer->removeTask(t);
+//  qTaskContainer->removeTask(t);
 }
 
 void TaskController::loadModel()
