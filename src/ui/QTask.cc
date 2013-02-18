@@ -1,11 +1,14 @@
 // -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 
 #include "QTask.h"
+#include <QtDebug>
 
 QTask::QTask(Task* t, QTask* parent)
   : task(t)
 {
-
+  setDone(false);
+  // setCurrent(true);
+  
   this->setAttribute(Qt::WA_DeleteOnClose);
 
   QVBoxLayout *lay = new QVBoxLayout();
@@ -30,6 +33,7 @@ QTask::QTask(Task* t, QTask* parent)
   check = new QCheckBox();
   check->setToolTip(trUtf8("Marquer comme fait"));
   connect(check, SIGNAL(clicked()), this, SLOT(checkTask()));
+  connect(check, SIGNAL(clicked()), this, SLOT(enable()));
   qTaskLayout->addWidget(check);
 
   //0x2193 is a arrow down
@@ -38,7 +42,8 @@ QTask::QTask(Task* t, QTask* parent)
   expand->setText(QChar(0x2193));
   expand->setCheckable(true);
   qTaskLayout->addWidget(expand);
-  connect(this->expand, SIGNAL(toggled(bool)), this, SLOT(changeText(bool)));
+  connect(expand, SIGNAL(toggled(bool)), this, SLOT(changeText(bool)));
+  connect(expand, SIGNAL(toggled(bool)), this, SLOT(enable()));
 
   // Parameter Button and its menu
   param = new QToolButton();
@@ -74,7 +79,7 @@ QTask::QTask(Task* t, QTask* parent)
   qTaskLayout->addWidget(param);
 
   connect(menu, SIGNAL(triggered(QAction*)), this, SLOT(menuActionManager(QAction*)));
-
+  connect(menu, SIGNAL(triggered(QAction*)), this, SLOT(enable()));
   
   // Separator
   QFrame *f = new QFrame();
@@ -189,69 +194,54 @@ void
 QTask::checkTask()
 {
   task->checkTask();
+  setDone(task->isChecked());
 }
 
 void
 QTask::menuActionManager(QAction* action)
 {
-  if (action == checkTaskAction)
-  {
+  if (action == checkTaskAction) {
     this->checkTask();
     this->check->setChecked(this->task->isChecked());
-  }
-  else if (action == delTaskAction)
-  {
+  } else if (action == delTaskAction) {
     //carefull shaky part
     this->closeButton->click();
-  }
-  else if (action == expandTaskAction)
-  {
+  } else if (action == expandTaskAction) {
     this->expand->toggle();
-  }
-  else if (action == addTaskAction)
-  {
+  } else if (action == addTaskAction) {
     this->addSubtask();
-    if (!this->expand->isChecked()){
+    if (!this->expand->isChecked()) {
       this->expand->toggle();
     }
+  } else if (action == orderSubtasksAction) {
+    orderSubtasks();
   }
-  else if (action == orderSubtasksAction)
-    {
-      orderSubtasks();
-    }
 }
 
 void QTask::orderSubtasks()
 {
   this->task->setSubtasksOrdered(!this->task->hasOrderedSubtasks());
-  if (this->task->hasOrderedSubtasks())
-    {
-      orderSubtasksAction->setText(trUtf8("Enlever l'ordre"));
-      for (int i=0; i < this->subtaskContainer->layout()->count(); i++)
-	{
+  if (this->task->hasOrderedSubtasks()) {
+    orderSubtasksAction->setText(trUtf8("Enlever l'ordre"));
+    for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
 	  QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
 	  curr->order->setText(QString::number(curr->task->getIndex())); 
 	}
-    }
-  else
-    {
-      orderSubtasksAction->setText(trUtf8("Ordonner les tâches"));
-      for (int i=0; i<this->subtaskContainer->layout()->count(); i++)
-	{
+  } else {
+    orderSubtasksAction->setText(trUtf8("Ordonner les tâches"));
+    for (int i=0; i<this->subtaskContainer->layout()->count(); i++) {
 	  QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
 	  curr->order->setText("-"); 
 	}
-    }
+  }
 }
 
 void QTask::addSubtask()
 {
-  setStyle(style());
   Task* t = new Task("Titre", this->task,
                      this->task->hasOrderedSubtasks(),
                      this->task->getDate());
   QTask* task = new QTask(t, this);
-  task->setProperty("foo", false);
 }
 
 void QTask::closeTask(){
@@ -273,10 +263,25 @@ QTask::~QTask()
 }
 
 void
-QTask::paintEvent(QPaintEvent *qpe)
+QTask::paintEvent(QPaintEvent *)
 {
   QStyleOption opt;
   opt.init(this);
   QPainter p(this);
   style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+}
+
+void
+QTask::enable()
+{
+  emit enabled(this);
+  redraw();
+}
+
+void
+QTask::redraw()
+{
+  style()->unpolish(this);
+  style()->polish(this);
+  setStyle(style());
 }

@@ -6,6 +6,7 @@
 QTaskContainer::QTaskContainer(QWidget* parent)
   : QWidget(parent)
 {
+  currentTask = NULL;
   addTaskButton = new QPushButton(trUtf8("Nouvelle Tâche"));
   tasks = std::list<QTask*>();
   tasksLayout = new QVBoxLayout();
@@ -27,11 +28,13 @@ QTaskContainer::QTaskContainer(QWidget* parent)
 void
 QTaskContainer::addTask(QTask* task)
 {
-  for (int i = 0; i <= (this->tasks.size() + 1); i++) {
+  for (unsigned int i = 0; i <= (this->tasks.size() + 1); i++) {
     this->tasksLayout->setStretch(i, 0);
   }
 
-  setStyle(style());
+  connect(task, SIGNAL(enabled(QTask*)),
+          this, SLOT(focusChanged(QTask*)));
+
   tasks.push_back(task);
   this->tasksLayout->addWidget(task);
   this->tasksLayout->addStretch(1);
@@ -54,7 +57,17 @@ QTaskContainer::newTask()
 }
 
 void
-QTaskContainer::paintEvent(QPaintEvent *qpe)
+QTaskContainer::focusChanged(QTask *qtask)
+{
+  // if (currentTask != NULL) {
+  //   currentTask->setCurrent(false);
+  // }
+  // currentTask = qtask;
+  // currentTask->setCurrent(true);
+}
+
+void
+QTaskContainer::paintEvent(QPaintEvent *)
 {
   QStyleOption opt;
   opt.init(this);

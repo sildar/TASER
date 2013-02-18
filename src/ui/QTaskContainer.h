@@ -37,12 +37,16 @@ public slots:
   */
   void newTask();
 
-private:
+private slots:
+  void focusChanged(QTask *);
+
   QVBoxLayout* mainLayout;
   QHBoxLayout* buttonLayout;
   QVBoxLayout* tasksLayout;
   std::list<QTask*> tasks;
   QPushButton* addTaskButton;
+  QTask *currentTask;
+
 };
 
 
