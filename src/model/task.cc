@@ -129,6 +129,7 @@ Task::hasLittleBrother()
 	    }
 	  else if ((*it)==this)
 	    {
+
 	      sawMe = true;
 	    }
 	}
@@ -148,9 +149,35 @@ Task::getUp()
 	{
 	  if ((*it) == this)//insert before sibling and erase itself from preceding location
 	    {
+	      pred--;
 	      this->parent->subtasks.insert(pred,*it);
 	      this->parent->subtasks.erase(it);
+	      return;
 	    }
+	  pred++;
+	}
+    }
+}
+
+void
+Task::getDown()
+{
+  if (this->hasLittleBrother())
+    {
+      std::list<Task*>::iterator pred = this->parent->subtasks.begin();
+
+      for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it)      
+	{
+	  if ((*it) == this)//insert before sibling and erase itself from preceding location
+	    {
+	      Task* t = *it;
+	      it++;
+	      it++;
+	      this->parent->subtasks.insert(it,t);
+	      this->parent->subtasks.erase(pred);
+	      return;
+	    }
+	  pred++;
 	}
     }
 }

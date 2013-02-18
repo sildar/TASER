@@ -81,7 +81,15 @@ public:
 
   bool hasLittleBrother();
 
+  /*!
+    \brief ups the task in its parent's subtasks list
+  */
   void getUp();
+
+  /*!
+    \brief downs the task in its parent's subtasks list
+  */
+  void getDown();
 
   /*!
     \brief deletes a task and all its subtasks

@@ -1,12 +1,9 @@
 <?xml version="1.0" ?>
 <tasklist>
-    <task date="1361214511">
-        <name>Titre</name>
-    </task>
-    <task date="1361215125">
-        <name>Titre</name>
-    </task>
-    <task date="1361215125">
-        <name>Titre</name>
+    <task date="1361218462">
+        <name>toto</name>
+        <task date="1361218462">
+            <name>Titre</name>
+        </task>
     </task>
 </tasklist>
