@@ -1,10 +1,17 @@
 #include "TaskController.h"
 #include "modelutil.h"
 
+QTaskContainer* TaskController::qTaskContainer = NULL;
 std::list<Task*> TaskController::tasks = std::list<Task*>();
 
 TaskController::TaskController()
 {
+}
+
+
+void TaskController::setQTaskContainer(QTaskContainer *qtc)
+{
+  qTaskContainer = qtc;
 }
 
 
@@ -18,7 +25,7 @@ void TaskController::removeTask(Task* t)
 
 void TaskController::loadModel()
 {
-  tasks = loadTasklist("tasklist.xml"); // O RLY?
+  tasks = loadTasklist("tasklist.xml");
 }
 
 void TaskController::saveModel()

@@ -18,30 +18,29 @@ QTaskContainer::QTaskContainer(QWidget* parent)
   mainLayout->addLayout(tasksLayout);
   mainLayout->addStretch(1);
 
-  connect(addTaskButton,SIGNAL(clicked()),this,SLOT(addTask()));
+  connect(addTaskButton,SIGNAL(clicked()),this,SLOT(newTask()));
 
 
 }
 
 void
-QTaskContainer::addTask(Task* parent)
+QTaskContainer::addTask(QTask* task)
 {
-  QTask* qtask;
-  if (parent != NULL) {
-    qtask = new QTask(new Task("Titre", parent,
-                               parent->hasOrderedSubtasks(), NULL));
-  } else {
-    qtask = new QTask(new Task("Titre", NULL, false, NULL));
-  }
-
   for (int i = 0; i <= (this->tasks.size() + 1); i++) {
     this->tasksLayout->setStretch(i, 0);
   }
 
   setStyle(style());
-  tasks.push_back(qtask);
-  this->tasksLayout->addWidget(qtask);  
+  tasks.push_back(task);
+  this->tasksLayout->addWidget(task);
   this->tasksLayout->addStretch(1);
+}
+
+void
+QTaskContainer::newTask()
+{
+  QTask* qtask = new QTask(new Task("Titre", NULL, false, time(NULL)));
+  addTask(qtask);
 }
 
 void

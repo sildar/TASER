@@ -17,22 +17,29 @@ class QTaskContainer : public QWidget
 {
   Q_OBJECT
 
+  friend class TaskController;
+
  public:
   QTaskContainer(QWidget* parent=0);
   void paintEvent(QPaintEvent *qpe);
 
+  /*!
+    \brief Adds a previously created root QTask to this widget.
+  */
+  void addTask(QTask* task);
+
 public slots:
-    /*!
-      \brief adds a main QTask
-    */
-    void addTask(Task* parent=0);
- private:
+  /*!
+    \brief Creates a new root QTask.
+  */
+  void newTask();
+
+private:
   QVBoxLayout* mainLayout;
   QHBoxLayout* buttonLayout;
   QVBoxLayout* tasksLayout;
   std::list<QTask*> tasks;
   QPushButton* addTaskButton;
-  
 };
 
 

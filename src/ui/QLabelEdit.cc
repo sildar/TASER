@@ -45,6 +45,7 @@ QLabelEdit::enableRo()
       text = "-";
     } else {
       text = rw->text();
+      emit(textChanged(text));
     }
     ro->setText("<a href='title'>" % text % "</a>");
   }
