@@ -77,6 +77,10 @@ public:
   */
   bool isCheckable() const;
 
+  bool hasBigBrother();
+
+  bool hasLittleBrother();
+
   /*!
     \brief deletes a task and all its subtasks
   */

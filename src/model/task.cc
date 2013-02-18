@@ -97,6 +97,45 @@ Task::deleteSubtask(Task* t)
   }
 }
 
+bool
+Task::hasBigBrother()
+{
+  if (this->parent == NULL)
+    {
+      return false;
+    }
+  else
+    {
+      //checks if the first subtask of its parent is itself
+      return (*(this->parent->subtasks.begin()) != this);
+    }
+}
+
+bool
+Task::hasLittleBrother()
+{
+  if (this->parent == NULL)
+    {
+      return false;
+    }
+  else
+    {
+      bool sawMe = false;
+      for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it)      
+	{
+	  if (sawMe)
+	    {
+	      return true;
+	    }
+	  else if ((*it)==this)
+	    {
+	      sawMe = true;
+	    }
+	}
+    }
+  return false;
+}
+
 void
 Task::checkTask(){
 
