@@ -21,6 +21,7 @@
 #include <QDateTime>
 #include <QPainter>
 #include <QStyleOption>
+#include <QBoxLayout>
 
 class TaskController;
 
@@ -66,6 +67,7 @@ private:
   QCheckBox* check;
   QToolButton* expand;
   QToolButton* param;
+  QTask* pare;
 
   //actions for the param menu
   QAction* addTaskAction;
@@ -73,6 +75,8 @@ private:
   QAction* delTaskAction;
   QAction* expandTaskAction;
   QAction* orderSubtasksAction;
+  QAction* upTaskAction;
+  QAction* downTaskAction;
 
   QLabel* order;
 
@@ -100,10 +104,14 @@ public slots:
     \brief check or uncheck a QTask
   */
   void checkTask();
+
+  void exchangeWidgets(int from, int change, QBoxLayout* layout);
+
   /*!
     \brief changes the text of the expand button (arrow direction)
   */
   void changeText(bool isDown);
+
 
 private slots:
   /*!
