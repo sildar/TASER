@@ -14,6 +14,12 @@ QLinkBox::QLinkBox(QString label,QWidget *parent)
   lay->addWidget(linkboxlab);
 
   this->setLayout(lay);
+  connect(linkbox,SIGNAL(toggled(bool)),this,SLOT(manageCheckBox(bool)));
+}
+
+void
+QLinkBox::manageCheckBox(bool isChecked){
+  emit boxChecked(isChecked);
 }
 
 bool

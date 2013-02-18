@@ -28,9 +28,17 @@ public:
   bool isLinked();
 
   void changeEvent(QEvent* event);
+    
+signals:
+  void boxChecked(bool);
+
+private slots:
+  void manageCheckBox(bool);
+  
 
 private:
   QLinkBox* linkbox;
+
 
 
 };

@@ -29,6 +29,12 @@ public:
 
   void setText(QString txt);
 
+signals:
+  void boxChecked(bool);
+
+public slots:
+  void manageCheckBox(bool);
+
 private:
   QHBoxLayout* lay;
   QCheckBox *linkbox;

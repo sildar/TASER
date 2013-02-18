@@ -21,6 +21,12 @@ QCalendara::QCalendara(QWidget *parent, QString* parentDate)
   this->linkbox = new QLinkBox(trUtf8("Lier la tache à la tâche principale"));
 
   this->layout()->addWidget(linkbox);
+  connect(linkbox,SIGNAL(boxChecked(bool)),this,SLOT(manageCheckBox(bool)));
+}
+
+void
+QCalendara::manageCheckBox(bool isChecked){
+  emit boxChecked(isChecked);
 }
 
 bool

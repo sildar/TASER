@@ -63,6 +63,7 @@ signals:
 private:
   bool done_;
   bool current_;
+  bool dateIsLinked;
   QWidget* qTaskWidget;
   QCheckBox* check;
   QToolButton* expand;

@@ -12,6 +12,7 @@ QTask::QTask(Task* t, QTask* parent)
   setDone(false);
   // setCurrent(true);
   pare = parent;
+  dateIsLinked = task->hasLinkedDate();
   
   this->setAttribute(Qt::WA_DeleteOnClose);
 
