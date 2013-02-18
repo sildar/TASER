@@ -33,6 +33,6 @@ void TaskController::loadTemplate(std::string xmlFileName, QTask* root)
 void TaskController::saveTemplate(std::string xmlFileName, QTask* root)
 {
   std::list<Task*> list = std::list<Task*>();
-  list.push_back(root);
+  list.push_back(root->task);
   saveTasklist(xmlFileName, list);
 }
