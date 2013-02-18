@@ -22,7 +22,7 @@ class QTaskContainer : public QWidget
 
   friend class TaskController;
 
- public:
+public:
   QTaskContainer(QWidget* parent=0);
   void paintEvent(QPaintEvent *qpe);
 
@@ -40,6 +40,7 @@ public slots:
 private slots:
   void focusChanged(QTask *);
 
+private:
   QVBoxLayout* mainLayout;
   QHBoxLayout* buttonLayout;
   QVBoxLayout* tasksLayout;
