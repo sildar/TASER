@@ -154,10 +154,11 @@ QTask::QTask(Task* t, QTask* parent)
   lay->addWidget(this->subtaskContainer);
 
   // recursive creation of QTasks, if any subtasks in this->task
-  if (!this->task->getSubtasks().empty())
+  std::list<Task*> subtasks = this->task->getSubtasks();
+  if (subtasks.size() > 0)
   {
-    for (std::list<Task*>::iterator it = this->task->getSubtasks().begin();
-         it != this->task->getSubtasks().end(); ++it)
+    for (std::list<Task*>::iterator it = subtasks.begin();
+         it != subtasks.end(); ++it)
     {
       new QTask((*it), this);
     }
