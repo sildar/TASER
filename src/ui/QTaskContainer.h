@@ -38,6 +38,10 @@ public:
     the TaskController).
   */
   void simpleAddTask(QTask* task);
+  /*!
+    \brief Updates the TaskController's model.
+  */
+  void updateModel();
 
 public slots:
 

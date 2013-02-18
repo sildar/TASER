@@ -36,6 +36,13 @@ void TaskController::loadModel()
 
 void TaskController::saveModel()
 {
+  qTaskContainer->updateModel();
+  int i = 0;
+  for (std::list<Task*>::iterator it = tasks.begin(); it != tasks.end(); it++)
+  {
+    std::cout << i << ": " << &(*it) << std::endl;
+    i++;
+  }
   saveTasklist("tasklist.xml", tasks);
 }
 

@@ -22,21 +22,13 @@ QTaskContainer::QTaskContainer(QWidget* parent)
   connect(addTaskButton,SIGNAL(clicked()),this,SLOT(newTask()));
   TaskController::setQTaskContainer(this);
   TaskController::loadModel();
-  
+
 }
 
 void
 QTaskContainer::addTask(QTask* task)
 {
   simpleAddTask(task);
-
-  std::list<Task*> theTasks;
-  for (std::list<QTask*>::iterator it = tasks.begin(); it != tasks.end(); it++)
-  {
-    theTasks.push_back((*it)->task);
-  }
-
-  TaskController::updateModel(theTasks);
   TaskController::saveModel();
 }
 
@@ -60,6 +52,19 @@ QTaskContainer::newTask()
 {
   QTask* qtask = new QTask(new Task("Titre", NULL, false, time(NULL)));
   addTask(qtask);
+}
+
+void
+QTaskContainer::updateModel()
+{
+  std::list<Task*> theTasks;
+  for (std::list<QTask*>::iterator it = tasks.begin(); it != tasks.end(); it++)
+  {
+    if ((*it)->task != NULL)
+      theTasks.push_back((*it)->task);
+  }
+
+  TaskController::updateModel(theTasks);
 }
 
 void

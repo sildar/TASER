@@ -302,7 +302,7 @@ QTask::~QTask()
     QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
     delete curr;
   }
-  delete task;
+  delete task; task = NULL;
   TaskController::saveModel();
 }
 
