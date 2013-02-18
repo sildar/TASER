@@ -115,6 +115,11 @@ public:
   */
   int getIndex() const;
 
+  /*!
+    \brief getter for the list of subtasks
+  */
+  std::list<Task*> getSubtasks() const;
+
   void setSubtasksOrdered(bool order);
 
 

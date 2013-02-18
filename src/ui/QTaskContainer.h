@@ -32,6 +32,12 @@ public:
     \brief Adds a previously created root QTask to this widget.
   */
   void addTask(QTask* task);
+  /*!
+    \brief Adds a previously created root QTask to this widget.
+    This method does not update the model (and is intended to be called from
+    the TaskController).
+  */
+  void simpleAddTask(QTask* task);
 
 public slots:
 

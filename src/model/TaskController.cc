@@ -17,7 +17,7 @@ void TaskController::setQTaskContainer(QTaskContainer *qtc)
 void TaskController::addTask(Task* t)
 {
   QTask* qt = new QTask(t);
-  qTaskContainer->addTask(qt);
+  qTaskContainer->simpleAddTask(qt);
 }
 
 void TaskController::removeTask(Task* t)
@@ -28,7 +28,7 @@ void TaskController::removeTask(Task* t)
 void TaskController::loadModel()
 {
   tasks = loadTasklist("tasklist.xml");
-  for (std::list<Task*>::iterator it = tasks.begin(); it != tasks.end(); it++)
+  for (std::list<Task*>::iterator it = tasks.begin(); it != tasks.end(); ++it)
   {
     addTask(*it);
   }

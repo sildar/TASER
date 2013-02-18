@@ -252,6 +252,12 @@ Task::getIndex() const{
   return index;
 }
 
+std::list<Task*>
+Task::getSubtasks() const{
+  return subtasks;
+}
+
+
 void
 Task::setSubtasksOrdered(bool order)
 {

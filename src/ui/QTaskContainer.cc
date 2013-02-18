@@ -28,6 +28,21 @@ QTaskContainer::QTaskContainer(QWidget* parent)
 void
 QTaskContainer::addTask(QTask* task)
 {
+  simpleAddTask(task);
+
+  std::list<Task*> theTasks;
+  for (std::list<QTask*>::iterator it = tasks.begin(); it != tasks.end(); it++)
+  {
+    theTasks.push_back((*it)->task);
+  }
+
+  TaskController::updateModel(theTasks);
+  TaskController::saveModel();
+}
+
+void
+QTaskContainer::simpleAddTask(QTask* task)
+{
   for (unsigned int i = 0; i <= (this->tasks.size() + 1); i++) {
     this->tasksLayout->setStretch(i, 0);
   }
@@ -35,18 +50,9 @@ QTaskContainer::addTask(QTask* task)
   connect(task, SIGNAL(enabled(QTask*)),
           this, SLOT(focusChanged(QTask*)));
 
-  tasks.push_back(task);
+  this->tasks.push_back(task);
   this->tasksLayout->addWidget(task);
   this->tasksLayout->addStretch(1);
-
-  std::list<Task*> theTasks;
-  for (std::list<QTask*>::iterator it = tasks.begin(); it != tasks.end(); it++)
-    {
-      theTasks.push_back((*it)->task);
-    }
-
-  TaskController::updateModel(theTasks);
-  TaskController::saveModel();
 }
 
 void
