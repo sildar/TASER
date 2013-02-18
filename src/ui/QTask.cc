@@ -287,3 +287,19 @@ QTask::redraw()
   style()->polish(this);
   setStyle(style());
 }
+
+void QTask::changeEvent(QEvent* event)
+{
+  if (event->type() == QEvent::LanguageChange)
+    {
+      retranslate();
+    }
+  
+  // remember to call base class implementation
+  QWidget::changeEvent(event);
+}
+
+
+void QTask::retranslate(){
+  addTaskAction->setText(trUtf8("Ajouter une tâche"));
+}

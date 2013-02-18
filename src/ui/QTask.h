@@ -44,6 +44,9 @@ public:
   */
   void addSubtask();
 
+  void changeEvent(QEvent* event);
+  void retranslate();
+
   Task* task;
   bool done() const { return done_; }
   void setDone(bool done) { done_ = done; }
