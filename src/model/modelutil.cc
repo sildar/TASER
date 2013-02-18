@@ -7,12 +7,15 @@ saveTasklist(std::string xmlFile, std::list<Task*> tasks){
   TiXmlElement* root = new TiXmlElement("tasklist");
 
   // save each task recursively
-  if (tasks.size() > 0)
+  if (tasks != NULL)
   {
-    for (std::list<Task*>::iterator iter = tasks.begin();
-         iter != tasks.end(); iter++)
+    if (tasks.size() > 0)
     {
-      root->LinkEndChild((*iter)->xmlSubtree());
+      for (std::list<Task*>::iterator iter = tasks.begin();
+           iter != tasks.end(); iter++)
+      {
+        root->LinkEndChild((*iter)->xmlSubtree());
+      }
     }
   }
 
