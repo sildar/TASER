@@ -239,7 +239,16 @@ Task::isCheckable() const
     {
       if ((*it) == (this))
       {
-        return (!parent->isChecked());
+	it++;
+	while (it != this->parent->subtasks.end())
+	  {
+	    if ((*it)->isChecked())
+	      {
+		return false;
+	      }
+	    it++;
+	  }
+        return true;
       }
       else if (! (*it)->isChecked())
       {
