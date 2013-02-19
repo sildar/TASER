@@ -27,7 +27,7 @@ QTask::QTask(Task* t, QTask* parent)
   QString textstr = QString::fromStdString(task->getName());
   time_t datet = task->getDate();
   QString datestr = ctime(&datet);
-  QDate dateq = QDate::currentDate();
+  QDate dateq = QDateTime::fromTime_t(task->getDate()).date();
 
   if (parent != NULL) {
     dateq = parent->cal->selectedDate();
@@ -115,6 +115,7 @@ QTask::QTask(Task* t, QTask* parent)
 
   // Task date
   date = new QLabel("<a href='date'>" % dateq.toString()   % "</a>");
+  setLate(dateq < QDate::currentDate());
   date->installEventFilter(this);
   date->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
   qTaskLayout->addWidget(date);
