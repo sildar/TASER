@@ -36,6 +36,8 @@ QTask::QTask(Task* t, QTask* parent)
   // Check button
   check = new QCheckBox();
   check->setToolTip(trUtf8("Marquer comme fait"));
+  check->setChecked(this->task->isChecked());
+  setDone(this->task->isChecked());
   connect(check, SIGNAL(clicked()), this, SLOT(checkTask()));
   connect(check, SIGNAL(clicked()), this, SLOT(enable()));
   qTaskLayout->addWidget(check);
@@ -202,7 +204,7 @@ QTask::setDateText(QDate aDate)
   }
   
   task->setDate(QDateTime(aDate).QDateTime::toTime_t());
-  setLate(aDate > QDate::currentDate());
+  setLate(aDate < QDate::currentDate());
 }
 
 void
