@@ -194,7 +194,9 @@ QTask::saveTemplate(int code){
   {
     std::cout << "template saved ! " << std::endl;
     std::string fileName = "./templates/";
-    fileName = fileName.append(this->task->getName());
+    QString file = QString::fromUtf8(this->task->getName().c_str());
+    file.replace(QRegExp("[/ ]"),"_");
+    fileName = fileName.append(std::string(file.toUtf8().data()));
     fileName = fileName.append(".xml");
     TaskController::saveTemplate(fileName,this);
 
@@ -347,8 +349,9 @@ QTask::menuActionManager(QAction* action)
   }
   else if (action == saveTemplateAction){
     QString message = trUtf8("Le template sera sauvé sous le nom ");
-    message = message.append(QString::fromUtf8(this->task->getName().c_str()));
-    message = message.replace(QRegExp("/"),"_");
+    QString name = QString::fromUtf8(this->task->getName().c_str());
+    name = name.replace(QRegExp("[/ ]"),"_");
+    message = message.append(name);
     message = message.append("\n");
     message = message.append(trUtf8("Si un template du même nom existe, il sera écrasé."));
     saveTemplateMB = new QMessageBox(QMessageBox::Question,trUtf8("Sauver un template"), message,QMessageBox::Abort | QMessageBox::Ok);
