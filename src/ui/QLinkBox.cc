@@ -2,12 +2,15 @@
 
 #include "QLinkBox.h"
 
-QLinkBox::QLinkBox(QString label,QWidget *parent)
+QLinkBox::QLinkBox(QString label, bool checked, QWidget *parent)
   : QWidget(parent)
 {
   this->linkboxlab = new QLabel(label);
   this->linkbox = new QCheckBox();
-  //this->linkbox->setChecked(true);
+  if (checked)
+  {
+    this->linkbox->setChecked(true);
+  }
   this->lay = new QHBoxLayout();
 
   lay->addWidget(linkbox);

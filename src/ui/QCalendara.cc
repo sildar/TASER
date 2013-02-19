@@ -6,7 +6,7 @@
 #include <QTextCharFormat>
 #include <QLocale>
 
-QCalendara::QCalendara(QWidget *parent, QString* parentDate)
+QCalendara::QCalendara(QWidget *parent, bool checked, QString *parentDate)
   : QCalendarWidget(parent)
 {
 
@@ -18,7 +18,7 @@ QCalendara::QCalendara(QWidget *parent, QString* parentDate)
     format.setFontItalic(true);
     this->setDateTextFormat(QDate::fromString(*parentDate), format);
   }
-  this->linkbox = new QLinkBox(trUtf8("Lier la tache à la tâche principale"));
+  this->linkbox = new QLinkBox(trUtf8("Lier la tache à la tâche principale"), checked);
 
   this->layout()->addWidget(linkbox);
   connect(linkbox,SIGNAL(boxChecked(bool)),this,SLOT(manageCheckBox(bool)));
