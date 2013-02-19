@@ -65,6 +65,11 @@ std::list<std::string> TaskController::loadTemplateList(){
   return list;
 }
 
+void TaskController::reloadTemplateMenu()
+{
+  qTaskContainer->reloadTemplateMenu();
+}
+
 void TaskController::loadTemplate(std::string xmlFileName, QTask* parent)
 {
   std::string temp = "./templates/";

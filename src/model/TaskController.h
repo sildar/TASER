@@ -17,6 +17,7 @@ public:
     \brief Sets the QTaskContainer the model will interact with.
   */
   static void setQTaskContainer(QTaskContainer* qtc);
+  static void reloadTemplateMenu();
 
 public slots:
   static void addTask(Task* t);

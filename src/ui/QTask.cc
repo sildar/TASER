@@ -199,24 +199,7 @@ QTask::saveTemplate(int code){
   TaskController::saveTemplate(fileName,this);
 
   //updates the template menu
-
-  std::list<std::string> templatelist = TaskController::loadTemplateList();
-  
-  templateMenu->clear();
-
-  for (std::list<std::string>::iterator it = templatelist.begin(); it != templatelist.end(); ++it){
-    templateMenu->addAction(QString(it->c_str()));
-  }
-  
-  for (int i = 0; i< this->subtaskContainer->layout()->count(); i++){
-    QTask* curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
-    
-    curr->templateMenu->clear();
-    
-    for (std::list<std::string>::iterator it = templatelist.begin(); it != templatelist.end(); ++it){
-      curr->templateMenu->addAction(QString(it->c_str()));
-    }
-  }
+  TaskController::reloadTemplateMenu();
     }
 }
 

@@ -41,6 +41,8 @@ public:
 
 public slots:
 
+  void reloadTemplateMenu();
+
   /*!
     \brief Creates a new root QTask.
   */

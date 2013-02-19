@@ -31,6 +31,33 @@ QTaskContainer::addTask(QTask* task)
   simpleAddTask(task);
 }
 
+
+void
+QTaskContainer::reloadTemplateMenu(){
+
+  std::list<std::string> templatelist = TaskController::loadTemplateList();
+  
+  for(std::list<QTask*>::iterator it = tasks.begin(); it != tasks.end(); ++it){
+    
+    (*it)->templateMenu->clear();
+    
+    for (std::list<std::string>::iterator it2 = templatelist.begin(); it2 != templatelist.end(); ++it2){
+      (*it)->templateMenu->addAction(QString(it2->c_str()));
+    }
+    
+    for (int i = 0; i< (*it)->subtaskContainer->layout()->count(); i++){
+      QTask* curr = (QTask*) (*it)->subtaskContainer->layout()->itemAt(i)->widget();
+      
+      curr->templateMenu->clear();
+      
+      for (std::list<std::string>::iterator it2 = templatelist.begin(); it2 != templatelist.end(); ++it2){
+	curr->templateMenu->addAction(QString(it2->c_str()));
+      }
+      
+    }
+  }
+}
+  
 void
 QTaskContainer::simpleAddTask(QTask* task)
 {

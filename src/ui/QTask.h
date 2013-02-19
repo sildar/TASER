@@ -61,6 +61,10 @@ public:
   void setCurrent(bool current) { current_ = current; emit changedCurrent(current); }
 
   QCheckBox* check;
+  
+  QMenu* templateMenu;
+    // subtask-related attributes
+  QWidget* subtaskContainer;
 
 signals:
   void changedDone(bool);
@@ -87,7 +91,6 @@ private:
   QAction* orderSubtasksAction;
   QAction* upTaskAction;
   QAction* downTaskAction;
-  QMenu* templateMenu;
   QAction* saveTemplateAction;
 
   QLabel* order;
@@ -101,8 +104,7 @@ private:
 
   QToolButton* closeButton;
 
-  // subtask-related attributes
-  QWidget* subtaskContainer;
+
 
 signals:
   void enabled(QTask *);
