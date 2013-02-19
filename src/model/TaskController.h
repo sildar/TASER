@@ -24,7 +24,7 @@ public slots:
   static void loadModel();
   static void saveModel();
   static void updateModel(std::list<Task*> theTasks);
-  static void loadTemplate(std::string xmlFileName, QTask* root);
+  static void loadTemplate(std::string xmlFileName, QTask* parent);
   static void saveTemplate(std::string xmlFileName, QTask* root);
   static std::list<std::string> loadTemplateList();
 

@@ -299,23 +299,24 @@ QTask::checkTask(bool isChecked)
   this->check->setEnabled(task->isCheckable());
   
   if (pare != NULL)
-    {
-      for (int i=0; i < pare->subtaskContainer->layout()->count(); i++) {
-	QTask * curr = (QTask*) pare->subtaskContainer->layout()->itemAt(i)->widget(); 
-	curr->check->setEnabled(curr->task->isCheckable());
-	curr->check->setChecked(curr->task->isChecked());
-      }
-      
-      pare->check->setEnabled(pare->task->isCheckable());
+  {
+    for (int i=0; i < pare->subtaskContainer->layout()->count(); i++) {
+      QTask * curr = (QTask*) pare->subtaskContainer->layout()->itemAt(i)->widget();
+      curr->check->setEnabled(curr->task->isCheckable());
+      curr->check->setChecked(curr->task->isChecked());
     }
-  else{
+
+    pare->check->setEnabled(pare->task->isCheckable());
+  }
+  else
+  {
     for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
-      	QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget(); 
-	curr->check->setEnabled(curr->task->isCheckable());
-	curr->check->setChecked(curr->task->isChecked());
+      QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+      curr->check->setEnabled(curr->task->isCheckable());
+      curr->check->setChecked(curr->task->isChecked());
     }
   }
-  
+
   setDone(task->isChecked());
 }
 
@@ -338,6 +339,9 @@ QTask::menuActionManager(QAction* action)
   } else if (action == expandTaskAction) {
     this->expand->toggle();
   } else if (action == addTaskAction) {
+    this->task->checkTask(false);
+    this->check->setChecked(false);
+    this->check->setEnabled(false);
     this->addSubtask();
     if (!this->expand->isChecked()) {
       this->expand->toggle();

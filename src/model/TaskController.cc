@@ -65,7 +65,7 @@ std::list<std::string> TaskController::loadTemplateList(){
   return list;
 }
 
-void TaskController::loadTemplate(std::string xmlFileName, QTask* root)
+void TaskController::loadTemplate(std::string xmlFileName, QTask* parent)
 {
   std::string temp = "./templates/";
   std::string file = temp.append(xmlFileName.append(".xml"));
@@ -73,8 +73,8 @@ void TaskController::loadTemplate(std::string xmlFileName, QTask* root)
 
   for (std::list<Task*>::iterator it = theTasks.begin(); it != theTasks.end(); ++it)
   {
-    root->task->addSubtask(*it);
-    QTask* subtask = new QTask(*it,root);
+    parent->task->addSubtask(*it);
+    QTask* subtask = new QTask(*it,parent);
   }
   saveModel();
 }
