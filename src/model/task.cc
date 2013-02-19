@@ -30,7 +30,8 @@ Task::Task(std::string name, Task* parent, bool ordered, time_t date)
 void
 Task::setDate(time_t aDate)
 {
-  time_t diff = aDate - date;
+  time_t diff =  aDate - date;
+  this->date = aDate;
     for(std::list<Task*>::iterator it = this->subtasks.begin();
       it != this->subtasks.end(); ++it)
   {
@@ -39,8 +40,6 @@ Task::setDate(time_t aDate)
 	(*it)->setDate((*it)->getDate()+diff);
       }
   }
-
-  this->date = aDate;
 }
 
 bool

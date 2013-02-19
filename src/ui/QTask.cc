@@ -188,20 +188,21 @@ QTask::eventFilter(QObject* object, QEvent* event)
 void
 QTask::setDateText(QDate aDate)
 {
+  QDate previousDate = QDateTime::fromTime_t(task->getDate()).date();
+  int diff = previousDate.daysTo(aDate);
   date->setText("<a href='date'>" % aDate.toString() % "</a>");
-
+  
   for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
     QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
     if (curr->task->hasLinkedDate())
       {
 	QDate currDate = QDateTime::fromTime_t(curr->task->getDate()).date();
-	std::cout << "days : " << currDate.daysTo(aDate) << std::endl;
-	curr->setDateText(currDate.addDays(currDate.daysTo(aDate)));
+	curr->setDateText(currDate.addDays(diff));
       }
   }
-
+  
   task->setDate(QDateTime(aDate).QDateTime::toTime_t());
-  setLate(aDate < QDate::currentDate());
+  setLate(aDate > QDate::currentDate());
 }
 
 void
@@ -227,7 +228,6 @@ QTask::changeText(bool isPressed)
 void
 QTask::checkTask()
 {
-  std::cout << "task is null ? " << (task == NULL) << std::endl;
   task->checkTask();
   setDone(task->isChecked());
 }
