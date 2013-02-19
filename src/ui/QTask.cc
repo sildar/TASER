@@ -36,8 +36,9 @@ QTask::QTask(Task* t, QTask* parent)
   // Check button
   check = new QCheckBox();
   check->setToolTip(trUtf8("Marquer comme fait"));
-  connect(check, SIGNAL(clicked()), this, SLOT(checkTask()));
+  connect(check, SIGNAL(toggled(bool)), this, SLOT(checkTask(bool)));
   connect(check, SIGNAL(clicked()), this, SLOT(enable()));
+
   qTaskLayout->addWidget(check);
 
   //0x2193 is a arrow down
@@ -226,17 +227,29 @@ QTask::changeText(bool isPressed)
 }
 
 void
-QTask::checkTask()
+QTask::checkTask(bool isChecked)
 {
-  task->checkTask();
+  
+  task->checkTask(isChecked);
+  this->check->setCheckable(task->isCheckable());
+  
+  if (pare != NULL)
+    {
+      for (int i=0; i < pare->subtaskContainer->layout()->count(); i++) {
+	QTask * curr = (QTask*) pare->subtaskContainer->layout()->itemAt(i)->widget(); 
+	curr->check->setCheckable(curr->task->isCheckable());
+      }
+    }
+  
   setDone(task->isChecked());
 }
 
 void
 QTask::menuActionManager(QAction* action)
 {
+  
   if (action == checkTaskAction) {
-    this->checkTask();
+    this->checkTask(!this->check->isChecked());
     this->check->setChecked(this->task->isChecked());
   } else if (action == delTaskAction) {
     //carefull shaky part
@@ -322,6 +335,12 @@ QTask::~QTask()
   }
   delete task; task = NULL;
   TaskController::saveModel();
+}
+
+void
+QTask::setTasksCheckable(QTask* parent)
+{
+
 }
 
 void

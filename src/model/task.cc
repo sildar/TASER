@@ -205,11 +205,11 @@ Task::getDown()
 }
 
 void
-Task::checkTask(){
+Task::checkTask(bool isChecked){
 
   if (this->isCheckable())
   {
-    this->checked = !(this->checked);
+    this->checked = isChecked;
     TaskController::saveModel();
   }
 }

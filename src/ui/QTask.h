@@ -112,14 +112,17 @@ public slots:
   /*!
     \brief check or uncheck a QTask
   */
-  void checkTask();
+  void checkTask(bool isChecked);
 
   void exchangeWidgets(int from, int change, QBoxLayout* layout);
+
+  void setTasksCheckable(QTask* parent);
 
   /*!
     \brief changes the text of the expand button (arrow direction)
   */
   void changeText(bool isDown);
+
 
 
 private slots:

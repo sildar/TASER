@@ -63,7 +63,7 @@ public:
     ordered task list, it is impossible to check it before the
     previous ones.
   */
-  void checkTask();
+  void checkTask(bool isChecked);
 
   /*!
     \brief returns true if a task is checked (completed) and false
