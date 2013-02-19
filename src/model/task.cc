@@ -309,6 +309,10 @@ Task::xmlSubtree()
   // make the root node
   TiXmlElement* root = new TiXmlElement("task");
   root->SetAttribute("date", this->date);
+  if (this->dateIsLinked)
+  {
+    root->SetAttribute("date-linked", "yes");
+  }
   if (this->hasOrderedSubtasks())
   {
     root->SetAttribute("ordered-subtasks", "yes");
@@ -339,14 +343,20 @@ Task::Task(TiXmlElement* root, Task* parent)
 {
   this->checked = false;
   this->orderedSubtasks = false;
+  this->dateIsLinked = false;
   subtasks = std::list<Task*>();
 
   int dateInt = 0;
   root->Attribute("date", &dateInt);
   this->date = dateInt;
   std::string yes = "yes";
+  const char* dateLinkedStr = root->Attribute("date-linked");
   const char* orderedSubStr = root->Attribute("ordered-subtasks");
   const char* checkedStr = root->Attribute("checked");
+  if (dateLinkedStr != NULL && yes.compare(dateLinkedStr) == 0)
+  {
+    this->dateIsLinked = true;
+  }
   if (orderedSubStr != NULL && yes.compare(orderedSubStr) == 0)
   {
     this->orderedSubtasks = true;
