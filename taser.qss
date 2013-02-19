@@ -20,7 +20,7 @@ border-style: 1px;
 border-radius: 5px;
 }
 
-QTask, QTask QCheckBox, QTask QToolButton, QTask QMenu {
+QTask, QTask QToolButton, QTask QMenu {
 border-style: outset;
 border-width: 1px;
 border-color: beige;

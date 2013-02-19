@@ -224,17 +224,16 @@ void
 QTask::setDateText(QDate aDate)
 {
   date->setText("<a href='date'>" % aDate.toString() % "</a>");
+  task->setDate(QDateTime(aDate).QDateTime::toTime_t());
+  setLate(aDate < QDate::currentDate());
 
   for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
     QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
     if (curr->task->hasLinkedDate())
-    {
-      curr->refreshDateText();
-    }
+      {
+	curr->refreshDateText();
+      }
   }
-  
-  task->setDate(QDateTime(aDate).QDateTime::toTime_t());
-  setLate(aDate < QDate::currentDate());
 }
 
 void
