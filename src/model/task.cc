@@ -218,12 +218,12 @@ Task::checkTask(bool isChecked){
     if (!isChecked && parent != NULL && parent->hasOrderedSubtasks()){
       bool sawMe = false;
       for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it){
-	if (sawMe){
-	  (*it)->checked = false;
-	}
-	else if (*it == this){
-	  sawMe = true;
-	}
+        if (sawMe){
+          (*it)->checked = false;
+        }
+        else if (*it == this){
+          sawMe = true;
+        }
       }
     }
     TaskController::saveModel();
@@ -239,15 +239,15 @@ Task::isCheckable() const
     {
       if ((*it) == (this))
       {
-	it++;
-	while (it != this->parent->subtasks.end())
-	  {
-	    if ((*it)->isChecked())
-	      {
-		return false;
-	      }
-	    it++;
-	  }
+        it++;
+        while (it != this->parent->subtasks.end())
+        {
+          if ((*it)->isChecked())
+          {
+            return false;
+          }
+          it++;
+        }
         return !parent->isChecked();
       }
       else if (! (*it)->isChecked())
@@ -258,12 +258,12 @@ Task::isCheckable() const
   }
   else {//if (this->parent == NULL){
     for (std::list<Task*>::const_iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
+    {
+      if (!(*it)->isChecked())
       {
-	if (!(*it)->isChecked())
-	  {
-	    return false;
-	  }
+        return false;
       }
+    }
   }
   return (parent == NULL || !parent->isChecked());
 }
