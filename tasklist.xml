@@ -1,14 +1,14 @@
 <?xml version="1.0" ?>
 <tasklist>
-    <task date="1360191600" checked="yes">
+    <task date="1359327600" ordered-subtasks="yes">
         <name>Titre</name>
         <task date="1360191600">
             <name>Titre</name>
         </task>
-        <task date="1360191600">
+        <task date="1359327600" date-linked="yes">
             <name>Titre</name>
         </task>
-        <task date="1360191600">
+        <task date="1360191600" checked="yes">
             <name>Titre</name>
         </task>
     </task>
@@ -23,5 +23,11 @@
     </task>
     <task date="1361229734">
         <name>Titre</name>
+    </task>
+    <task date="1361237645">
+        <name>Titre</name>
+        <task date="1361237645" checked="yes">
+            <name>Titre</name>
+        </task>
     </task>
 </tasklist>
