@@ -390,6 +390,13 @@ void QTask::closeTask(){
   {
     this->subtaskContainer->layout()->itemAt(i)->widget()->close();
   }
+  if (this->pare != NULL)
+  {
+    if (this->pare->subtaskContainer->layout()->count() > 0)
+    {
+      this->pare->check->setEnabled(true);
+    }
+  }
   this->close();
 }
 

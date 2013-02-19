@@ -1,9 +1,5 @@
 /* The Order is important don't change it unless you know what you're doing */
 
-QTask[current="true"] {
-border: 1px solid blue;
-}
-
 QTask[current="false"] {
 border-style: none;
 }
