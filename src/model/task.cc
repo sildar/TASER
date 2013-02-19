@@ -25,6 +25,11 @@ Task::Task(std::string name, Task* parent, bool ordered, time_t date)
   {
     this->parent->addSubtask(this);
   }
+  else
+  {
+    TaskController::tasks.push_back(this);
+  }
+  TaskController::saveModel();
 }
 
 
@@ -245,6 +250,11 @@ Task::~Task()
   {
     this->parent->subtasks.remove(this);
   }
+  else
+  {
+    TaskController::tasks.remove(this);
+  }
+  TaskController::saveModel();
 }
 
 Task*

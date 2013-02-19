@@ -36,7 +36,6 @@ void TaskController::loadModel()
 
 void TaskController::saveModel()
 {
-  qTaskContainer->updateModel();
   int i = 0;
   std::cout << "Model has " << tasks.size() << " tasks:" << std::endl;
   for (std::list<Task*>::iterator it = tasks.begin(); it != tasks.end(); it++)

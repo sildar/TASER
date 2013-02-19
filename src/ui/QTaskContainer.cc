@@ -29,7 +29,6 @@ void
 QTaskContainer::addTask(QTask* task)
 {
   simpleAddTask(task);
-  TaskController::saveModel();
 }
 
 void
@@ -52,19 +51,6 @@ QTaskContainer::newTask()
 {
   QTask* qtask = new QTask(new Task("Titre", NULL, false, time(NULL)));
   addTask(qtask);
-}
-
-void
-QTaskContainer::updateModel()
-{
-  std::list<Task*> theTasks;
-  for (std::list<QTask*>::iterator it = tasks.begin(); it != tasks.end(); it++)
-  {
-    if ((*it)->task != NULL)
-      theTasks.push_back((*it)->task);
-  }
-
-  TaskController::updateModel(theTasks);
 }
 
 void

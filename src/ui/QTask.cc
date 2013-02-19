@@ -291,7 +291,6 @@ void QTask::addSubtask()
                      this->task->hasOrderedSubtasks(),
                      this->task->getDate());
   QTask* task = new QTask(t, this);
-  TaskController::saveModel();
 }
 
 void QTask::closeTask(){
@@ -311,7 +310,6 @@ void QTask::exchangeWidgets(int from, int change, QBoxLayout* layout)
 {
   QWidget* widget = layout->takeAt(from)->widget();
   layout->insertWidget(from+change,widget);
-  TaskController::saveModel();
 }
 
 QTask::~QTask()
@@ -321,7 +319,6 @@ QTask::~QTask()
     delete curr;
   }
   delete task; task = NULL;
-  TaskController::saveModel();
 }
 
 void
