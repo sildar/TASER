@@ -10,12 +10,11 @@ border-style: none;
 
 QTask[done="false"] { background-color: #eec900; }
 QTask[late="true"] { background-color: #cd3700; }
-QTask[done="true"] { background-color: #7cfc00; }
+QTask[done="true"] { background-color: #66cd00; }
 
 QTask QLabelEdit:read-only {
 border: none;
 }
-
 QTask QLabelEdit:hover {
 border-style: 1px;
 border-radius: 5px;
