@@ -3,6 +3,7 @@
 #include "task.h"
 #include <iostream>
 #include <sstream>
+#include "TaskController.h"
 
 Task::Task(std::string name, Task* parent, bool ordered, time_t date)
 {
@@ -40,6 +41,8 @@ Task::setDate(time_t aDate)
 	(*it)->setDate((*it)->getDate()+diff);
       }
   }
+
+  TaskController::saveModel();
 }
 
 bool
@@ -152,51 +155,53 @@ void
 Task::getUp()
 {
   if (this->hasBigBrother())
+  {
+    std::list<Task*>::iterator pred = this->parent->subtasks.begin();
+
+    for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it)
     {
-      std::list<Task*>::iterator pred = this->parent->subtasks.begin();
+      if ((*it) == this)//insert before sibling and erase itself from preceding location
+        {
+          pred--;
+          this->parent->subtasks.insert(pred,*it);
+          this->parent->subtasks.erase(it);
 
-            for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it)      
-	{
-	  if ((*it) == this)//insert before sibling and erase itself from preceding location
-	    {
-	      pred--;
-	      this->parent->subtasks.insert(pred,*it);
-	      this->parent->subtasks.erase(it);
-
-	      bool wasOrdered = this->parent->hasOrderedSubtasks();
-	      this->parent->setSubtasksOrdered(true);
-	      this->parent->setSubtasksOrdered(wasOrdered);
-	      return;
-	    }
-	  pred++;
-	}
+          bool wasOrdered = this->parent->hasOrderedSubtasks();
+          this->parent->setSubtasksOrdered(true);
+          this->parent->setSubtasksOrdered(wasOrdered);
+          return;
+        }
+      pred++;
     }
+  }
+  TaskController::saveModel();
 }
 
 void
 Task::getDown()
 {
   if (this->hasLittleBrother())
-    {
-      std::list<Task*>::iterator pred = this->parent->subtasks.begin();
+  {
+    std::list<Task*>::iterator pred = this->parent->subtasks.begin();
 
-      for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it)      
-	{
-	  if ((*it) == this)//insert before sibling and erase itself from preceding location
-	    {
-	      Task* t = *it;
-	      it++;
-	      it++;
-	      this->parent->subtasks.insert(it,t);
-	      this->parent->subtasks.erase(pred);
-	      bool wasOrdered = this->parent->hasOrderedSubtasks();
-	      this->parent->setSubtasksOrdered(true);
-	      this->parent->setSubtasksOrdered(wasOrdered);
-	      return;
-	    }
-	  pred++;
-	}
+    for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it)
+    {
+      if ((*it) == this)//insert before sibling and erase itself from preceding location
+        {
+          Task* t = *it;
+          it++;
+          it++;
+          this->parent->subtasks.insert(it,t);
+          this->parent->subtasks.erase(pred);
+          bool wasOrdered = this->parent->hasOrderedSubtasks();
+          this->parent->setSubtasksOrdered(true);
+          this->parent->setSubtasksOrdered(wasOrdered);
+          return;
+        }
+      pred++;
     }
+  }
+  TaskController::saveModel();
 }
 
 void
@@ -205,6 +210,7 @@ Task::checkTask(){
   if (this->isCheckable())
   {
     this->checked = !(this->checked);
+    TaskController::saveModel();
   }
 }
 
@@ -256,6 +262,7 @@ Task::getName() const{
 void
 Task::setName(std::string aName){
   this->name = aName;
+  TaskController::saveModel();
 }
 
 std::time_t
@@ -277,6 +284,7 @@ void
 Task::setLinkedDate(bool isLinked)
 {
   dateIsLinked = isLinked;
+  TaskController::saveModel();
 }
 
 bool
@@ -292,13 +300,14 @@ Task::setSubtasksOrdered(bool order)
   this->orderedSubtasks = order;
   int i = 1;
   if (order)
+  {
+    for (std::list<Task*>::iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
     {
-      for (std::list<Task*>::iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
-	{
-	  (*it)->index = i;
-	  i++;
-	}
+      (*it)->index = i;
+      i++;
     }
+  }
+  TaskController::saveModel();
 }
 
 
