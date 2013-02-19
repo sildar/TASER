@@ -190,6 +190,17 @@ void
 QTask::setDateText(QDate aDate)
 {
   date->setText("<a href='date'>" % aDate.toString() % "</a>");
+
+  for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
+    QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+    if (curr->task->hasLinkedDate())
+      {
+	QDate currDate = QDateTime::fromTime_t(curr->task->getDate()).date();
+	std::cout << "days : " << currDate.daysTo(aDate) << std::endl;
+	curr->setDateText(currDate.addDays(currDate.daysTo(aDate)));
+      }
+  }
+
   task->setDate(QDateTime(aDate).QDateTime::toTime_t());
 }
 

@@ -7,7 +7,7 @@ QLinkBox::QLinkBox(QString label,QWidget *parent)
 {
   this->linkboxlab = new QLabel(label);
   this->linkbox = new QCheckBox();
-  this->linkbox->setChecked(true);
+  //this->linkbox->setChecked(true);
   this->lay = new QHBoxLayout();
 
   lay->addWidget(linkbox);
