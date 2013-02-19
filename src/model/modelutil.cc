@@ -34,13 +34,18 @@ loadTasklist(std::string xmlFile){
   std::list<Task*> tasklist = std::list<Task*>();
 
   TiXmlDocument doc(xmlFile.c_str());
-  doc.LoadFile();
-  TiXmlElement* root = doc.RootElement();
-
-  for(TiXmlElement* element = root->FirstChildElement("task");
-      element; element = element->NextSiblingElement("task"))
+  if (doc.LoadFile())
   {
-    tasklist.push_back(new Task(element));
+    TiXmlElement* root = doc.RootElement();
+
+    if (root != NULL)
+    {
+      for(TiXmlElement* element = root->FirstChildElement("task");
+          element; element = element->NextSiblingElement("task"))
+      {
+        tasklist.push_back(new Task(element));
+      }
+    }
   }
 
   return tasklist;
