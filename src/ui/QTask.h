@@ -22,6 +22,7 @@
 #include <QPainter>
 #include <QStyleOption>
 #include <QBoxLayout>
+#include <QMessageBox>
 
 class TaskController;
 
@@ -76,6 +77,8 @@ private:
   QToolButton* param;
   QTask* pare;
 
+  QMessageBox* saveTemplateMB;
+
   //actions for the param menu
   QAction* addTaskAction;
   QAction* checkTaskAction;
@@ -85,6 +88,7 @@ private:
   QAction* upTaskAction;
   QAction* downTaskAction;
   QMenu* templateMenu;
+  QAction* saveTemplateAction;
 
   QLabel* order;
 
@@ -112,6 +116,8 @@ public slots:
   void manageTemplates(QAction* action);
 
   void dateLinked(bool isLinked);
+
+  void saveTemplate(int code);
 
   /*!
     \brief check or uncheck a QTask

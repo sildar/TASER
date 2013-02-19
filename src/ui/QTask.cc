@@ -62,7 +62,6 @@ QTask::QTask(Task* t, QTask* parent)
 
   QMenu *menu = new QMenu();
   addTaskAction = new QAction(trUtf8("Ajouter une tâche"),menu);
-  //addTaskAction->setShortcut(QKeySequence(trUtf8("CTRL+T")));
   menu->addAction(addTaskAction);
   checkTaskAction = new QAction(trUtf8("Marquer comme fait"),menu);
   menu->addAction(checkTaskAction);
@@ -82,8 +81,11 @@ QTask::QTask(Task* t, QTask* parent)
     }
   connect(templateMenu, SIGNAL(triggered(QAction*)), this, SLOT(manageTemplates(QAction*)));
 
-  menu->addAction(trUtf8("Sauver un template"));
+
+  saveTemplateAction = new QAction(trUtf8("Sauver un template"),menu);
+  menu->addAction(saveTemplateAction);
   menu->addSeparator();
+
   upTaskAction = new QAction(trUtf8("Monter la tâche"),menu);
   menu->addAction(upTaskAction);
   downTaskAction = new QAction(trUtf8("Descendre la tâche"),menu);
@@ -184,6 +186,38 @@ QTask::QTask(Task* t, QTask* parent)
   {
     new QTask((*it), this);
   }
+}
+
+void
+QTask::saveTemplate(int code){
+  if (code == QMessageBox::Ok)
+    {
+  std::cout << "template saved ! " << std::endl;
+  std::string fileName = "./templates/";
+  fileName = fileName.append(this->task->getName());
+  fileName = fileName.append(".xml");
+  TaskController::saveTemplate(fileName,this);
+
+  //updates the template menu
+
+  std::list<std::string> templatelist = TaskController::loadTemplateList();
+  
+  templateMenu->clear();
+
+  for (std::list<std::string>::iterator it = templatelist.begin(); it != templatelist.end(); ++it){
+    templateMenu->addAction(QString(it->c_str()));
+  }
+  
+  for (int i = 0; i< this->subtaskContainer->layout()->count(); i++){
+    QTask* curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+    
+    curr->templateMenu->clear();
+    
+    for (std::list<std::string>::iterator it = templatelist.begin(); it != templatelist.end(); ++it){
+      curr->templateMenu->addAction(QString(it->c_str()));
+    }
+  }
+    }
 }
 
 bool
@@ -324,6 +358,18 @@ QTask::menuActionManager(QAction* action)
       exchangeWidgets(this->task->getIndex()-1,1,lay);
       this->task->getDown();
     }
+  }
+  else if (action == saveTemplateAction){
+    QString message = trUtf8("Le template sera sauvé sous le nom ");
+    message = message.append(QString(this->task->getName().c_str()));
+    message = message.replace(QRegExp("/"),"_");
+    message = message.append("\n");
+    message = message.append(trUtf8("Si un template du même nom existe, il sera écrasé."));
+    saveTemplateMB = new QMessageBox(QMessageBox::Question,trUtf8("Sauver un template"), message,QMessageBox::Abort | QMessageBox::Ok);
+    
+    connect(saveTemplateMB,SIGNAL(finished(int)),this, SLOT(saveTemplate(int)));
+
+    saveTemplateMB->show();
   }
 }
 
