@@ -1,33 +1,12 @@
 <?xml version="1.0" ?>
 <tasklist>
     <task date="1361228400">
-        <name>Task 1</name>
-        <task date="1361228400">
-            <name>Task 1.1</name>
-        </task>
-        <task date="1361228400">
-            <name>Task 1.2</name>
-        </task>
-    </task>
-    <task date="1360710000">
-        <name>aslkdj</name>
-        <task date="1361229733" checked="yes">
-            <name>Task 2.1</name>
-            <task date="1361229733">
-                <name>Task 2.1.1</name>
+        <name>A</name>
+        <task date="1361228400" date-linked="yes">
+            <name>B</name>
+            <task date="1361228400" date-linked="yes">
+                <name>C</name>
             </task>
-        </task>
-        <task date="1361229733">
-            <name>Task 2.2</name>
-        </task>
-    </task>
-    <task date="1361238128" checked="yes">
-        <name>Task 3</name>
-    </task>
-    <task date="1361237645">
-        <name>Titre</name>
-        <task date="1361237645" checked="yes">
-            <name>Titre</name>
         </task>
     </task>
 </tasklist>

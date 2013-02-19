@@ -134,7 +134,7 @@ QTask::QTask(Task* t, QTask* parent)
 
   //prepares the popup
   calmenu = new QWidget();
-  cal = new QCalendara(calmenu, &datestr);
+  cal = new QCalendara(calmenu, this->task->hasLinkedDate(), &datestr);
   calmenu->installEventFilter(this);
 
   calmenu->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -203,20 +203,34 @@ QTask::eventFilter(QObject* object, QEvent* event)
 void
 QTask::setDateText(QDate aDate)
 {
-  QDate previousDate = QDateTime::fromTime_t(task->getDate()).date();
-  int diff = previousDate.daysTo(aDate);
   date->setText("<a href='date'>" % aDate.toString() % "</a>");
-  
+
   for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
     QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
     if (curr->task->hasLinkedDate())
     {
-      QDate currDate = QDateTime::fromTime_t(curr->task->getDate()).date();
-      curr->setDateText(currDate.addDays(diff));
+      curr->refreshDateText();
     }
   }
   
   task->setDate(QDateTime(aDate).QDateTime::toTime_t());
+  setLate(aDate < QDate::currentDate());
+}
+
+void
+QTask::refreshDateText()
+{
+  QDate aDate = QDateTime::fromTime_t(task->getDate()).date();
+  date->setText("<a href='date'>" % aDate.toString() % "</a>");
+
+  for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
+    QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
+    if (curr->task->hasLinkedDate())
+    {
+      curr->refreshDateText();
+    }
+  }
+
   setLate(aDate < QDate::currentDate());
 }
 

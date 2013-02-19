@@ -107,7 +107,7 @@ public slots:
     \brief updates the date label
   */
   void setDateText(QDate date);
-  
+
   void dateLinked(bool isLinked);
 
   /*!
@@ -141,6 +141,11 @@ private slots:
   void enable();
   void textChanged(const QString& s);
 
+private:
+  /*!
+    \brief updates the date label according to the task's date
+  */
+  void refreshDateText();
 };
 
 #endif

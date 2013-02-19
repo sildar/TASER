@@ -21,7 +21,7 @@ public:
   /*!
     \brief Constructor of the calendara
   */
-  QCalendara(QWidget *parent=0, QString* parentDate=NULL);
+  QCalendara(QWidget *parent=0, bool checked = false, QString* parentDate=NULL);
   /*!
     \brief says if the task is linked to a master task
   */
