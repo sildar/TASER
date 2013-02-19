@@ -38,13 +38,13 @@ Task::setDate(time_t aDate)
 {
   time_t diff =  aDate - date;
   this->date = aDate;
-    for(std::list<Task*>::iterator it = this->subtasks.begin();
+  for(std::list<Task*>::iterator it = this->subtasks.begin();
       it != this->subtasks.end(); ++it)
   {
     if ((*it)->hasLinkedDate())
-      {
-	(*it)->setDate((*it)->getDate()+diff);
-      }
+    {
+      (*it)->setDate((*it)->getDate()+diff);
+    }
   }
 
   TaskController::saveModel();
@@ -119,39 +119,38 @@ bool
 Task::hasBigBrother()
 {
   if (this->parent == NULL)
-    {
-      return false;
-    }
+  {
+    return false;
+  }
   else
-    {
-      //checks if the first subtask of its parent is itself
-      return (*(this->parent->subtasks.begin()) != this);
-    }
+  {
+    //checks if the first subtask of its parent is itself
+    return (*(this->parent->subtasks.begin()) != this);
+  }
 }
 
 bool
 Task::hasLittleBrother()
 {
   if (this->parent == NULL)
-    {
-      return false;
-    }
+  {
+    return false;
+  }
   else
+  {
+    bool sawMe = false;
+    for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it)
     {
-      bool sawMe = false;
-      for (std::list<Task*>::iterator it = this->parent->subtasks.begin(); it != this->parent->subtasks.end(); ++it)      
-	{
-	  if (sawMe)
-	    {
-	      return true;
-	    }
-	  else if ((*it)==this)
-	    {
-
-	      sawMe = true;
-	    }
-	}
+      if (sawMe)
+      {
+        return true;
+      }
+      else if ((*it)==this)
+      {
+        sawMe = true;
+      }
     }
+  }
   return false;
 }
 

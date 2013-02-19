@@ -28,7 +28,7 @@ QTask::QTask(Task* t, QTask* parent)
   QString textstr = QString::fromStdString(task->getName());
   time_t datet = task->getDate();
   QString datestr = ctime(&datet);
-  QDate dateq = QDate::currentDate();
+  QDate dateq = QDateTime::fromTime_t(task->getDate()).date();
 
   if (parent != NULL) {
     dateq = parent->cal->selectedDate();
@@ -38,6 +38,8 @@ QTask::QTask(Task* t, QTask* parent)
   check = new QCheckBox();
   check->setToolTip(trUtf8("Marquer comme fait"));
   connect(check, SIGNAL(toggled(bool)), this, SLOT(checkTask(bool)));
+  check->setChecked(this->task->isChecked());
+  setDone(this->task->isChecked());
   connect(check, SIGNAL(clicked()), this, SLOT(enable()));
 
   qTaskLayout->addWidget(check);
@@ -122,6 +124,7 @@ QTask::QTask(Task* t, QTask* parent)
 
   // Task date
   date = new QLabel("<a href='date'>" % dateq.toString()   % "</a>");
+  setLate(dateq < QDate::currentDate());
   date->installEventFilter(this);
   date->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
   qTaskLayout->addWidget(date);
@@ -204,14 +207,14 @@ QTask::setDateText(QDate aDate)
   for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
     QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget();
     if (curr->task->hasLinkedDate())
-      {
-	QDate currDate = QDateTime::fromTime_t(curr->task->getDate()).date();
-	curr->setDateText(currDate.addDays(diff));
-      }
+    {
+      QDate currDate = QDateTime::fromTime_t(curr->task->getDate()).date();
+      curr->setDateText(currDate.addDays(diff));
+    }
   }
   
   task->setDate(QDateTime(aDate).QDateTime::toTime_t());
-  setLate(aDate > QDate::currentDate());
+  setLate(aDate < QDate::currentDate());
 }
 
 void
@@ -374,9 +377,9 @@ QTask::redraw()
 void QTask::changeEvent(QEvent* event)
 {
   if (event->type() == QEvent::LanguageChange)
-    {
-      retranslate();
-    }
+  {
+    retranslate();
+  }
   
   // remember to call base class implementation
   QWidget::changeEvent(event);
@@ -393,8 +396,7 @@ void QTask::retranslate(){
     orderSubtasksAction->setText(trUtf8("Enlever l'ordre"));
   }
   else {
-      orderSubtasksAction->setText(trUtf8("Ordonner les tâches"));
-    }
-  
-  
+    orderSubtasksAction->setText(trUtf8("Ordonner les tâches"));
+  }
+
 }
