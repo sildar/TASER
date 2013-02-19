@@ -8,6 +8,39 @@ QTask[current="false"] {
 border-style: none;
 }
 
+QTask[done="false"] QLabelEdit:read-only {
+background-color: #eec900;
+border-style: none;
+}
+
+QTask[late="true"] QLabelEdit:read-only {
+background-color: #cd3700;
+border-style: none;
+}
+
+QTask[done="true"] QLabelEdit:read-only {
+background-color: #7cfc00;
+border-style: none;
+}
+
+QTask[done="false"] QLabelEdit:hover {
+background: #cdad00;
+border-style: 1px;
+border-radius: 5px;
+}
+
+QTask[late="true"] QLabelEdit:hover {
+background: #cdad00;
+border-style: 1px;
+border-radius: 5px;
+}
+
+QTask[done="true"] QLabelEdit:hover {
+background: #cdad00;
+border-style: 1px;
+border-radius: 5px;
+}
+
 QTask[done="false"] { background-color: #eec900; }
 QTask[late="true"] { background-color: #cd3700; }
 QTask[done="true"] { background-color: #7cfc00; }
@@ -21,15 +54,4 @@ border-radius: 10px;
 
 QToolButton#closeButton {
 color: red;
-}
-
-QLabelEdit:read-only {
-background: #eec900;
-border-style: none;
-}
-
-QLabelEdit:hover {
-background: #cdad00;
-border-style: 1px;
-border-radius: 5px;
 }

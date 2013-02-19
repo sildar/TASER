@@ -26,3 +26,12 @@ QLabelEdit::enableReadOnly()
 {
   setReadOnly(true);
 }
+
+void
+QLabelEdit::redraw()
+{
+  style()->unpolish(this);
+  style()->polish(this);
+  setStyle(style());
+}
+

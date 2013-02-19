@@ -121,6 +121,8 @@ QTask::QTask(Task* t, QTask* parent)
   text->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   qTaskLayout->addWidget(text);
   connect(text,SIGNAL(textChanged(const QString&)),this, SLOT(textChanged(const QString&)));
+  connect(this, SIGNAL(changedDone(bool)), text, SLOT(redraw()));
+  connect(this, SIGNAL(changedLate(bool)), text, SLOT(redraw()));
 
   // Task date
   date = new QLabel("<a href='date'>" % dateq.toString()   % "</a>");

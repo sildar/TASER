@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QVBoxLayout>
+#include <QStyle>
 
 class QLabelEdit : public QLineEdit
 {
@@ -15,6 +16,9 @@ class QLabelEdit : public QLineEdit
 public:
   QLabelEdit(QString &s);
 
+public slots:
+  void redraw();
+  
 protected:
   void mouseDoubleClickEvent(QMouseEvent *event);
 
