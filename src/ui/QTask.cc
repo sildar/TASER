@@ -109,7 +109,7 @@ QTask::QTask(Task* t, QTask* parent)
   text = new QLabelEdit(textstr);
   text->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   qTaskLayout->addWidget(text);
-  connect(text,SIGNAL(textChanged(QString&)),this, SLOT(textChanged(QString&)));
+  connect(text,SIGNAL(textChanged(const QString&)),this, SLOT(textChanged(const QString&)));
 
   // Task date
   date = new QLabel("<a href='date'>" % dateq.toString()   % "</a>");
@@ -302,7 +302,7 @@ void QTask::closeTask(){
   this->close();
 }
 
-void QTask::textChanged(QString& s)
+void QTask::textChanged(const QString& s)
 {
   task->setName(s.toStdString());
 }

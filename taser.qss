@@ -21,3 +21,14 @@ border-radius: 10px;
 QToolButton#closeButton {
 color: red;
 }
+
+QLabelEdit:read-only {
+background: #eec900;
+border-style: none;
+}
+
+QLabelEdit:hover {
+background: #cdad00;
+border-style: 1px;
+border-radius: 5px;
+}
