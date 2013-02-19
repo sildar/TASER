@@ -124,6 +124,7 @@ public slots:
   */
   void changeText(bool isDown);
 
+  void redraw();
 
 
 private slots:
@@ -138,7 +139,6 @@ private slots:
 
   void orderSubtasks();
   void enable();
-  void redraw();
   void textChanged(const QString& s);
 
 };
