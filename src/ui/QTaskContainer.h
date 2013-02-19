@@ -27,6 +27,8 @@ public:
   void paintEvent(QPaintEvent *qpe);
   
   void removeTask(Task* t);
+
+  void changeEvent(QEvent* event);
   
   /*!
     \brief Adds a previously created root QTask to this widget.

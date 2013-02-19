@@ -38,7 +38,9 @@ QTaskContainer::reloadTemplateMenu(){
   std::list<std::string> templatelist = TaskController::loadTemplateList();
   
   for(std::list<QTask*>::iterator it = tasks.begin(); it != tasks.end(); ++it){
-    
+
+    if ((*it) != NULL && (*it)->templateMenu != NULL){
+
     (*it)->templateMenu->clear();
     
     for (std::list<std::string>::iterator it2 = templatelist.begin(); it2 != templatelist.end(); ++it2){
@@ -53,7 +55,7 @@ QTaskContainer::reloadTemplateMenu(){
       for (std::list<std::string>::iterator it2 = templatelist.begin(); it2 != templatelist.end(); ++it2){
 	curr->templateMenu->addAction(QString(it2->c_str()));
       }
-      
+    }
     }
   }
 }
@@ -112,4 +114,16 @@ QTaskContainer::removeTask(Task* t){
       return;
     }
   }
+}
+
+
+void QTaskContainer::changeEvent(QEvent* event)
+{
+  if (event->type() == QEvent::LanguageChange)
+  {
+    this->addTaskButton->setText(trUtf8("Nouvelle Tâche"));
+  }
+  
+  // remember to call base class implementation
+  QWidget::changeEvent(event);
 }

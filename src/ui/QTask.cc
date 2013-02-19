@@ -463,6 +463,19 @@ void QTask::retranslate(){
   checkTaskAction->setText(trUtf8("Marquer comme fait"));
   delTaskAction->setText(trUtf8("Supprimer la tâche"));
   expandTaskAction->setText(trUtf8("Déplier la tâche"));
+  templateMenu->setTitle(trUtf8("Insérer un template"));
+  saveTemplateAction->setText(trUtf8("Sauver un template"));
+  upTaskAction->setText(trUtf8("Monter la tâche"));
+  downTaskAction->setText(trUtf8("Descendre la tâche"));
+  if (this->task->hasOrderedSubtasks())
+    {
+      orderSubtasksAction->setText(trUtf8("Enlever l'ordre"));
+    }
+  else
+    {
+      orderSubtasksAction->setText(trUtf8("Ordonner les tâches"));
+    }
+  
 
   if (this->task->hasOrderedSubtasks()) {
     orderSubtasksAction->setText(trUtf8("Enlever l'ordre"));
