@@ -26,7 +26,7 @@ QTask::QTask(Task* t, QTask* parent)
   this->qTaskWidget = new QWidget();
   QHBoxLayout *qTaskLayout = new QHBoxLayout();
 
-  QString textstr = QString::fromStdString(task->getName());
+  QString textstr = QString::fromUtf8(task->getName().c_str());
   time_t datet = task->getDate();
   QString datestr = ctime(&datet);
   QDate dateq = QDateTime::fromTime_t(task->getDate()).date();
@@ -77,7 +77,7 @@ QTask::QTask(Task* t, QTask* parent)
 
   for (std::list<std::string>::iterator it = templatelist.begin(); it != templatelist.end(); ++it)
   {
-    templateMenu->addAction(QString(it->c_str()));
+    templateMenu->addAction(QString::fromUtf8(it->c_str()));
   }
   connect(templateMenu, SIGNAL(triggered(QAction*)), this, SLOT(manageTemplates(QAction*)));
 
@@ -347,7 +347,7 @@ QTask::menuActionManager(QAction* action)
   }
   else if (action == saveTemplateAction){
     QString message = trUtf8("Le template sera sauvé sous le nom ");
-    message = message.append(QString(this->task->getName().c_str()));
+    message = message.append(QString::fromUtf8(this->task->getName().c_str()));
     message = message.replace(QRegExp("/"),"_");
     message = message.append("\n");
     message = message.append(trUtf8("Si un template du même nom existe, il sera écrasé."));
@@ -402,7 +402,7 @@ void QTask::closeTask(){
 
 void QTask::textChanged(const QString& s)
 {
-  task->setName(s.toStdString());
+  task->setName(std::string(s.toUtf8().data()));
 }
 
 void QTask::exchangeWidgets(int from, int change, QBoxLayout* layout)

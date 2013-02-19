@@ -3,39 +3,30 @@
     <task date="1361228400">
         <name>Réaliser la démo de TASER</name>
         <task date="1361142000" date-linked="yes" checked="yes">
-            <name>Créer Taser</name>
+            <name>CrÃ©er Taser</name>
             <task date="1361142000" checked="yes">
-                <name>Choisir un nom définitif</name>
+                <name>Choisir un nom dÃ©finitif</name>
             </task>
             <task date="1361142000" checked="yes">
                 <name>Designer l&apos;interface</name>
             </task>
             <task date="1361142000" checked="yes">
-                <name>Implémenter le tout</name>
+                <name>ImplÃ©menter le tout</name>
             </task>
         </task>
         <task date="1361228400" checked="yes">
             <name>Compiler</name>
         </task>
         <task date="1361228400" ordered-subtasks="yes">
-            <name>Montrer les fonctionnalités</name>
-            <task date="1361228400">
+            <name>Montrer les fonctionnalitÃ©s</name>
+            <task date="1361142000">
                 <name>Des tâches à cocher ...</name>
             </task>
             <task date="1361228400">
-                <name>Designer l&apos;interface devrait être en première position ! Monte la !</name>
+                <name>Monter l&apos;interface</name>
             </task>
             <task date="1361228400">
-                <name>Créé une nouvelle tâche principale</name>
-            </task>
-            <task date="1361228400">
-                <name>C&apos;est l&apos;heure du template</name>
-            </task>
-            <task date="1361228400">
-                <name>Les langues ...</name>
-            </task>
-            <task date="1361228400">
-                <name>Concluons !</name>
+                <name>Ajouter une tâche</name>
             </task>
         </task>
     </task>

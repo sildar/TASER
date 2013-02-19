@@ -44,7 +44,7 @@ QTaskContainer::reloadTemplateMenu(){
     (*it)->templateMenu->clear();
     
     for (std::list<std::string>::iterator it2 = templatelist.begin(); it2 != templatelist.end(); ++it2){
-      (*it)->templateMenu->addAction(QString(it2->c_str()));
+      (*it)->templateMenu->addAction(QString::fromUtf8(it2->c_str()));
     }
     
     for (int i = 0; i< (*it)->subtaskContainer->layout()->count(); i++){
@@ -53,7 +53,7 @@ QTaskContainer::reloadTemplateMenu(){
       curr->templateMenu->clear();
       
       for (std::list<std::string>::iterator it2 = templatelist.begin(); it2 != templatelist.end(); ++it2){
-	curr->templateMenu->addAction(QString(it2->c_str()));
+	curr->templateMenu->addAction(QString::fromUtf8(it2->c_str()));
       }
     }
     }

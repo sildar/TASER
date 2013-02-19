@@ -3,7 +3,7 @@
 void
 saveTasklist(std::string xmlFile, std::list<Task*> tasks){
   TiXmlDocument doc;
-  TiXmlDeclaration* xmlDecl = new TiXmlDeclaration("1.0", "", "");
+  TiXmlDeclaration* xmlDecl = new TiXmlDeclaration("1.0", "UTF-8", "");
   TiXmlElement* root = new TiXmlElement("tasklist");
 
   // save each task recursively
