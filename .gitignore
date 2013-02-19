@@ -4,3 +4,4 @@ taser
 *.o
 moc_*.cpp
 qrc_*.cpp
+tasklist.xml
