@@ -86,7 +86,7 @@ private:
 
   QLabel* order;
 
-  QLabelEdit* text;
+  QLineEdit* text;
 
   QLabel* date;
   QCalendara* cal;
@@ -138,7 +138,7 @@ private slots:
   void orderSubtasks();
   void enable();
   void redraw();
-  void textChanged(QString& s);
+  void textChanged(const QString& s);
 
 };
 

@@ -11,7 +11,7 @@ QTask[done="false"] { background-color: #eec900; }
 QTask[late="true"] { background-color: #cd3700; }
 QTask[done="true"] { background-color: #7cfc00; }
 
-QTask, QCheckBox, QToolButton, QMenu {
+QTask, QTask QCheckBox, QTask QToolButton, QTask QMenu {
 border-style: outset;
 border-width: 1px;
 border-color: beige;
@@ -20,4 +20,15 @@ border-radius: 10px;
 
 QToolButton#closeButton {
 color: red;
+}
+
+QLabelEdit:read-only {
+background: #eec900;
+border-style: none;
+}
+
+QLabelEdit:hover {
+background: #cdad00;
+border-style: 1px;
+border-radius: 5px;
 }

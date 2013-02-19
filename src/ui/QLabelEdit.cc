@@ -3,50 +3,26 @@
 #include "QLabelEdit.h"
 
 QLabelEdit::QLabelEdit(QString &s)
-  : text(s)
+  : text_(s)
 {
-  ro = new QLabel("<a href='title'>" % text % "</a>");
-  rw = new QLineEdit(text);
-  QVBoxLayout *layout = new QVBoxLayout();
-  layout->addWidget(ro);
-  layout->addWidget(rw);
-
-  connect(ro, SIGNAL(linkActivated(const QString&)),
-          this, SLOT(enableRw()));
-  connect(rw, SIGNAL(editingFinished()),
-          this, SLOT(enableRo()));
-
-  current = ro;
-  rw->hide();
-
-  setLayout(layout);
+  setText(text_);
+  setReadOnly(true);
+  connect(this, SIGNAL(editingFinished()),
+          this, SLOT(enableReadOnly()));
+  setAttribute(Qt::WA_Hover);
+  setToolTip(trUtf8("Double Cliquer pour éditer"));
 }
 
 void
-QLabelEdit::enableRw()
+QLabelEdit::mouseDoubleClickEvent(QMouseEvent *event)
 {
-  if (current == ro) {
-    current->hide();
-    current = rw;
-    current->show();
-    rw->selectAll();
-    rw->setFocus();
-  }
+  setReadOnly(false);
+  selectAll();
+  setFocus();
 }
 
 void
-QLabelEdit::enableRo()
+QLabelEdit::enableReadOnly()
 {
-  if (current == rw) {
-    current->hide();
-    current = ro;
-    current->show();
-    if (rw->text().isEmpty()) {
-      text = "-";
-    } else {
-      text = rw->text();
-      emit(textChanged(text));
-    }
-    ro->setText("<a href='title'>" % text % "</a>");
-  }
+  setReadOnly(true);
 }

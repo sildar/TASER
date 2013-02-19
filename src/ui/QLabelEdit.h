@@ -8,25 +8,21 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 
-class QLabelEdit : public QWidget
+class QLabelEdit : public QLineEdit
 {
   Q_OBJECT
 
 public:
   QLabelEdit(QString &s);
 
-signals:
-  void textChanged(QString& s);
+protected:
+  void mouseDoubleClickEvent(QMouseEvent *event);
 
 private slots:
-  void enableRw();
-  void enableRo();
-
+  void enableReadOnly();
+  
 private:
-  QString text;
-  QLabel *ro;
-  QLineEdit *rw;
-  QWidget *current;
+  QString text_;
 };
 
 #endif /* _QLABELEDIT_H_ */

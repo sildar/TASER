@@ -110,7 +110,7 @@ QTask::QTask(Task* t, QTask* parent)
   text = new QLabelEdit(textstr);
   text->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
   qTaskLayout->addWidget(text);
-  connect(text,SIGNAL(textChanged(QString&)),this, SLOT(textChanged(QString&)));
+  connect(text,SIGNAL(textChanged(const QString&)),this, SLOT(textChanged(const QString&)));
 
   // Task date
   date = new QLabel("<a href='date'>" % dateq.toString()   % "</a>");
@@ -304,7 +304,6 @@ void QTask::addSubtask()
                      this->task->hasOrderedSubtasks(),
                      this->task->getDate());
   QTask* task = new QTask(t, this);
-  TaskController::saveModel();
 }
 
 void QTask::closeTask(){
@@ -315,7 +314,7 @@ void QTask::closeTask(){
   this->close();
 }
 
-void QTask::textChanged(QString& s)
+void QTask::textChanged(const QString& s)
 {
   task->setName(s.toStdString());
 }
@@ -324,7 +323,6 @@ void QTask::exchangeWidgets(int from, int change, QBoxLayout* layout)
 {
   QWidget* widget = layout->takeAt(from)->widget();
   layout->insertWidget(from+change,widget);
-  TaskController::saveModel();
 }
 
 QTask::~QTask()
@@ -334,7 +332,6 @@ QTask::~QTask()
     delete curr;
   }
   delete task; task = NULL;
-  TaskController::saveModel();
 }
 
 void

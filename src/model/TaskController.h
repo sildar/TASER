@@ -30,6 +30,8 @@ public slots:
 private:
   static QTaskContainer* qTaskContainer;
   static std::list<Task*> tasks;
+
+  friend class Task;
 };
 
 #endif // TASKLIST_H
