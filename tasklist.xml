@@ -1,90 +1,18 @@
 <?xml version="1.0" ?>
 <tasklist>
-    <task date="1361263334" ordered-subtasks="yes">
+    <task date="1361268290">
         <name>Titre</name>
-        <task date="1361263334" checked="yes">
-            <name>Toto</name>
-        </task>
-        <task date="1361263334" checked="yes">
+        <task date="1361268290">
             <name>Titre</name>
         </task>
-        <task date="1361263334" checked="yes">
+        <task date="1361268290">
             <name>Titre</name>
         </task>
-        <task date="1361263334" checked="yes">
+        <task date="1361268290">
             <name>Titre</name>
         </task>
-        <task date="1361263334" ordered-subtasks="yes" checked="yes">
-            <name>Titre</name>
-            <task date="1361263334">
-                <name>Toto</name>
-            </task>
-            <task date="1361263334">
-                <name>Titre</name>
-            </task>
-            <task date="1361263334">
-                <name>Titre</name>
-            </task>
-            <task date="1361263334">
-                <name>Titre</name>
-            </task>
-        </task>
-        <task date="1361263334" checked="yes">
+        <task date="1361268290">
             <name>Titre</name>
         </task>
-        <task date="1361263334">
-            <name>Titre</name>
-        </task>
-        <task date="1361263335">
-            <name>Titre</name>
-        </task>
-    </task>
-    <task date="1361263334" checked="yes">
-        <name>Titre</name>
-        <task date="1361263334" ordered-subtasks="yes" checked="yes">
-            <name>Titre</name>
-            <task date="1361263334">
-                <name>Toto</name>
-            </task>
-            <task date="1361263334">
-                <name>Titre</name>
-            </task>
-            <task date="1361263334">
-                <name>Titre</name>
-            </task>
-            <task date="1361263334">
-                <name>Titre</name>
-            </task>
-        </task>
-        <task date="1361263334" checked="yes">
-            <name>Titre</name>
-        </task>
-        <task date="1361263334" checked="yes">
-            <name>Titre</name>
-        </task>
-        <task date="1361263335" checked="yes">
-            <name>Titre</name>
-        </task>
-    </task>
-    <task date="1361263334" ordered-subtasks="yes">
-        <name>Titre</name>
-        <task date="1361263334">
-            <name>Titre</name>
-        </task>
-        <task date="1361263334">
-            <name>Titre</name>
-        </task>
-        <task date="1361263334">
-            <name>Titre</name>
-        </task>
-        <task date="1361263334">
-            <name>Titre</name>
-        </task>
-    </task>
-    <task date="1361263335">
-        <name>Titre</name>
-    </task>
-    <task date="1361265406">
-        <name>Titre</name>
     </task>
 </tasklist>
