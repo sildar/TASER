@@ -1,3 +1,5 @@
+/* The Order is important don't change it unless you know what you're doing */
+
 QTask[current="true"] {
 border: 1px solid blue;
 }
@@ -6,7 +8,6 @@ QTask[current="false"] {
 border-style: none;
 }
 
-/* The Order is important don't change it unless you know what you're doing */
 QTask[done="false"] { background-color: #eec900; }
 QTask[late="true"] { background-color: #cd3700; }
 QTask[done="true"] { background-color: #7cfc00; }
