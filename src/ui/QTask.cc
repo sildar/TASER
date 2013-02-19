@@ -38,8 +38,8 @@ QTask::QTask(Task* t, QTask* parent)
   // Check button
   check = new QCheckBox();
   check->setToolTip(trUtf8("Marquer comme fait"));
-  connect(check, SIGNAL(toggled(bool)), this, SLOT(checkTask(bool)));
   check->setChecked(this->task->isChecked());
+  connect(check, SIGNAL(toggled(bool)), this, SLOT(checkTask(bool)));
   setDone(this->task->isChecked());
   check->setEnabled(task->isCheckable());
   connect(check, SIGNAL(clicked()), this, SLOT(enable()));
@@ -76,9 +76,9 @@ QTask::QTask(Task* t, QTask* parent)
   std::list<std::string> templatelist = TaskController::loadTemplateList();
 
   for (std::list<std::string>::iterator it = templatelist.begin(); it != templatelist.end(); ++it)
-    {
-      templateMenu->addAction(QString(it->c_str()));
-    }
+  {
+    templateMenu->addAction(QString(it->c_str()));
+  }
   connect(templateMenu, SIGNAL(triggered(QAction*)), this, SLOT(manageTemplates(QAction*)));
 
 
@@ -191,16 +191,16 @@ QTask::QTask(Task* t, QTask* parent)
 void
 QTask::saveTemplate(int code){
   if (code == QMessageBox::Ok)
-    {
-  std::cout << "template saved ! " << std::endl;
-  std::string fileName = "./templates/";
-  fileName = fileName.append(this->task->getName());
-  fileName = fileName.append(".xml");
-  TaskController::saveTemplate(fileName,this);
+  {
+    std::cout << "template saved ! " << std::endl;
+    std::string fileName = "./templates/";
+    fileName = fileName.append(this->task->getName());
+    fileName = fileName.append(".xml");
+    TaskController::saveTemplate(fileName,this);
 
-  //updates the template menu
-  TaskController::reloadTemplateMenu();
-    }
+    //updates the template menu
+    TaskController::reloadTemplateMenu();
+  }
 }
 
 bool
