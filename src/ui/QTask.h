@@ -31,6 +31,7 @@ class QTask : public QWidget
 
   Q_PROPERTY(bool done READ done WRITE setDone NOTIFY changedDone)
   Q_PROPERTY(bool current READ current WRITE setCurrent NOTIFY changedCurrent)
+  Q_PROPERTY(bool late READ late WRITE setLate NOTIFY changedLate)
 
 public:
   QTask(Task* t, QTask* parent = NULL);
@@ -53,15 +54,19 @@ public:
   Task* task;
   bool done() const { return done_; }
   void setDone(bool done) { done_ = done; emit changedDone(done); }
+  bool late() const { return late_; }
+  void setLate(bool late) { late_ = late; emit changedLate(late); }
   bool current() const { return current_; }
   void setCurrent(bool current) { current_ = current; emit changedCurrent(current); }
 
 signals:
   void changedDone(bool);
   void changedCurrent(bool);
+  void changedLate(bool);
 
 private:
   bool done_;
+  bool late_;
   bool current_;
   bool dateIsLinked;
   QWidget* qTaskWidget;

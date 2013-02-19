@@ -6,6 +6,18 @@ QTask[current="false"] {
 border-style: none;
 }
 
-QTask[done="true"] { background-color: green; }
-QTask[done="false"] { background-color: red; }
+/* The Order is important don't change it unless you know what you're doing */
+QTask[done="false"] { background-color: #eec900; }
+QTask[late="true"] { background-color: #cd0000; }
+QTask[done="true"] { background-color: #7cfc00; }
 
+QTask, QCheckBox, QToolButton, QMenu {
+border-style: outset;
+border-width: 1px;
+border-color: beige;
+border-radius: 10px;
+}
+
+QToolButton#closeButton {
+color: red;
+}

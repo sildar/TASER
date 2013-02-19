@@ -9,8 +9,10 @@ QTask::QTask(Task* t, QTask* parent)
 {
   connect(this, SIGNAL(changedDone(bool)), this, SLOT(redraw()));
   connect(this, SIGNAL(changedCurrent(bool)), this, SLOT(redraw()));
+  connect(this, SIGNAL(changedLate(bool)), this, SLOT(redraw()));
   setDone(false);
-  // setCurrent(true);
+  setLate(false);
+
   pare = parent;
   dateIsLinked = task->hasLinkedDate();
   
@@ -18,16 +20,13 @@ QTask::QTask(Task* t, QTask* parent)
 
   QVBoxLayout *lay = new QVBoxLayout();
   setLayout(lay);
-  lay->setContentsMargins(0, 0, 0, 0);
 
   this->qTaskWidget = new QWidget();
   QHBoxLayout *qTaskLayout = new QHBoxLayout();
-  qTaskLayout->setContentsMargins(0, 0, 0, 0);
 
   QString textstr = QString::fromStdString(task->getName());
   time_t datet = task->getDate();
   QString datestr = ctime(&datet);
-  //QDate dateq = QDateTime::fromTime_t(datet).date();
   QDate dateq = QDate::currentDate();
 
   if (parent != NULL) {
@@ -137,7 +136,7 @@ QTask::QTask(Task* t, QTask* parent)
   closeButton = new QToolButton();
   closeButton->setToolTip(trUtf8("Supprimer la tâche"));
   closeButton->setText("x");
-  closeButton->setStyleSheet("color: red");
+  closeButton->setObjectName("closeButton");
   connect(closeButton, SIGNAL(clicked()), this, SLOT(closeTask()));
   qTaskLayout->addWidget(closeButton);
 
@@ -202,6 +201,7 @@ QTask::setDateText(QDate aDate)
   }
 
   task->setDate(QDateTime(aDate).QDateTime::toTime_t());
+  setLate(aDate < QDate::currentDate());
 }
 
 void
@@ -287,7 +287,6 @@ void QTask::orderSubtasks()
 
 void QTask::addSubtask()
 {
-  setStyle(style());
   Task* t = new Task(trUtf8("Titre").toStdString(), this->task,
                      this->task->hasOrderedSubtasks(),
                      this->task->getDate());
