@@ -270,13 +270,17 @@ QTask::checkTask(bool isChecked)
 	QTask * curr = (QTask*) pare->subtaskContainer->layout()->itemAt(i)->widget(); 
 	curr->check->setEnabled(curr->task->isCheckable());
 	curr->check->setChecked(curr->task->isChecked());
-	
-	std::cout << " est check " << curr->task->isChecked() << std::endl;	
-	std::cout << " est checkable " << curr->task->isCheckable() << std::endl;
       }
       
       pare->check->setEnabled(pare->task->isCheckable());
     }
+  else{
+    for (int i=0; i < this->subtaskContainer->layout()->count(); i++) {
+      	QTask * curr = (QTask*) this->subtaskContainer->layout()->itemAt(i)->widget(); 
+	curr->check->setEnabled(curr->task->isCheckable());
+	curr->check->setChecked(curr->task->isChecked());
+    }
+  }
   
   setDone(task->isChecked());
 }

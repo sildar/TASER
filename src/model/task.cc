@@ -248,7 +248,7 @@ Task::isCheckable() const
 	      }
 	    it++;
 	  }
-        return true;
+        return !parent->isChecked();
       }
       else if (! (*it)->isChecked())
       {
@@ -256,7 +256,7 @@ Task::isCheckable() const
       }
     }
   }
-  else if (this->parent == NULL && this->hasOrderedSubtasks()){
+  else if (this->parent == NULL){
     for (std::list<Task*>::const_iterator it = this->subtasks.begin(); it != this->subtasks.end(); ++it)
       {
 	if (!(*it)->isChecked())
