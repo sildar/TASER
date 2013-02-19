@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <tasklist>
-    <task date="1361228400">
+    <task date="1361228400" ordered-subtasks="yes">
         <name>Task 1</name>
         <task date="1361228400">
             <name>Task 1.1</name>
