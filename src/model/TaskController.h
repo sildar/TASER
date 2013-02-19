@@ -5,6 +5,7 @@
 #include <QObject>
 #include "../ui/QTaskContainer.h"
 #include "task.h"
+#include "dirent.h"
 
 class TaskController : public QObject
 {

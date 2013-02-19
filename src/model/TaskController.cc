@@ -41,7 +41,27 @@ void TaskController::saveModel()
 }
 
 std::list<std::string> TaskController::loadTemplateList(){
+  
+  DIR *dir;
+  struct dirent *ent;
   std::list<std::string> list;
+
+  if ((dir = opendir ("./templates")) != NULL) {
+    /* print all the files and directories within directory */
+    while ((ent = readdir (dir)) != NULL) {
+      std::string res = ent->d_name;
+      res = res.substr(0, res.size()-4);
+      if (res.length() > 2){
+	list.push_back(res);
+      }
+    }
+    closedir (dir);
+  } else {
+    /* could not open directory */
+    perror ("");
+    return list;
+  }
+
   return list;
 }
 
