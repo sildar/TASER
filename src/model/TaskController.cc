@@ -40,8 +40,9 @@ void TaskController::saveModel()
   saveTasklist("tasklist.xml", tasks);
 }
 
-std::list<std::string> loadTemplateList(){
-
+std::list<std::string> TaskController::loadTemplateList(){
+  std::list<std::string> list;
+  return list;
 }
 
 void TaskController::loadTemplate(std::string xmlFileName, QTask* root)
