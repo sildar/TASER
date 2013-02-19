@@ -80,6 +80,8 @@ QTask::QTask(Task* t, QTask* parent)
     {
       templateMenu->addAction(QString(it->c_str()));
     }
+  connect(templateMenu, SIGNAL(triggered(QAction*)), this, SLOT(manageTemplates(QAction*)));
+
   menu->addAction(trUtf8("Sauver un template"));
   menu->addSeparator();
   upTaskAction = new QAction(trUtf8("Monter la tâche"),menu);
@@ -134,7 +136,7 @@ QTask::QTask(Task* t, QTask* parent)
   qTaskLayout->addWidget(date);
 
   //prepares the popup
-  calmenu = new QWidget();
+  calmenu = new QWidget(this);
   cal = new QCalendara(calmenu, this->task->hasLinkedDate(), &datestr);
   calmenu->installEventFilter(this);
 
@@ -267,15 +269,22 @@ QTask::checkTask(bool isChecked)
       for (int i=0; i < pare->subtaskContainer->layout()->count(); i++) {
 	QTask * curr = (QTask*) pare->subtaskContainer->layout()->itemAt(i)->widget(); 
 	curr->check->setCheckable(curr->task->isCheckable());
+	curr->check->setChecked(curr->task->isChecked());
+	
 	std::cout << " est check " << curr->task->isChecked() << std::endl;	
 	std::cout << " est checkable " << curr->task->isCheckable() << std::endl;
-	curr->check->setChecked(curr->task->isChecked());
       }
       
       pare->check->setCheckable(pare->task->isCheckable());
     }
   
   setDone(task->isChecked());
+}
+
+void
+QTask::manageTemplates(QAction* action)
+{
+  TaskController::loadTemplate(action->text().toStdString(),this);
 }
 
 void

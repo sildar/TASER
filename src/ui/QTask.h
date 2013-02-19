@@ -109,6 +109,8 @@ public slots:
   */
   void setDateText(QDate date);
 
+  void manageTemplates(QAction* action);
+
   void dateLinked(bool isLinked);
 
   /*!
