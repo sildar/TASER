@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tasklist>
+    <task date="1361228400">
+        <name>Réaliser la démo de TASER</name>
+        <task date="1361142000" date-linked="yes" checked="yes">
+            <name>Créer Taser</name>
+            <task date="1361142000" checked="yes">
+                <name>Choisir un nom définitif</name>
+            </task>
+            <task date="1361142000" checked="yes">
+                <name>Designer l&apos;interface</name>
+            </task>
+            <task date="1361142000" checked="yes">
+                <name>Implémenter le tout</name>
+            </task>
+        </task>
+        <task date="1361228400" checked="yes">
+            <name>Compiler</name>
+        </task>
+        <task date="1361228400" ordered-subtasks="yes">
+            <name>Montrer les fonctionnalités</name>
+            <task date="1361142000">
+                <name>Des tâches à cocher ...</name>
+            </task>
+            <task date="1361228400">
+                <name>Monter l&apos;interface</name>
+            </task>
+            <task date="1361228400">
+                <name>Ajouter une tâche</name>
+            </task>
+            <task date="1361228400">
+                <name>Supprimer des tâches inutiles</name>
+            </task>
+            <task date="1361228400">
+                <name>Cette tâche est liée !</name>
+            </task>
+            <task date="1361228400">
+                <name>Templates</name>
+            </task>
+            <task date="1361228400">
+                <name>Les langues</name>
+            </task>
+            <task date="1361228400">
+                <name>Concluons</name>
+            </task>
+        </task>
+    </task>
+</tasklist>
