@@ -1,6 +1,7 @@
 // -*- mode: c++; c-basic-offset: 2; c-indentation-style: ellemtel; -*-
 
 #include "QLabelEdit.h"
+#include <QtDebug>
 
 QLabelEdit::QLabelEdit(QString &s)
   : text_(s)
@@ -35,3 +36,9 @@ QLabelEdit::redraw()
   setStyle(style());
 }
 
+void
+QLabelEdit::setBackground(const QColor &bg)
+{
+  setStyleSheet("*:!hover { background-color: " % bg.name() % ";}" %
+                "*:hover { background-color: #cdad00; }");
+}

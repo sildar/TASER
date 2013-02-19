@@ -87,7 +87,7 @@ private:
 
   QLabel* order;
 
-  QLineEdit* text;
+  QLabelEdit* text;
 
   QLabel* date;
   QCalendara* cal;

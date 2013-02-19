@@ -15,6 +15,7 @@ class QLabelEdit : public QLineEdit
 
 public:
   QLabelEdit(QString &s);
+  void setBackground(const QColor &bg);                      
 
 public slots:
   void redraw();
@@ -27,6 +28,7 @@ private slots:
   
 private:
   QString text_;
+  QColor bg_;
 };
 
 #endif /* _QLABELEDIT_H_ */

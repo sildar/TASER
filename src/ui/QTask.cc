@@ -8,6 +8,7 @@
 QTask::QTask(Task* t, QTask* parent)
   : task(t)
 {
+  text = NULL;
   connect(this, SIGNAL(changedDone(bool)), this, SLOT(redraw()));
   connect(this, SIGNAL(changedCurrent(bool)), this, SLOT(redraw()));
   connect(this, SIGNAL(changedLate(bool)), this, SLOT(redraw()));
@@ -374,6 +375,9 @@ QTask::redraw()
   style()->unpolish(this);
   style()->polish(this);
   setStyle(style());
+  if (text) {
+    text->setBackground(palette().color(QPalette::Background));
+  }
 }
 
 void QTask::changeEvent(QEvent* event)
