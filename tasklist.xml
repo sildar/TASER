@@ -1,14 +1,8 @@
 <?xml version="1.0" ?>
 <tasklist>
-    <task date="1359327600" ordered-subtasks="yes">
+    <task date="1358722800">
         <name>Titre</name>
-        <task date="1360191600">
-            <name>Titre</name>
-        </task>
-        <task date="1359327600" date-linked="yes">
-            <name>Titre</name>
-        </task>
-        <task date="1360191600" checked="yes">
+        <task date="1360105200" date-linked="yes">
             <name>Titre</name>
         </task>
     </task>

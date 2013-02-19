@@ -83,6 +83,7 @@ private:
   QAction* orderSubtasksAction;
   QAction* upTaskAction;
   QAction* downTaskAction;
+  QMenu* templateMenu;
 
   QLabel* order;
 

@@ -2,6 +2,7 @@
 
 #include "QTask.h"
 #include <QtDebug>
+
 #include "../model/TaskController.h"
 
 QTask::QTask(Task* t, QTask* parent)
@@ -67,7 +68,14 @@ QTask::QTask(Task* t, QTask* parent)
   orderSubtasksAction = new QAction(trUtf8("Ordonner les tâches"),menu);
   menu->addAction(orderSubtasksAction);
   menu->addSeparator();
-  menu->addAction(trUtf8("Insérer un template"));
+  templateMenu = menu->addMenu(trUtf8("Insérer un template"));
+
+  std::list<std::string> templatelist = TaskController::loadTemplateList();
+
+  for (std::list<std::string>::iterator it = templatelist.begin(); it != templatelist.end(); ++it)
+    {
+      templateMenu->addAction(QString(it->c_str()));
+    }
   menu->addAction(trUtf8("Sauver un template"));
   menu->addSeparator();
   upTaskAction = new QAction(trUtf8("Monter la tâche"),menu);

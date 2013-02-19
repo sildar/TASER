@@ -1,5 +1,6 @@
 #include "TaskController.h"
 #include "modelutil.h"
+#include "../ui/QTask.h"
 
 QTaskContainer* TaskController::qTaskContainer = NULL;
 std::list<Task*> TaskController::tasks = std::list<Task*>();
@@ -44,6 +45,10 @@ void TaskController::saveModel()
     i++;
   }
   saveTasklist("tasklist.xml", tasks);
+}
+
+std::list<std::string> loadTemplateList(){
+
 }
 
 void TaskController::loadTemplate(std::string xmlFileName, QTask* root)

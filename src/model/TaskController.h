@@ -4,7 +4,6 @@
 #include <list>
 #include <QObject>
 #include "../ui/QTaskContainer.h"
-#include "../ui/QTask.h"
 #include "task.h"
 
 class TaskController : public QObject
@@ -26,6 +25,7 @@ public slots:
   static void updateModel(std::list<Task*> theTasks);
   static void loadTemplate(std::string xmlFileName, QTask* root);
   static void saveTemplate(std::string xmlFileName, QTask* root);
+  static std::list<std::string> loadTemplateList();
 
 private:
   static QTaskContainer* qTaskContainer;
