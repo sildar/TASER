@@ -59,6 +59,8 @@ public:
   bool current() const { return current_; }
   void setCurrent(bool current) { current_ = current; emit changedCurrent(current); }
 
+  QCheckBox* check;
+
 signals:
   void changedDone(bool);
   void changedCurrent(bool);
@@ -70,7 +72,6 @@ private:
   bool current_;
   bool dateIsLinked;
   QWidget* qTaskWidget;
-  QCheckBox* check;
   QToolButton* expand;
   QToolButton* param;
   QTask* pare;

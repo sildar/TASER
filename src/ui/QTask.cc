@@ -41,6 +41,7 @@ QTask::QTask(Task* t, QTask* parent)
   connect(check, SIGNAL(toggled(bool)), this, SLOT(checkTask(bool)));
   check->setChecked(this->task->isChecked());
   setDone(this->task->isChecked());
+  check->setCheckable(task->isCheckable());
   connect(check, SIGNAL(clicked()), this, SLOT(enable()));
 
   qTaskLayout->addWidget(check);
@@ -266,7 +267,12 @@ QTask::checkTask(bool isChecked)
       for (int i=0; i < pare->subtaskContainer->layout()->count(); i++) {
 	QTask * curr = (QTask*) pare->subtaskContainer->layout()->itemAt(i)->widget(); 
 	curr->check->setCheckable(curr->task->isCheckable());
+	std::cout << " est check " << curr->task->isChecked() << std::endl;	
+	std::cout << " est checkable " << curr->task->isCheckable() << std::endl;
+	curr->check->setChecked(curr->task->isChecked());
       }
+      
+      pare->check->setCheckable(pare->task->isCheckable());
     }
   
   setDone(task->isChecked());
