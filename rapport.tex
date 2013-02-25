@@ -18,7 +18,7 @@
 
 \author{Grégoire Jadi \and{} Rémi Bois \and{} Loïc Jankowiak}
 \title{TASER \\
-Gestionnaire Avaancé de Tâches}
+Gestionnaire Avancé de Tâches}
 
 \begin{document}
 
@@ -183,13 +183,31 @@ ou une sous-tâche.
 % \end{itemize}
 
 
-\subsection{No pop paradigm}
-Flag : Rémi
+\subsection{No pop-up paradigm}
 
-\begin{itemize}
-\item Modifier une tâche à la volée
-\item Pas d'avertissement à la suppression (undo/redo de prévu)
-\end{itemize}
+Nous avons décidé de ne faire surgir aucun pop-up tout au long de
+l'utilisation de notre application. D'une part, les pop-up sont très
+désagréables pour les personnes souffrant de problèmes visuels,
+d'autre part, nous avons estimé que l'interface serait suffisamment
+claire et instinctive pour ne nécessiter aucune ouverture de fenêtre
+supplémentaire.
+
+L'une des premières conséquences de ce choix est l'obligation de
+proposer la modification d'une tâche ``à la volée'' et non une
+interface particulière à la modification de tâche. Nous avons donc
+choisi d'implémenter un Widget dont le texte est éditable après un
+clic sur celui-ci.
+
+Le principal inconvénient de ce choix est le non avertissement lors
+d'une action irréversible. C'est notamment le cas pour la suppression
+d'une tâche et de ses sous-tâches. Cet inconvénient est contrebalancé
+par la volonté d'alors d'implémenter un annuler/rétablir (undo/redo)
+qui permettrait le retour en arrière en cas d'erreur.
+
+% \begin{itemize}
+% \item Modifier une tâche à la volée
+% \item Pas d'avertissement à la suppression (undo/redo de prévu)
+% \end{itemize}
 
 
 \subsection{Les fonctionnalités}
