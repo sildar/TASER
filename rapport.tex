@@ -26,47 +26,106 @@ Gestionnaire Avaancé de Tâches}
 \tableofcontents
 
 
-\section{Les premières idées}
+\section{Présentation}
+
+L'objectif de ce projet était de mettre en pratique les différentes
+techniques permettant de réaliser des interfaces graphiques.
+
+À l'aide du framework graphique Qt, le but était d'imaginer une
+interface homme machine (IHM) qui permettant la gestion avancée de
+tâches. L'utilisateur devait entre autre pouvoir
 \begin{itemize}
-\item Note taken on \textit{[2013-02-21 Thu 10:40]} \\
-  Les premiers dessins + mini scénarios de tests
-\item Note taken on \textit{[2013-02-21 Thu 11:12]} \\
-  Tableau +/- à la fin de chaque présentations d'interfaces
+\item ordonner des tâches;
+\item fixer une date aux tâches;
+\item gérer des templates de tâches;
 \end{itemize}
+On se référera au sujet pour une liste exhaustive des fonctionalités
+attendues.
+
+Nous allons maintenant présenter notre implémentation,
+TASER\footnote{TASk managER}, détailler et expliquer les différents
+choix d'interface et d'ergonomie qui ont été fait.
+
+
+\section{Les premières idées}
+
+Une fois que nous avons pris connaissance du sujet, nous nous sommes
+mis d'accord pour chacun réfléchir de notre côté pendant une semaine
+sur le sujet et ainsi nous retrouver avec chacun une proposition
+d'interface non biaisée.
+
+La confrontation des idées fut très intéressante car, comme nous
+allons le voir, nous avons tous présenté une interface différente qui
+présentent toutes des caractéristiques distinctes.
+
+% TODO rajouter les premiers dessins + mini scénario de chaque interface
+% TODO rajouter un tableau +/- pour chaque interface
 
 
 \subsection{Une interface sobre}
-\begin{itemize}
-\item on voit beaucoup de choses à la fois
-\item interface "de travail"
-\end{itemize}
 
-⇒ Techno centré
+% TODO insérer un dessin
+
+Comme on peut le constater, la première interface est relativement sobre.
+
+L'utilisation de deux cadres est intéressante mais c'est une
+organisation de l'espace de travail qui amènerai à montrer trop
+d'information à la fois.
+
+De plus, c'est une interface qui rappelle beaucoup les grosses
+applications dédiées à un domaine, elle est très « techno centrée ».
 
 
 \subsection{Une interface connue}
-\begin{itemize}
-\item vue comme l'arborescence de fichiers
-  → utilisation métaphore connue
-\end{itemize}
+
+% TODO insérer un dessin
+
+Cette deuxième interface utilise donc une vue arborescente des tâches
+qui possède l'avantage d'être connue. En effet, la métaphore de
+l'arbre est déjà largement utilisée par les explorateurs de fichiers.
+C'est pourquoi la réutilisation de ce design permet à l'utilisateur
+d'être en terrain connu.
+
+Cependant, bien que cette disposition soit plus légère que celle de
+l'interface précédente, l'abre reste assez lourd visuellement.
 
 
 \subsection{Une interface sexy}
-\begin{itemize}
-\item inspirée de Org Mode
-\item ergonomique
-\item user centrée
-\end{itemize}
+
+% TODO insérer un dessin
+
+La dernière interface est fortement inspirée d'Org Mode, un mode
+d'Emacs\footnote{Emacs est un excellent système d'exploitation à qui
+  il ne manque qu'un éditeur de texte.} qui permet entre autre de
+gérer des tâches.
+
+Cette configuration est assez proche de la précédente, car elle
+conserve l'idée d'organiser les tâches sous formes d'abre.
+
+De plus, comme l'un d'entre nous utilise beaucoup Org Mode, nous
+savions que c'était une interface qui était utilisable.
 
 
-\subsection{Bilan et comparaison}
+\subsection{Bilan}
 
+Il nous semble qu'avoir initialement réfléchi séparément fut une bonne
+idée. Cela a permis à chacun de se faire sa propre idée de l'interface
+qu'il désirait et d'avoir beaucoup d'idées différentes dès le départ.
+
+De plus, comme nous avons le choix de la troisième interface assez
+rapidement, nous étions relativement confiant dans notre choix,
+puisque nous en avions déjà étudié deux autres.
+
+Durant cette première étape nous avons donc décidé de la structure
+générale de l'interface que nous souhaitions développer.
+
+% TODO lien en annexes pour les storyboard/images restantes
 
 \section{Un premier design}
-\begin{itemize}
-\item Note taken on \textit{[2013-02-21 Thu 10:48]} \\
-  scénarios + storyboard
-\end{itemize}
+
+Une fois que nous avions l'idée globale de l'interface désirée. Nous
+avons commencé à analyser plus en détail les différentes fonctions et
+modes de fonctionnement de notre interface.
 
 
 \subsection{Le principe d'accordéon}
@@ -98,6 +157,8 @@ Gestionnaire Avaancé de Tâches}
 \item le "all one click"
 \item template via click droit
 \end{itemize}
+
+% TODO lien en annexes pour les storyboard/images/scénarios restants
 
 
 \section{Arrivée d'un expert}
