@@ -1,0 +1,122 @@
+* Les premières idées
+  - Note taken on [2013-02-21 Thu 10:40] \\
+    Les premiers dessins + mini scénarios de tests
+  - Note taken on [2013-02-21 Thu 11:12] \\
+    Tableau +/- à la fin de chaque présentations d'interfaces
+
+** Une interface sobre
+
+   - on voit beaucoup de choses à la fois
+   - interface "de travail"
+
+   ⇒ Techno centré
+** Une interface connue
+   - vue comme l'arborescence de fichiers
+     → utilisation métaphore connue
+
+** Une interface sexy
+
+   - inspirée de Org Mode
+   - ergonomique
+   - user centrée
+
+** Bilan et comparaison
+
+* Un premier design
+  - Note taken on [2013-02-21 Thu 10:48] \\
+    scénarios + storyboard
+
+** Le principe d'accordéon
+   - cacher/afficher
+   - intuitif
+   - smartphone lire
+   - absence dans Qt de l'animation
+
+** Des boutons + en pagaille
+   - différencier la tâche de la sous-tâche
+   - "one click action"
+
+** No pop paradigm
+   - Modifier une tâche à la volée
+   - Pas d'avertissement à la suppression (undo/redo de prévu)
+
+** Les fonctionnalités
+   - ajout, expand, order, close, update, check, link date, up&down
+   - le "all one click"
+   - template via click droit
+
+* Arrivée d'un expert
+
+** Trop de +
+   - ambiguïté
+   - pas instinctif
+   - passage à l'echelle (plein de tâches, plein de boutons, plein de
+     boutons, plein de boutons...)
+
+** « Et le bouton paramètre ? »
+   - Résumer les actions possibles → Everything in one button
+     limitation de la taille en changeant le texte (order/unorder)
+
+** Ordonnancement
+   - pas instinctif
+   - pas vraiment une action majeure
+     → suppressoin du "one click"
+
+** Les actions majeures
+   - check, expand, edit, close
+     → one click
+
+** Les actions mineures
+   - add, templates, order, up&down, sélection date
+     → two clicks
+
+* Placements
+  - Note taken on [2013-02-21 Thu 10:54] \\
+    paper prototyping
+
+** Des groupes
+   - ajout, visualisation, résumé actions
+   - description → car impartant
+   - suppression → car critique
+
+** Le bouton paramètre
+   - votes
+
+** La croix
+   - votes
+
+** Ajout d'une tâches principale
+   - arrivée sur le logiciel → interface vide → un seul bouton
+
+* Les couleurs
+  
+** Les tâches
+   - faite, à faire, en retard
+
+** L'édition
+   - le hover
+
+** La croix
+
+* Le vocabulaire
+
+  - ajouter tâche vs nouvelle tâche
+  - tâche vs sous-tâche
+  - template
+
+* Les langues
+  - menu édition
+  - ajout d'une nouvelle langue rapide et facile
+
+* Future works
+  1. Drag&drop
+  2. Shortcuts
+  3. Aide
+  4. Tout plier/déplier
+  5. Paramétrage des couleurs
+  6. Identité du logiciel (logo)
+  7. griser/supprimer le bouton expand
+
+* Bilan & Conclusion
+  - avantages expérimentations papier
+  - prises en comptes retours utilisateurs
