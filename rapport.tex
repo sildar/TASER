@@ -129,13 +129,38 @@ modes de fonctionnement de notre interface.
 
 
 \subsection{Le principe d'accordéon}
-Flag : Rémi
-\begin{itemize}
-\item cacher/afficher
-\item intuitif
-\item smartphone lire
-\item absence dans Qt de l'animation
-\end{itemize}
+
+Nous souhaitions que notre interface puisse permettre l'affichage de
+nombreuses tâches, sans pour autant perdre l'utilisateur dans trop de
+données. Il nous fallait donc trouver une solution qui autoriserait
+l'utilisateur à afficher uniquement ce qu'il décide voir, tout en
+laissant l'apparition de données supplémentaires à la portée d'un
+seul click. Le paradigme de l'accordéon, classique dans l'univers des
+smartphones, nous a semblé être la solution adaptée.
+
+Le paradigme de l'accordéon consiste à plier l'affichage : une tâche
+contient toutes ses sous tâches, et si l'on déplie une tâche, ses sous
+tâches s'affichent. Cet affichage est instinctif pour les utilisateurs
+de smartphones et/ou de tablettes, friands de ce paradigme.
+
+Bien que fréquent sur les appareils mobiles, Qt ne propose pas de
+Widget adoptant ce comportement. Nous nous sommes d'abord assurés que
+simuler un tel comportement était possible via l'utilisation de layers
+et de Widgets classiques. Ceci a été une réussite à l'exception du
+fait qu'il nous a été impossible d'utiliser une
+animation. L'indentation des sous-tâches par rapport leur tâche mère
+nous a semblée suffisante pour que l'utilisateur repère aisément
+quelles tâches s'étaient dépliées, et nous avons donc choisi de
+remettre l'utilisation d'une éventuelle animation à une mise à jour
+future. 
+
+
+% \begin{itemize}
+% \item cacher/afficher
+% \item intuitif
+% \item smartphone lire
+% \item absence dans Qt de l'animation
+% \end{itemize}
 
 
 \subsection{Des boutons + en pagaille}
