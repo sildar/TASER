@@ -507,17 +507,73 @@ Linguist.
 \section{Future works}
 \label{sec:futureWorks}
 
-Flag : Rémi
+Plusieurs fonctionnalités auraient été ajoutées si nous avions eu plus
+de temps. Nous avons décidé de passer la plupart du temps disponible à
+discuter sur des versions papier afin d'avoir une interface claire et
+ergonomique. Ceci nous a conduit à laisser de côté certaines
+fonctionnalités, jugées non prioritaires ou trop longues à
+coder.
 
-\begin{enumerate}
-\item Drag\&drop
-\item Shortcuts
-\item Aide
-\item Tout plier/déplier
-\item Paramétrage des couleurs
-\item Identité du logiciel (logo)
-\item griser/supprimer le bouton expand
-\end{enumerate}
+\begin{description}
+\item[Drag \& Drop] A l'heure actuelle, il est possible de réagencer
+  les différentes tâches via une action du menu paramètre permettant
+  de monter ou de descendre d'une place la tâche courante. Nous
+  aurions souhaité conserver ce comportement tout en ajoutant la
+  possibilité d'utiliser du drag \& drop pour déplacer une tâche plus
+  aisément.
+\item[Raccourcis] Nous aurions souhaité pouvoir rendre accessible
+  chacune des fonctionnalités par un raccourci clavier. Ceci aurait
+  permis une utilisation rapide pour les utilisateurs avancés.
+\item[Invalider le bouton d'expansion] Il est toujours possible
+  d'étendre une tâche, même si celle-ci n'a aucune sous-tâche. Ceci
+  peut conduire à une incompréhension de l'utilisateur qui pense que
+  son clic n'a aucune conséquence et conclu à un bug. Notre solution
+  envisagée était le grisement de ce bouton quand il est inutile
+  d'étendre une tâche. Une autre solution était de supprimer le bouton
+  quand inutile, cependant, ceci aurait pu faire perdre de l'ergonomie
+  à l'interface (l'utilisateur se demandant pourquoi un tel bouton est
+  parfois présent, parfois non).
+\item[Tout plier] L'interface actuelle permet de plier ou de déplier
+  toutes les sous-tâches d'une tâche mère. Nous aurions souhaité
+  proposer une fonctionnalité permettant de déplier ou de replier
+  toutes les tâches enregistrées dans l'application. Bien que
+  demandant peu de travail d'implémentation, cette fonctionnalité a
+  été jugée non prioritaire et n'est donc pas présente dans cette
+  première version. De plus, des discussions persistaient sur
+  l'emplacement à accorder à cette fonctionnalité dans l'interface
+  (sous forme de bouton, dans un menu, ...)
+\item[Paramétrage des couleurs] Les a-priori basés sur les couleurs
+  sont très dépendants des cultures. Nous avons souhaité rendre notre
+  application internationalisable via la mise à disposition de
+  différents langages. Cependant, pour que cette internationalisation
+  soit réellement possible, un paramétrage des couleurs semble
+  indispensable. De plus, notre interface actuelle ne prend pas en
+  compte les handicaps visuels (daltonisme par exemple). Enfin, un
+  paramétrage permet un confort visuel à toute personne.
+\item[Aide] La présence d'un manuel d'utilisation nous semble
+  indispensable à tout bon logiciel. Nous avons réalisé une interface
+  que nous espérons la plus intuitive possible, mais nous considérons
+  qu'un manuel aurait permis de répondre à la plupart des questions
+  des utilisateurs
+\item[Identité du logiciel] Si nous avons bien nommé notre application
+  (TASER pour TASk managER), nous aurions souhaité donner une
+  véritable identité visuelle par l'ajout d'un logo, au démarrage de
+  l'application ou en haut à gauche de la fenêtre. Aucun d'entre nous
+  n'étant habitué aux outils permettant la réalisation d'un logo
+  (tablette graphique, logiciels, ...), nous avons décidé de laisser
+  cette identité visuelle pour une version future.
+\end{description}
+
+
+% \begin{enumerate}
+% \item Drag\&drop
+% \item Shortcuts
+% \item Aide
+% \item Tout plier/déplier
+% \item Paramétrage des couleurs
+% \item Identité du logiciel (logo)
+% \item griser/supprimer le bouton expand
+% \end{enumerate}
 
 
 \section{Bilan \& Conclusion}
