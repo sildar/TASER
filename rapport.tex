@@ -17,6 +17,33 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 
+\usepackage{glossaries}
+
+%%glossary entries
+
+\newglossaryentry{tachePrincipale}
+{
+  name=tâche principale,
+  description={Une tâche n'ayant aucune tâche mère}
+}
+
+\newglossaryentry{technocentre}
+{
+  name=technocentré,
+  description={Se dit d'une interface basée sur la technologie. On se
+  sert des capacités connues d'une machine pour construire une interface à
+  l'image de la machine}
+}
+
+\newglossaryentry{anthropocentre}
+{
+  name=anthropocentré,
+  description={Se dit d'une interface basée sur l'humain. On se sert
+    des repères culturels pour construire une interface à l'image de l'homme}
+}
+
+\makeglossaries
+
 \author{Grégoire Jadi \and{} Rémi Bois \and{} Loïc Jankowiak}
 \title{TASER \\
 Gestionnaire Avancé de Tâches}
@@ -70,11 +97,11 @@ présentent toutes des caractéristiques distinctes.
 Comme on peut le constater, la première interface est relativement sobre.
 
 L'utilisation de deux cadres est intéressante mais c'est une
-organisation de l'espace de travail qui amènerai à montrer trop
-d'information à la fois.
+organisation de l'espace de travail qui amènerait à montrer trop
+d'informations à la fois.
 
 De plus, c'est une interface qui rappelle beaucoup les grosses
-applications dédiées à un domaine, elle est très « techno centrée ».
+applications dédiées à un domaine, elle est très « \gls{technocentre} ».
 
 
 \subsection{Une interface connue}
@@ -101,7 +128,9 @@ d'Emacs\footnote{Emacs est un excellent système d'exploitation à qui
 gérer des tâches.
 
 Cette configuration est assez proche de la précédente, car elle
-conserve l'idée d'organiser les tâches sous forme d'abres.
+conserve l'idée d'organiser les tâches sous forme d'abres. Elle nous a
+semblé être celle se rapprochant le plus d'une idée intuitive la
+représentation de tâches et de sous tâches. Nous l'avons considérée \gls{anthropocentre}e.
 
 De plus, comme l'un d'entre nous utilise beaucoup Org Mode, nous
 savions que c'était une interface qui était utilisable.
@@ -314,6 +343,9 @@ On peut trouver en annexe un tableau descriptif du profil de l'expert
 \subsection{Ajout d'une tâche principale}
 Flag : Rémi
 
+L'une des fonctionnalités critiques à mettre en avant était l'ajout
+d'une \gls{tachePrincipale}. 
+
 \begin{itemize}
 \item arrivée sur le logiciel → interface vide → un seul bouton
 \end{itemize}
@@ -387,6 +419,8 @@ une nouvelle langue, via les interfaces de Qt Linguist.
 \item prises en comptes retours utilisateurs
 \end{itemize}
 
+\addcontentsline{toc}{section}{Glossary}
+\printglossaries
 
 \appendix
 
@@ -401,6 +435,7 @@ une nouvelle langue, via les interfaces de Qt Linguist.
   Utilisation d'un gestionnaire de tâches & non\\
 
 \end{tabular}
+
 
 
 \end{document}
