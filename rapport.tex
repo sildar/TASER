@@ -17,6 +17,10 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 
+\hypersetup{
+  colorlinks=true,
+}
+
 \usepackage{glossaries}
 
 %%glossary entries
@@ -119,7 +123,7 @@ organisation de l'espace de travail qui amènerait à montrer trop
 d'informations à la fois.
 
 De plus, c'est une interface qui rappelle beaucoup les grosses
-applications dédiées à un domaine, elle est très « \gls{technocentre} ».
+applications dédiées à un domaine, elle est très « \gls{technocentre}e ».
 
 
 \subsection{Une interface connue}
@@ -133,7 +137,7 @@ C'est pourquoi la réutilisation de ce design permet à l'utilisateur
 d'être en terrain connu.
 
 Cependant, bien que cette disposition soit plus légère que celle de
-l'interface précédente, l'abre reste assez lourd visuellement.
+l'interface précédente, l'arbre reste assez lourd visuellement.
 
 
 \subsection{Une interface sexy}
@@ -146,7 +150,7 @@ d'Emacs\footnote{Emacs est un excellent système d'exploitation à qui
 gérer des tâches.
 
 Cette configuration est assez proche de la précédente, car elle
-conserve l'idée d'organiser les tâches sous forme d'abres. Elle nous a
+conserve l'idée d'organiser les tâches sous forme d'arbres. Elle nous a
 semblé être celle se rapprochant le plus d'une idée intuitive la
 représentation de tâches et de \gls{soustache}. Nous l'avons considérée \gls{anthropocentre}e.
 
@@ -188,9 +192,10 @@ clic. Le paradigme de l'accordéon, classique dans l'univers des
 smartphones, nous a semblé être la solution adaptée.
 
 Le paradigme de l'accordéon consiste à plier l'affichage : une tâche
-contient toutes ses sous tâches, et si l'on déplie une tâche, ses sous
-tâches s'affichent. Cet affichage est instinctif pour les utilisateurs
-de smartphones et/ou de tablettes, friands de ce paradigme.
+contient toutes ses sous-tâches, et si l'on déplie une tâche, ses
+sous-tâches s'affichent. Cet affichage est instinctif pour les
+utilisateurs de smartphones et/ou de tablettes, friands de ce
+paradigme.
 
 Bien que fréquent sur les appareils mobiles, Qt ne propose pas de
 Widget adoptant ce comportement. Nous nous sommes d'abord assurés que
@@ -216,7 +221,7 @@ future.
 \subsection{Des boutons à foison}
 
 L'un des principaux challenges présentés par notre interface était de
-permettre l'ajout de tâches ou de sous tâches de façon aisée. Nous
+permettre l'ajout de tâches ou de sous-tâches de façon aisée. Nous
 avions pour cela choisi de proposer un bouton par choix possible
 d'ajout (tâche sœur et tâche fille).
 
@@ -314,8 +319,9 @@ affichées, masquant l'information primordiale. Un exemple de ce genre
 de situation est donné en annexe page \pageref{ann:plusplusplus}.
 
 Nous avons donc décidé de revoir le système d'ajout de tâches et de
-sous tâches. Nous avons pour cela utilisé une autre remarque de
-l'expert, décrit à la section \ref{subsec:parameterButton} page \pageref{subsec:parameterButton}.
+sous-tâches. Nous avons pour cela utilisé une autre remarque de
+l'expert, décrite à la section \ref{subsec:parameterButton} page
+\pageref{subsec:parameterButton}.
 
 
 % \begin{itemize}
@@ -487,6 +493,7 @@ séparer.
 
 
 \subsection{La croix}
+\label{subsec:croixPlacement}
 
 Un débat a eu lieu sur le choix du placement de la croix. Fallait-il
 faire une interface avec seulement deux côtés (à gauche
@@ -522,7 +529,7 @@ supprimmer une tâche.
 
 L'une des fonctionnalités critiques à mettre en avant était l'ajout
 d'une \gls{tachePrincipale}. Nous souhaitions cette fonctionnalité non
-ambigüe. Lors de sa première utilisation de notre logiciel,
+ambiguë. Lors de sa première utilisation de notre logiciel,
 l'utilisateur n'aurait comme seule action possible l'ajout d'une
 nouvelle tâche principale, c'est pourquoi nous voulions un bouton
 toujours visible et inéquivoque.
@@ -544,7 +551,7 @@ handicaps visuels ou préférences de l'utilisateur.
 
 Mais après avoir réalisé que nous n'aurions pas le temps de proposer
 cette fonctionnalité de choix de couleurs, nous avons opté pour des
-couleurs que nous avons jugées agréable à l'oeil, et correspondant à
+couleurs que nous avons jugées agréables à l'oeil, et correspondant à
 notre culture.
 
 
@@ -603,12 +610,12 @@ cliquer sans être sûr de ce que l'on souhaite.
 
 Le menu édition comporte les paramètres éditables de notre
 application. L'un de ces paramètre est la langue utilisée. Un simple
-click sur une autre langue que la langue courante modifie
-l'intégralité des textes des boutons et menus.
+clic sur une autre langue que la langue courante modifie l'intégralité
+des textes des boutons et menus.
 
 Nous avons utilisé les capacités de Qt pour permettre l'ajout très
 simple de nouvelles langues. Une précondition pour cela a été
-l'utilisation de l'encoding UTF-8 pour les textes des boutons et
+l'utilisation de l'encodage UTF-8 pour les textes des boutons et
 menus.
 
 L'avantage est qu'il suffit de quelques minutes à une personne
