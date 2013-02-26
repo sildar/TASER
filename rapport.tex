@@ -280,17 +280,33 @@ On peut trouver en annexe un tableau descriptif du profil de l'expert
 (section \ref{sec:profilExpert} page \pageref{sec:profilExpert}).
 
 \subsection{Trop de +}
-Flag : Rémi
 
-\begin{itemize}
-\item ambiguïté
-\item pas instinctif
-\item passage à l'echelle (plein de tâches, plein de boutons, plein de
-  boutons, plein de boutons\ldots{})
-\end{itemize}
+La première et majeure remarque de l'expert a été la présence trop
+importante de boutons +. Bien qu'il nous semblait que l'indentation
+suffisait à repérer la fonctionnalité proposée par chacun de ces
+boutons, l'expert a quant à lui semblé perdu sur les différences entre
+ces boutons.
+
+L'expert a également fait remarqué qu'avec ce système, on pourrait se
+retrouver dans certains cas avec plus de boutons + que de tâches
+affichées, masquant l'information primordiale. Un exemple de ce genre
+de situation est donné en annexe page \pageref{ann:plusplusplus}.
+
+Nous avons donc décidé de revoir le système d'ajout de tâches et de
+sous tâches. Nous avons pour cela utilisé une autre remarque de
+l'expert, décrit à la section \ref{subsec:parameterButton} page \pageref{subsec:parameterButton}.
+
+
+% \begin{itemize}
+% \item ambiguïté
+% \item pas instinctif
+% \item passage à l'echelle (plein de tâches, plein de boutons, plein de
+%   boutons, plein de boutons\ldots{})
+% \end{itemize}
 
 
 \subsection{« Et le bouton paramètre ? »}
+\label{subsec:parameterButton}
 \begin{itemize}
 \item Résumer les actions possibles → Everything in one button
   limitation de la taille en changeant le texte (order/unorder)
@@ -446,6 +462,11 @@ une nouvelle langue, via les interfaces de Qt Linguist.
   Utilisation d'un gestionnaire de tâches & non\\
 
 \end{tabular}
+
+\section{Working copies}
+
+\subsection{Trop de boutons +}
+\label{ann:plusplusplus}
 
 
 
