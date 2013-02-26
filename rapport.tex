@@ -130,8 +130,9 @@ présentent toutes des caractéristiques distinctes.
 
 \subsection{Une interface sobre}
 
-Comme on peut le constater, la première interface est relativement
-sobre.
+Comme on peut le constater, sur la working copy de cette interface
+disponible en annexe \ref{ann:props} page \pageref{fig:sobre}, la
+première interface est relativement sobre.
 
 L'utilisation de deux cadres est intéressante mais c'est une
 organisation de l'espace de travail qui amènerait à montrer trop
@@ -141,30 +142,27 @@ De plus, c'est une interface qui rappelle beaucoup les grosses
 applications dédiées à un domaine, elle est très «
 \glslink{technocentre}{technocentrée}». 
 
-La working copy de cette interface est disponible en annexe
-\ref{ann:props} page \pageref{fig:sobre}.
-
 
 \subsection{Une interface connue}
 
-Cette deuxième interface utilise donc une vue arborescente des tâches
-qui possède l'avantage d'être connue. En effet, la \gls{metaphore} de
-l'arbre est déjà largement utilisée par les explorateurs de fichiers.
-C'est pourquoi la réutilisation de ce design permet à l'utilisateur
-d'être en terrain connu.
+Cette deuxième interface, dont la working copy est disponible en
+annexe \ref{ann:props} page \pageref{fig:connue}, utilise donc une vue
+arborescente des tâches qui possède l'avantage d'être connue. En
+effet, la \gls{metaphore} de l'arbre est déjà largement utilisée par
+les explorateurs de fichiers. C'est pourquoi la réutilisation de ce
+design permet à l'utilisateur d'être en terrain connu.
 
 Cependant, bien que cette disposition soit plus légère que celle de
 l'interface précédente, l'arbre reste assez lourd visuellement.
 
-La working copy de cette interface est disponible en annexe \ref{ann:props} page \pageref{fig:connue}.
-
 
 \subsection{Une interface sexy}
 
-La dernière interface est fortement inspirée d'Org Mode, un mode
-d'Emacs\footnote{Emacs est un excellent système d'exploitation à qui
-  il ne manque qu'un éditeur de texte.} qui permet entre autre de
-gérer des tâches.
+La dernière interface, dont la working copy est disponible en annexe
+\ref{ann:props} page \pageref{fig:sexy}, est fortement inspirée d'Org
+Mode, un mode d'Emacs\footnote{Emacs est un excellent système
+  d'exploitation à qui il ne manque qu'un éditeur de texte.} qui
+permet entre autre de gérer des tâches.
 
 Cette configuration est assez proche de la précédente, car elle
 conserve l'idée d'organiser les tâches sous forme d'arbres. Elle nous
@@ -184,8 +182,6 @@ application serait destinée à être utilisée régulièrement, au
 démarrage de l'ordinateur par exemple, pour vérifier si des choses
 urgentes sont à faire, plutôt que comme outil branché en permanence et
 monitorant le travail.
-
-La working copy de cette interface est disponible en annexe \ref{ann:props} page \pageref{fig:sexy}.
 
 
 \subsection{Bilan}
@@ -209,6 +205,54 @@ générale de l'interface que nous souhaitions développer.
 Une fois que nous avions l'idée globale de l'interface désirée. Nous
 avons commencé à analyser plus en détail les différentes fonctions et
 modes de fonctionnement de notre interface.
+
+
+\subsection{Les fonctionnalités}
+
+Nous avons commencé par lister l'ensemble des fonctionnalités que
+notre interface graphique devait proposer ; il s'agit pour la plupart
+de fonctionnalités classiques des gestionnaires de liste de tâches, à
+savoir :
+\begin{description}
+\item[Ajouter/supprimer une tâche] Une tâche peut être ajoutée soit au
+  niveau racine, soit en tant que sous-tâche d'une tâche existante. La
+  suppression d'une tâche entraine automatiquement la suppression
+  récursive de toutes ses sous-tâches. On trouvera une explication
+  plus complète de la solution que nous avions initialement trouvée en
+  section \ref{subsec:boutonFoison}.
+\item[Valider une tâche] Principale fonctionnalité de l'application,
+  elle permet de marquer une tâche comme ayant été effectuée ; une
+  tâche peut également être invalidée.
+\item[Déplier/replier une tâche] Un bouton permet d'afficher ou de
+  masquer les sous-tâches d'une tâche, nous détaillons cette partie
+  juste après loin dans la section \ref{sec:accordeon}. Au démarrage
+  de l'application, seules les \glslink{tachePrincipale}{tâches principales} sont
+  visibles.
+\item[Lier la date à la tâche parente] Chaque tâche possède une date
+  limite (au-delà de laquelle elle est marquée comme en retard). Cette
+  fonctionnalité permet, lorsque l'on décale une date de fin de tâche,
+  de modifier automatiquement au besoin celles des sous-tâches liées.
+\item[Monter/descendre une tâche] L'utilisateur peut réordonner à sa
+  guise chacune des tâches et des sous-tâches de la liste.
+\item[Liste ordonnée de sous-tâches] Afin de pouvoir satisfaire aux
+  contraintes d'ordonnancement des tâches (par exemple, une tâche ne
+  peut être validée que si une autre tâche a été validée
+  précédemment), il est possible de définir chaque liste de tâches
+  comme étant une liste ordonnée.
+
+  Lorsqu'une liste de tâche est ordonnée, une tâche ne peut pas être
+  validée tant que les tâches précédentes n'ont pas été validées. Dans
+  le cas d'une liste non ordonnée, aucune contrainte n'est à respecter
+  (il faut toutefois, pour cocher une tâche, que toutes ses
+  sous-tâches soient validées).
+\end{description}
+
+
+% \begin{itemize}
+% \item ajout, expand, order, close, update, check, link date, up\&down
+% \item le "all one click"
+% \item template via click droit
+% \end{itemize}
 
 
 \subsection{Le principe d'accordéon}
@@ -250,6 +294,7 @@ future.
 
 
 \subsection{Des boutons à foison}
+\label{subsec:boutonFoison}
 
 L'un des principaux challenges présentés par notre interface était de
 permettre l'ajout de tâches ou de sous-tâches de façon aisée. Nous
@@ -300,51 +345,6 @@ permettrait le retour en arrière en cas d'erreur.
 % \item Pas d'avertissement à la suppression (undo/redo de prévu)
 % \end{itemize}
 
-
-\subsection{Les fonctionnalités}
-
-Nous avons listé l'ensemble des fonctionnalités que notre interface
-graphique devait proposer ; il s'agit pour la plupart de
-fonctionnalités classiques des gestionnaires de liste de tâches, à
-savoir :
-\begin{description}
-\item[Ajouter/supprimer une tâche] Une tâche peut être ajoutée soit au
-  niveau racine, soit en tant que sous-tâche d'une tâche existante. La
-  suppression d'une tâche entraine automatiquement la suppression
-  récursive de toutes ses sous-tâches.
-\item[Valider une tâche] Principale fonctionnalité de l'application,
-  elle permet de marquer une tâche comme ayant été effectuée ; une
-  tâche peut également être invalidée.
-\item[Déplier/replier une tâche] Comme vu précédemment (à la section
-  \ref{sec:accordeon} page \pageref{sec:accordeon}), un bouton permet
-  d'afficher ou de masquer les sous-tâches d'une tâche. Au démarrage
-  de l'application, seules les \glslink{tachePrincipale}{tâches
-    principales} sont visibles.
-\item[Lier la date à la tâche parente] Chaque tâche possède une date
-  limite (au-delà de laquelle elle est marquée comme en retard). Cette
-  fonctionnalité permet, lorsque l'on décale une date de fin de tâche,
-  de modifier automatiquement au besoin celles des sous-tâches liées.
-\item[Monter/descendre une tâche] L'utilisateur peut réordonner à sa
-  guise chacune des tâches et des sous-tâches de la liste.
-\item[Liste ordonnée de sous-tâches] Afin de pouvoir satisfaire aux
-  contraintes d'ordonnancement des tâches (par exemple, une tâche ne
-  peut être validée que si une autre tâche a été validée
-  précédemment), il est possible de définir chaque liste de tâches
-  comme étant une liste ordonnée.
-
-  Lorsqu'une liste de tâche est ordonnée, une tâche ne peut pas être
-  validée tant que les tâches précédentes n'ont pas été validées. Dans
-  le cas d'une liste non ordonnée, aucune contrainte n'est à respecter
-  (il faut toutefois, pour cocher une tâche, que toutes ses
-  sous-tâches soient validées).
-\end{description}
-
-
-% \begin{itemize}
-% \item ajout, expand, order, close, update, check, link date, up\&down
-% \item le "all one click"
-% \item template via click droit
-% \end{itemize}
 
 % TODO lien en annexes pour les storyboard/images/scénarios restants
 
