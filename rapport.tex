@@ -81,9 +81,9 @@ Gestionnaire Avancé de Tâches}
 L'objectif de ce projet était de mettre en pratique les différentes
 techniques permettant de réaliser des interfaces graphiques.
 
-Le but était d'imaginer une interface homme machine (IHM), réalisée à
-l'aide du framework graphique Qt, servant à la gestion avancée de
-tâches. L'utilisateur devait entre autre pouvoir
+Nous devions donc définir et concevoir une interface homme machine
+(IHM), réalisée à l'aide du framework graphique Qt, servant à la
+gestion avancée de tâches. L'utilisateur devait entre autre pouvoir
 \begin{itemize}
 \item ordonner des tâches;
 \item fixer une date aux tâches;
@@ -150,9 +150,10 @@ d'Emacs\footnote{Emacs est un excellent système d'exploitation à qui
 gérer des tâches.
 
 Cette configuration est assez proche de la précédente, car elle
-conserve l'idée d'organiser les tâches sous forme d'arbres. Elle nous a
-semblé être celle se rapprochant le plus d'une idée intuitive la
-représentation de tâches et de \gls{soustache}. Nous l'avons considérée \gls{anthropocentre}e.
+conserve l'idée d'organiser les tâches sous forme d'arbres. Elle nous
+a semblé être celle se rapprochant le plus d'une idée intuitive la
+représentation de tâches et de \gls{soustache}. Nous l'avons
+considérée \gls{anthropocentre}e.
 
 De plus, comme l'un d'entre nous utilise beaucoup Org Mode, nous
 savions que c'était une interface qui était utilisable.
@@ -182,6 +183,7 @@ modes de fonctionnement de notre interface.
 
 
 \subsection{Le principe d'accordéon}
+\label{sec:accordeon}
 
 Nous souhaitions que notre interface permette l'affichage de
 nombreuses tâches, sans pour autant perdre l'utilisateur dans trop de
@@ -268,6 +270,44 @@ permettrait le retour en arrière en cas d'erreur.
 
 
 \subsection{Les fonctionnalités}
+
+Nous avons listé l'ensemble des fonctionnalités que notre interface
+graphique devait proposer ; il s'agit pour la plupart de
+fonctionnalités classiques des gestionnaires de liste de tâches, à
+savoir :
+\begin{description}
+\item[Ajouter/supprimer une tâche] Une tâche peut être ajoutée soit au
+  niveau racine, soit en tant que sous-tâche d'une tâche existante. La
+  suppression d'une tâche entraine automatiquement la suppression
+  récursive de toutes ses sous-tâches.
+\item[Valider une tâche] Principale fonctionnalité de l'application,
+  elle permet de marquer une tâche comme ayant été effectuée ; une
+  tâche peut également être invalidée.
+\item[Déplier/replier une tâche] Comme vu précédemment (à la section
+  \ref{sec:accordeon} page \ref{sec:accordeon}), un bouton permet
+  d'afficher ou de masquer les sous-tâches d'une tâche. Au démarrage
+  de l'application, seules les tâches dites « racines » (sans tâche
+  mère) sont visibles.
+\item[Lier la date à la tâche parente] Chaque tâche possède une date
+  limite (au-delà de laquelle elle est marquée comme en retard). Cette
+  fonctionnalité permet, lorsque l'on décale une date de fin de tâche,
+  de modifier automatiquement au besoin celles des sous-tâches liées.
+\item[Monter/descendre une tâche] L'utilisateur peut réordonner à sa
+  guise chacune des tâches et des sous-tâches de la liste.
+\item[Liste ordonnée de sous-tâches] Afin de pouvoir satisfaire aux
+  contraintes d'ordonnancement des tâches (par exemple, une tâche ne
+  peut être validée que si une autre tâche a été validée
+  précédemment), il est possible de définir chaque liste de tâches
+  comme étant une liste ordonnée.
+
+  Lorsqu'une liste de tâche est ordonnée, une tâche ne peut pas être
+  validée tant que les tâches précédentes n'ont pas été validées. Dans
+  le cas d'une liste non ordonnée, aucune contrainte n'est à respecter
+  (il faut toutefois, pour cocher une tâche, que toutes ses
+  sous-tâches soient validées).
+\end{description}
+
+
 \begin{itemize}
 \item ajout, expand, order, close, update, check, link date, up\&down
 \item le "all one click"
@@ -450,7 +490,8 @@ informations permettant de définir la tâche.
 
 Le dernier groupe est composé d'un seul bouton : celui de suppression
 de tâche. Son placement a été sujet à débat et est décrit plus en
-détail dans la section \ref{subsec:croixPlacement} page \pageref{subsec:croixPlacement}.
+détail dans la section \ref{subsec:croixPlacement} page
+\pageref{subsec:croixPlacement}.
 
 % \begin{itemize}
 % \item ajout, visualisation, résumé actions
@@ -466,7 +507,7 @@ Un débat a eu lieu sur le placement du bouton paramètres. Puisqu'il
 s'agissait d'un bouton d'administration de la tâche, nous avons pensé
 à le mettre près de la croix, dans le groupe de droite. Cette idée
 était renforcé par le fait que mettre ce bouton à droite permettait
-une symétrie dans l'application avec deux bouton à gauche et deux à
+une symétrie dans l'application avec deux boutons à gauche et deux à
 droite.
 
 Cependant, il a été jugé que la croix avait un rôle critique que le
