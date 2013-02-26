@@ -290,12 +290,12 @@ l'interface. Nous avons procédé en trois étapes :
 \end{itemize}
 
 Cette section présente les retours reçus lors de cet entretient et les
-choix qui en ont découlés ainsi que les raisons de ces
-changements. Dans tous les cas ayant porté à débat, un vote a eu lieu,
-avec voix majoritaire à l'expert, partant du principe que le logiciel
-serait conçu pour un utilisateur lambda, et pas pour des étudiants en
-informatique, forcément plus au fait des atouts techniques, souvent
-incompatibles avec des atouts d'ergonomie.
+choix qui en ont découlés ainsi que les raisons de ces changements.
+Dans tous les cas ayant porté à débat, un vote a eu lieu, avec voix
+majoritaire à l'expert, partant du principe que le logiciel serait
+conçu pour un utilisateur lambda, et pas pour des étudiants en
+informatique, qui seraient forcément plus au fait des atouts
+techniques, souvent incompatibles avec des atouts d'ergonomie.
 
 On peut trouver en annexe un tableau descriptif du profil de l'expert
 (section \ref{sec:profilExpert} page \pageref{sec:profilExpert}).
@@ -337,22 +337,25 @@ l'expert, décrit à la section \ref{subsec:parameterButton} page \pageref{subse
 \subsection{Ordonnancement}
 
 L'ordonnancement des tâches nous semblait un point important, et donc
-une action qui devait être atteignable très rapidement. L'expert
-a néanmoins émis l'avis qu'il s'agissait d'une fonctionnalité
+une action qui devait être atteignable très rapidement. L'expert a
+néanmoins émis l'avis qu'il s'agissait d'une fonctionnalité
 secondaire. De plus, notre idée de bouton cliquable pour passer de
 tâches ordonnées à tâches non ordonnées n'était absolument pas
-instinctif selon l'expert. Nous avions choisi d'afficher un simple
-tiret - lorsque les tâches n'étaient pas ordonnées. En cliquant sur ce
-tiret, les tâches s'ordonnaient et un chiffre apparaissait alors en
-lieu et place du tiret. Peut être que le passage ordonné vers non
-ordonné aurait été plus instinctif (on reconnait plus rapidement
-l'usage d'un chiffre que l'usage du tiret). Néanmoins, nous avons
-décidé de suivre l'avis de l'expert et de retirer l'ordonnancement des
-fonctionnalités accessibles en un seul clic. Nous l'avons donc rendu
-disponible uniquement via le bouton paramètre, décrit en section
-\ref{subsec:parameterButton} page \pageref{subsec:parameterButton},
-dont les descriptions textuelles permettaient de désambiguiser la
-symbolique attribuée au tiret. 
+instinctif selon l'expert.
+
+Nous avions initialement choisi d'afficher un simple tiret - lorsque
+les tâches n'étaient pas ordonnées. En cliquant sur ce tiret, les
+tâches s'ordonnaient et un chiffre apparaissait alors en lieu et place
+du tiret. Peut être que le passage ordonné vers non ordonné aurait été
+plus instinctif (on reconnait plus rapidement l'usage d'un chiffre que
+l'usage du tiret).
+
+Néanmoins, nous avons décidé de suivre l'avis de l'expert et de
+retirer l'ordonnancement des fonctionnalités accessibles en un seul
+clic. Nous l'avons donc rendu disponible uniquement via le bouton
+paramètre, décrit en section \ref{subsec:parameterButton} page
+\pageref{subsec:parameterButton}, dont les descriptions textuelles
+permettaient de désambiguiser la symbolique attribuée au tiret.
 
 % \begin{itemize}
 % \item pas instinctif
@@ -427,9 +430,10 @@ section \ref{sec:futureWorks} page \pageref{sec:futureWorks}) afin de
 prendre en compte les différentes cultures ainsi que les éventuels
 handicaps visuels ou préférences de l'utilisateur.
 
-Après avoir réalisé que nous n'aurions pas le temps de proposer cette
-fonctionnalité de choix de couleurs, nous avons opté pour des couleurs
-que nous avons jugées agréable à l'oeil, et correspondant à notre culture.
+Mais après avoir réalisé que nous n'aurions pas le temps de proposer
+cette fonctionnalité de choix de couleurs, nous avons opté pour des
+couleurs que nous avons jugées agréable à l'oeil, et correspondant à
+notre culture.
 
 
 \subsection{Les tâches}
@@ -450,10 +454,10 @@ Flag : Rémi
 
 Nous avons décidé, en plus de la séparation décrite en section
 \ref{subsec:croixPlacement} page \pageref{subsec:croixPlacement} de
-signaler la suppression de tâches par une couleur rouge, sinonyme de
-danger dans notre culture. Ceci est fait pour mettre en emphase le
-fait qu'il s'agit d'une action irréversible, et donc qu'il ne faudrait
-pas cliquer sans être sûr de ce que l'on souhaite.
+signaler la suppression de tâches par une couleur rouge, synonyme de
+danger dans notre culture. Ceci afin de mettre en emphase le fait
+qu'il s'agit d'une action irréversible, et donc qu'il ne faudrait pas
+cliquer sans être sûr de ce que l'on souhaite.
 
 
 \section{Le vocabulaire}
@@ -477,8 +481,9 @@ simple de nouvelles langues. Une précondition pour cela a été
 l'utilisation de l'encoding UTF-8 pour les textes des boutons et
 menus.
 
-Il suffit de quelques minutes à une personne bilingue pour proposer
-une nouvelle langue, via les interfaces de Qt Linguist.
+L'avantage est qu'il suffit de quelques minutes à une personne
+bilingue pour proposer une nouvelle langue via les interfaces de Qt
+Linguist.
 
 
 \section{Future works}
