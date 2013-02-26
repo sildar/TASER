@@ -5,3 +5,10 @@ taser
 moc_*.cpp
 qrc_*.cpp
 auto/*
+/rapport.aux
+/rapport.glo
+/rapport.ist
+/rapport.log
+/rapport.out
+/rapport.pdf
+/rapport.toc
