@@ -27,6 +27,14 @@
   description={Une tâche n'ayant aucune tâche mère}
 }
 
+\newglossaryentry{soustache}
+{
+  name=sous-tâche,
+  description={Une tâche liée à une tâche mère. Une relation de
+    dépendance existe. Notamment, si une tâche mère est supprimée,
+    toutes ses tâches filles (ses sous-tâches), sont supprimées}
+}
+
 \newglossaryentry{technocentre}
 {
   name=technocentré,
@@ -40,6 +48,16 @@
   name=anthropocentré,
   description={Se dit d'une interface basée sur l'humain. On se sert
     des repères culturels pour construire une interface à l'image de l'homme}
+}
+
+\newglossaryentry{metaphore}
+{
+  name=métaphore,
+  description={Terme utilisé pour décrire un type d'interface
+    particulier. La métaphore de l'arbre est une interface proposant
+    une vue de type arbre ie chaque élement peut être parent d'un
+    autre élément du même type. Ici, une tâche peut être mère d'une
+    autre tâche. La seconde dépend alors de la première}
 }
 
 \makeglossaries
@@ -109,7 +127,7 @@ applications dédiées à un domaine, elle est très « \gls{technocentre} ».
 % TODO insérer un dessin
 
 Cette deuxième interface utilise donc une vue arborescente des tâches
-qui possède l'avantage d'être connue. En effet, la métaphore de
+qui possède l'avantage d'être connue. En effet, la \gls{metaphore} de
 l'arbre est déjà largement utilisée par les explorateurs de fichiers.
 C'est pourquoi la réutilisation de ce design permet à l'utilisateur
 d'être en terrain connu.
@@ -130,7 +148,7 @@ gérer des tâches.
 Cette configuration est assez proche de la précédente, car elle
 conserve l'idée d'organiser les tâches sous forme d'abres. Elle nous a
 semblé être celle se rapprochant le plus d'une idée intuitive la
-représentation de tâches et de sous tâches. Nous l'avons considérée \gls{anthropocentre}e.
+représentation de tâches et de \gls{soustache}. Nous l'avons considérée \gls{anthropocentre}e.
 
 De plus, comme l'un d'entre nous utilise beaucoup Org Mode, nous
 savions que c'était une interface qui était utilisable.
@@ -314,6 +332,9 @@ l'expert, décrit à la section \ref{subsec:parameterButton} page \pageref{subse
 
 
 \subsection{Ordonnancement}
+
+Flag : Rémi
+
 \begin{itemize}
 \item pas instinctif
 \item pas vraiment une action majeure
