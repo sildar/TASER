@@ -179,12 +179,12 @@ modes de fonctionnement de notre interface.
 
 \subsection{Le principe d'accordéon}
 
-Nous souhaitions que notre interface puisse permettre l'affichage de
+Nous souhaitions que notre interface permette l'affichage de
 nombreuses tâches, sans pour autant perdre l'utilisateur dans trop de
 données. Il nous fallait donc trouver une solution qui autoriserait
-l'utilisateur à afficher uniquement ce qu'il décide voir, tout en
-laissant l'apparition de données supplémentaires à la portée d'un
-seul click. Le paradigme de l'accordéon, classique dans l'univers des
+l'utilisateur d'afficher uniquement ce qu'il décide voir, tout en
+laissant l'apparition de données supplémentaires à la portée d'un seul
+clic. Le paradigme de l'accordéon, classique dans l'univers des
 smartphones, nous a semblé être la solution adaptée.
 
 Le paradigme de l'accordéon consiste à plier l'affichage : une tâche
@@ -196,12 +196,13 @@ Bien que fréquent sur les appareils mobiles, Qt ne propose pas de
 Widget adoptant ce comportement. Nous nous sommes d'abord assurés que
 simuler un tel comportement était possible via l'utilisation de layers
 et de Widgets classiques. Ceci a été une réussite à l'exception du
-fait qu'il nous a été impossible d'utiliser une
-animation. L'indentation des sous-tâches par rapport leur tâche mère
+fait qu'il nous a été impossible d'utiliser une animation.
+
+Cependant, l'indentation des sous-tâches par rapport leur tâche mère
 nous a semblée suffisante pour que l'utilisateur repère aisément
 quelles tâches s'étaient dépliées, et nous avons donc choisi de
 remettre l'utilisation d'une éventuelle animation à une mise à jour
-future. 
+future.
 
 
 % \begin{itemize}
@@ -212,18 +213,20 @@ future.
 % \end{itemize}
 
 
-\subsection{Des boutons + en pagaille}
+\subsection{Des boutons à foison}
 
 L'un des principaux challenges présentés par notre interface était de
 permettre l'ajout de tâches ou de sous tâches de façon aisée. Nous
-avons pour cela choisi de proposer un bouton + par choix
-possible. Cela encombre l'écran mais nous estimons alors que
-l'indentation permet une différentiation suffisante pour connaître la
-fonction de chacun des boutons + (un bouton indenté créera une sous
-tâche, un bouton au même niveau qu'une tâche créera une tâche soeur).
+avions pour cela choisi de proposer un bouton par choix possible
+d'ajout (tâche sœur et tâche fille).
 
-Nous avons fait ce choix afin de pouvoir ajouter en un clic une tâche
-ou une sous-tâche.
+Cela encombre l'écran mais nous estimions alors que l'indentation
+permettait une différentiation suffisante pour connaître la fonction
+de chacun de ces boutons (un bouton indenté créera une tâche fille, un
+bouton au même niveau qu'une tâche créera une tâche sœur).
+
+Nous avions fait ce choix afin de pouvoir ajouter en un seul clic une
+tâche ou une sous-tâche.
 
 
 % \begin{itemize}
@@ -244,14 +247,14 @@ supplémentaire.
 L'une des premières conséquences de ce choix est l'obligation de
 proposer la modification d'une tâche ``à la volée'' et non une
 interface particulière à la modification de tâche. Nous avons donc
-choisi d'implémenter un Widget dont le texte est éditable après un
-clic sur celui-ci.
+choisi d'utiliser un Widget dont le texte devient éditable après avoir
+cliqué dessus.
 
 Le principal inconvénient de ce choix est le non avertissement lors
 d'une action irréversible. C'est notamment le cas pour la suppression
 d'une tâche et de ses sous-tâches. Cet inconvénient est contrebalancé
-par la volonté d'alors d'implémenter un annuler/rétablir (undo/redo)
-qui permettrait le retour en arrière en cas d'erreur.
+par la volonté d'alors implémenter un annuler/rétablir (undo/redo) qui
+permettrait le retour en arrière en cas d'erreur.
 
 % \begin{itemize}
 % \item Modifier une tâche à la volée
