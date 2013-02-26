@@ -662,15 +662,53 @@ cliquer sans être sûr de ce que l'on souhaite.
 
 \section{Le vocabulaire}
 
-% LOCK daimrod
+Une fois le design de l'application terminé, nous nous sommes penchés
+sur la question du vocabulaire.
+
+\paragraph*{}
+Nous avons commencé par déterminer si l'utilisation de termes
+distincts pour désigner les tâches selon le reférentiel était
+pertinent. C'est à dire, devait-on faire la distinction entre les
+tâches et les sous-tâches, mais il nous est apparu que la simple
+position du bouton paramètre, et donc le référentiel courant pour
+l'action d'ajout était suffisant pour comprendre où une tâche devait
+être insérée. Dans le pire des cas, l'utilisateur se trompe une fois,
+puis supprime la tâche créée au mauvaise endroit et comprend où il
+doit le faire, c'est en tout cas ce qu'il est resorti des tests que
+l'on a effectué.
+
+
+\paragraph*{}
+Le deuxième point qui nous a posé problème fut de décider de la
+formulation à utiliser pour ajouter une tâche. Devait-on utiliser la
+formule « ajouter tâche » ou « nouvelle tâche » ? Après discussion
+nous avons convenu que l'ajout d'une \gls{tachePrincipale} se ferait
+avec la formule « nouvelle tâche » et l'ajout d'une \gls{soustache}
+avec la formule « ajouter tâche ».
+
+Cela nous permet d'une part d'utiliser un raccourcis simple et connu
+pour ajouter une tâche principale -- Ctrl-n -- et d'autre part le sens
+de ces deux formules nous semble correspondre à ces deux contextes.
+
+\paragraph*{}
+Le dernier point de vocabulaire est l'utilisation du terme « template
+» que nous avons gardé faute d'avoir trouvé mieux, mais nous n'en
+sommes pas satisfait. Nous avions pensé à différentes alternatives:
 \begin{itemize}
-\item ajouter tâche vs nouvelle tâche
-\item tâche vs sous-tâche
-\item template
+\item squelette
+\item modèle
+\item schéma
 \end{itemize}
+Mais aucun d'eux nous nous semblaient vraiment meilleurs c'est
+pourquoi nous utilisons encore le terme « template ».
+
+%\begin{itemize}
+%\item ajouter tâche vs nouvelle tâche
+%\item tâche vs sous-tâche
+%\item template
+%\end{itemize}
 
 
-% ENDLOCK
 \section{Les langues}
 
 Le menu édition comporte les paramètres éditables de notre
